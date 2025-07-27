@@ -3,25 +3,31 @@
 <html lang="ru">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Motopro | Главная</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MotoPRO — Главная</title>
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <header>
-    <img src="images/logo.png" alt="Motopro Logo" class="logo"/>
-    <nav>
-      <a href="index.html">Главная</a>
-      <a href="catalog.html">Каталог</a>
-      <a href="about.html">О нас</a>
-      <a href="delivery.html">Доставка и оплата</a>
-      <a href="cart.html">Корзина</a>
-    </nav>
-  </header>
-  <main>
-    <h1>Добро пожаловать в Motopro!</h1>
-    <p>Продажа квадроциклов, питбайков и мотоциклов KAYO и ATAKI.</p>
+  <div id="header"></div>
+
+  <main class="hero">
+    <div class="hero-content">
+      <h2>Мотоциклы, квадроциклы, питбайки</h2>
+      <p>Продажа техники с ПТС, доставка по всей России</p>
+      <a href="catalog.html" class="btn">Перейти в каталог</a>
+    </div>
   </main>
-  <footer>© 2025 Motopro</footer>
+
+  <div id="footer"></div>
+  
+<script>
+  fetch('header.html').then(res => res.text()).then(data => {
+    document.getElementById('header').innerHTML = data;
+  });
+  fetch('footer.html').then(res => res.text()).then(data => {
+    document.getElementById('footer').innerHTML = data;
+  });
+</script>
+
 </body>
 </html>
