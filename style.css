@@ -1,55 +1,43 @@
 
-body {
-  margin: 0;
-  font-family: Arial, sans-serif;
-  background: #f9f9f9;
-  color: #222;
+body, html {
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
+    height: 100vh;
 }
-.container {
-  width: 90%;
-  max-width: 1200px;
-  margin: 0 auto;
+
+header {
+    height: 100vh;
+    background: url('images/IMG_5101.png') center center/cover no-repeat;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    text-align: center;
+    background-color: #00000088;
 }
-.site-header, .site-footer {
-  background: #111;
-  color: #fff;
-  padding: 20px 0;
+
+h1 {
+    font-size: 48px;
+    margin-bottom: 10px;
 }
-.site-header .logo {
-  font-size: 24px;
-  color: #fff;
-  text-decoration: none;
+
+p {
+    font-size: 20px;
+    margin-bottom: 20px;
 }
-.site-nav ul {
-  list-style: none;
-  padding: 0;
-  display: flex;
-  gap: 20px;
+
+.btn {
+    background-color: #000;
+    color: #fff;
+    padding: 12px 24px;
+    text-decoration: none;
+    font-weight: bold;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
 }
-.site-nav a {
-  color: #fff;
-  text-decoration: none;
-}
-.hero {
-  background: url('https://images.unsplash.com/photo-1504215680853-026ed2a45def') no-repeat center center/cover;
-  height: 80vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-.hero-content {
-  background: rgba(0, 0, 0, 0.6);
-  color: #fff;
-  padding: 30px;
-  border-radius: 10px;
-  text-align: center;
-}
-.hero .btn {
-  display: inline-block;
-  margin-top: 20px;
-  padding: 10px 20px;
-  background: #ff3c00;
-  color: white;
-  text-decoration: none;
-  border-radius: 5px;
+
+.btn:hover {
+    background-color: #333;
 }
