@@ -1,34 +1,26 @@
-
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MotoPRO</title>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MotoPRO</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <header>
-        <div class="container">
-            <div class="logo">MotoPRO</div>
-            <nav>
-                <ul>
-                    <li><a href="index.html">Главная</a></li>
-                    <li><a href="catalog.html">Каталог</a></li>
-                    <li><a href="about.html">О нас</a></li>
-                    <li><a href="delivery.html">Доставка и оплата</a></li>
-                    <li><a href="cart.html">Корзина</a></li>
-                </ul>
-            </nav>
-        </div>
-    </header>
+  <!-- Header -->
+  <div w3-include-html="header.html"></div>
 
-    <section class="hero">
-        <div class="hero-content">
-            <h1>Добро пожаловать в MotoPRO!</h1>
-            <p>Продажа квадроциклов, питбайков и мотоциклов KAYO и ATAKI.</p>
-            <a href="catalog.html" class="btn">Перейти в каталог</a>
-        </div>
-    </section>
+  <section class="hero">
+    <div class="overlay">
+      <h1>ДОБРО ПОЖАЛОВАТЬ В MOTOPRO</h1>
+      <a href="catalog.html" class="btn">ПЕРЕЙТИ В КАТАЛОГ</a>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <div w3-include-html="footer.html"></div>
+
+  <script src="https://www.w3schools.com/lib/w3.js"></script>
+  <script>w3.includeHTML();</script>
 </body>
 </html>
