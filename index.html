@@ -1,25 +1,65 @@
+
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Motopro — Главная</title>
-  <link rel="stylesheet" href="style.css" />
+  <meta charset="UTF-8">
+  <title>Motopro — Магазин мотоциклов и квадроциклов</title>
+  <style>
+    body, html {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      font-family: 'Segoe UI', sans-serif;
+    }
+    .hero {
+      background: url('https://images.unsplash.com/photo-1603601561956-13e0a43f4e99?auto=format&fit=crop&w=1600&q=80') no-repeat center center/cover;
+      height: 100vh;
+      color: white;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 0 20px;
+    }
+    .hero h1 {
+      font-size: 48px;
+      margin-bottom: 20px;
+      text-shadow: 0 2px 4px rgba(0,0,0,0.6);
+    }
+    .hero p {
+      font-size: 20px;
+      max-width: 600px;
+      text-shadow: 0 1px 3px rgba(0,0,0,0.5);
+    }
+    .hero a {
+      margin-top: 30px;
+      padding: 14px 28px;
+      background-color: #d32f2f;
+      color: white;
+      text-decoration: none;
+      font-size: 18px;
+      border-radius: 8px;
+      transition: background 0.3s ease;
+    }
+    .hero a:hover {
+      background-color: #b71c1c;
+    }
+    @media (max-width: 768px) {
+      .hero h1 {
+        font-size: 32px;
+      }
+      .hero p {
+        font-size: 16px;
+      }
+    }
+  </style>
 </head>
 <body>
-  <header>
-    <h1>Motopro</h1>
-    <nav>
-      <a href="index.html">Главная</a>
-      <a href="catalog.html">Каталог</a>
-      <a href="about.html">О нас</a>
-      <a href="delivery.html">Доставка и оплата</a>
-    </nav>
-  </header>
-  <main>
-    <h2>Добро пожаловать в Motopro!</h2>
-    <p>Мы продаём квадроциклы, питбайки и кроссовые мотоциклы брендов KAYO и ATAKI.</p>
-  </main>
-  <footer>© 2025 Motopro</footer>
+  <div class="hero">
+    <h1>Motopro — техника для настоящих</h1>
+    <p>Продажа квадроциклов, питбайков и кроссовых мотоциклов с ПТС и гарантией. Работаем по всей России.</p>
+    <a href="catalog.html">Перейти в каталог</a>
+  </div>
 </body>
 </html>
