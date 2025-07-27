@@ -1,1 +1,33 @@
-<h1>Корзина</h1><p>Товары, добавленные в корзину, появятся здесь.</p>
+
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <title>Корзина</title>
+  <style>
+    body {{ font-family: 'Segoe UI', sans-serif; background: #fafafa; margin: 0; }}
+    .container {{ max-width: 900px; margin: auto; padding: 40px 20px; }}
+    h1 {{ color: #d32f2f; text-align: center; }}
+    .cart-item {{ display: flex; align-items: center; justify-content: space-between; background: white; padding: 15px; border-radius: 10px; box-shadow: 0 1px 5px rgba(0,0,0,0.05); margin-bottom: 15px; }}
+    .cart-item img {{ width: 100px; border-radius: 8px; }}
+    .cart-item h3 {{ margin: 0 20px; flex: 1; }}
+    .cart-item .price {{ color: #333; font-weight: bold; }}
+    .checkout {{ text-align: center; margin-top: 30px; }}
+    .checkout a {{ background: #d32f2f; color: white; padding: 12px 24px; text-decoration: none; border-radius: 6px; }}
+    .checkout a:hover {{ background: #b71c1c; }}
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Корзина</h1>
+    <div class="cart-item">
+      <img src="atv1.jpg" alt="KAYO AU200">
+      <h3>KAYO AU200 спинка (2024)</h3>
+      <div class="price">239 990 ₽</div>
+    </div>
+    <div class="checkout">
+      <a href="#">Оформить заказ</a>
+    </div>
+  </div>
+</body>
+</html>

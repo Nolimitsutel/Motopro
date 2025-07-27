@@ -1,1 +1,68 @@
-<h1>Каталог</h1><p>Техника по категориям: квадроциклы, питбайки, мотоциклы.</p>
+
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <title>Каталог | Motopro</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #f4f4f4;
+      margin: 0;
+      padding: 0;
+    }
+    .container {
+      max-width: 1100px;
+      margin: auto;
+      padding: 40px 20px;
+    }
+    h1 {
+      text-align: center;
+      color: #d32f2f;
+      margin-bottom: 30px;
+    }
+    .category-card {
+      background: white;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+      margin-bottom: 30px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .category-card h2 {
+      margin: 0;
+      font-size: 20px;
+      color: #333;
+    }
+    .btn {
+      background-color: #d32f2f;
+      color: white;
+      padding: 10px 20px;
+      text-decoration: none;
+      border-radius: 5px;
+    }
+    .btn:hover {
+      background-color: #b71c1c;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Каталог техники</h1>
+    <div class="category-card">
+      <h2>Квадроциклы</h2>
+      <a class="btn" href="atvs.html">Смотреть</a>
+    </div>
+    <div class="category-card">
+      <h2>Питбайки</h2>
+      <a class="btn" href="pitbikes.html">Смотреть</a>
+    </div>
+    <div class="category-card">
+      <h2>Кроссовые мотоциклы</h2>
+      <a class="btn" href="cross.html">Смотреть</a>
+    </div>
+  </div>
+</body>
+</html>
