@@ -1,985 +1,31 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>MOTOPRO - Официальный дилер мототехники KAYO и ATAKI</title>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/8.4.5/swiper-bundle.min.css">
-<style>
-:root {
-    --primary: #ff6600;
-    --primary-dark: #e55d00;
-    --secondary: #222;
-    --light: #f4f4f4;
-    --dark: #333;
-    --gray: #e0e0e0;
-    --success: #28a745;
-    --warning: #ffc107;
-}
-
-* {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-}
-
-body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    margin: 0;
-    padding: 0;
-    background: var(--light);
-    color: var(--dark);
-    line-height: 1.6;
-    position: relative;
-    min-height: 100vh;
-    padding-bottom: 100px;
-}
-
-header {
-    background: var(--secondary);
-    padding: 10px 0;
-    position: sticky;
-    top: 0;
-    z-index: 1000;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.2);
-}
-
-.container {
-    width: 90%;
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 15px;
-}
-
-nav {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    flex-wrap: wrap;
-}
-
-.logo {
-    color: white;
-    font-size: 1.8rem;
-    font-weight: bold;
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    text-decoration: none;
-}
-
-.logo i {
-    color: var(--primary);
-}
-
-.nav-links {
-    display: flex;
-    list-style: none;
-    margin: 0;
-    padding: 0;
-}
-
-.nav-links li a {
-    color: white;
-    text-decoration: none;
-    padding: 10px 15px;
-    display: block;
-    transition: all 0.3s;
-    border-radius: 4px;
-}
-
-.nav-links li a:hover, 
-.nav-links li a.active {
-    background: var(--primary);
-    color: white;
-}
-
-.cart-icon {
-    position: relative;
-    margin-left: 20px;
-}
-
-.cart-count {
-    position: absolute;
-    top: -8px;
-    right: -8px;
-    background: var(--primary);
-    color: white;
-    border-radius: 50%;
-    width: 20px;
-    height: 20px;
-    font-size: 12px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.section {
-    display: none;
-    padding: 40px 0;
-}
-
-.section.active {
-    display: block;
-    animation: fadeIn 0.5s ease;
-}
-
-@keyframes fadeIn {
-    from { opacity: 0; transform: translateY(20px); }
-    to { opacity: 1; transform: translateY(0); }
-}
-
-.hero {
-    background: linear-gradient(rgba(0,0,0,0.7), url('https://images.unsplash.com/photo-1558981285-501cd9af9426?ixlib=rb-4.0.3') center/cover;
-    color: white;
-    text-align: center;
-    padding: 100px 20px;
-    position: relative;
-}
-
-.hero-content {
-    position: relative;
-    z-index: 2;
-}
-
-.hero h1 {
-    font-size: 3rem;
-    margin-bottom: 20px;
-    text-shadow: 0 2px 4px rgba(0,0,0,0.5);
-}
-
-.hero p {
-    font-size: 1.2rem;
-    max-width: 700px;
-    margin: 0 auto 30px;
-}
-
-.btn {
-    display: inline-block;
-    background: var(--primary);
-    color: white;
-    padding: 12px 30px;
-    border-radius: 30px;
-    text-decoration: none;
-    font-weight: bold;
-    transition: all 0.3s;
-    border: 2px solid var(--primary);
-    cursor: pointer;
-}
-
-.btn:hover {
-    background: transparent;
-    transform: translateY(-3px);
-    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
-}
-
-.btn-outline {
-    background: transparent;
-    border: 2px solid white;
-}
-
-.btn-outline:hover {
-    background: white;
-    color: var(--primary);
-}
-
-.section-title {
-    text-align: center;
-    color: var(--primary);
-    margin-bottom: 30px;
-    font-size: 2.2rem;
-    position: relative;
-}
-
-.section-title::after {
-    content: "";
-    display: block;
-    width: 80px;
-    height: 4px;
-    background: var(--primary);
-    margin: 15px auto;
-    border-radius: 2px;
-}
-
-.features {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 20px;
-    margin-top: 30px;
-}
-
-.feature {
-    flex: 1 1 calc(33% - 20px);
-    background: white;
-    padding: 25px;
-    border-radius: 10px;
-    text-align: center;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
-    transition: transform 0.3s;
-    cursor: pointer;
-}
-
-.feature:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
-}
-
-.feature i {
-    font-size: 2.5rem;
-    color: var(--primary);
-    margin-bottom: 15px;
-}
-
-.feature h3 {
-    color: var(--dark);
-    margin-bottom: 10px;
-}
-
-.products {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-    gap: 25px;
-    margin-top: 30px;
-}
-
-.product {
-    background: white;
-    border-radius: 10px;
-    overflow: hidden;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
-    transition: transform 0.3s;
-    position: relative;
-}
-
-.product:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
-}
-
-.product-badge {
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    background: var(--success);
-    color: white;
-    padding: 5px 10px;
-    border-radius: 3px;
-    font-size: 0.8rem;
-    font-weight: bold;
-    z-index: 2;
-}
-
-.product-img {
-    height: 200px;
-    background: var(--gray);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: var(--dark);
-    font-size: 3rem;
-    overflow: hidden;
-}
-
-.product-img img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    transition: transform 0.5s;
-}
-
-.product:hover .product-img img {
-    transform: scale(1.1);
-}
-
-.product-info {
-    padding: 20px;
-}
-
-.product h3 {
-    margin-bottom: 10px;
-    color: var(--dark);
-    font-size: 1.2rem;
-}
-
-.product-category {
-    color: #777;
-    font-size: 0.9rem;
-    margin-bottom: 10px;
-}
-
-.price {
-    font-size: 1.4rem;
-    font-weight: bold;
-    color: var(--primary);
-    margin: 10px 0;
-}
-
-.old-price {
-    text-decoration: line-through;
-    color: #999;
-    font-size: 1rem;
-    margin-right: 10px;
-}
-
-.add-to-cart {
-    background: var(--primary);
-    color: white;
-    border: none;
-    padding: 10px 20px;
-    border-radius: 5px;
-    cursor: pointer;
-    font-weight: bold;
-    width: 100%;
-    transition: background 0.3s;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 8px;
-}
-
-.add-to-cart:hover {
-    background: var(--primary-dark);
-}
-
-ul.info-list {
-    list-style: none;
-    margin: 20px 0;
-}
-
-ul.info-list li {
-    padding: 10px 0;
-    border-bottom: 1px dashed var(--gray);
-    display: flex;
-    align-items: flex-start;
-}
-
-ul.info-list li:last-child {
-    border-bottom: none;
-}
-
-ul.info-list li i {
-    color: var(--primary);
-    margin-right: 10px;
-    margin-top: 5px;
-}
-
-.cart-items {
-    background: white;
-    border-radius: 10px;
-    padding: 20px;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
-    margin-bottom: 30px;
-}
-
-.cart-item {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 15px 0;
-    border-bottom: 1px solid var(--gray);
-}
-
-.cart-item-info {
-    flex: 1;
-}
-
-.cart-item-controls {
-    display: flex;
-    align-items: center;
-    gap: 15px;
-}
-
-.quantity-control {
-    display: flex;
-    align-items: center;
-    border: 1px solid var(--gray);
-    border-radius: 5px;
-    overflow: hidden;
-}
-
-.quantity-btn {
-    background: #f8f8f8;
-    border: none;
-    width: 30px;
-    height: 30px;
-    cursor: pointer;
-    font-weight: bold;
-    transition: background 0.3s;
-}
-
-.quantity-btn:hover {
-    background: var(--gray);
-}
-
-.quantity-input {
-    width: 40px;
-    height: 30px;
-    text-align: center;
-    border: none;
-    border-left: 1px solid var(--gray);
-    border-right: 1px solid var(--gray);
-}
-
-.remove-item {
-    background: none;
-    border: none;
-    color: #ff4d4d;
-    cursor: pointer;
-    font-size: 1.2rem;
-    transition: color 0.3s;
-}
-
-.remove-item:hover {
-    color: #ff1a1a;
-}
-
-.cart-total {
-    text-align: right;
-    font-size: 1.4rem;
-    font-weight: bold;
-    margin: 20px 0;
-}
-
-.contact-info {
-    background: white;
-    border-radius: 10px;
-    padding: 30px;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
-}
-
-.contact-item {
-    display: flex;
-    align-items: flex-start;
-    margin-bottom: 20px;
-}
-
-.contact-item i {
-    color: var(--primary);
-    font-size: 1.5rem;
-    min-width: 40px;
-    margin-top: 5px;
-}
-
-footer {
-    background: var(--secondary);
-    color: white;
-    padding: 40px 0 20px;
-    position: absolute;
-    bottom: 0;
-    width: 100%;
-}
-
-.footer-content {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    gap: 30px;
-    margin-bottom: 30px;
-}
-
-.footer-section {
-    flex: 1 1 250px;
-}
-
-.footer-section h3 {
-    color: var(--primary);
-    margin-bottom: 20px;
-    font-size: 1.3rem;
-}
-
-.footer-links {
-    list-style: none;
-}
-
-.footer-links li {
-    margin-bottom: 10px;
-}
-
-.footer-links a {
-    color: #ccc;
-    text-decoration: none;
-    transition: color 0.3s;
-}
-
-.footer-links a:hover {
-    color: var(--primary);
-}
-
-.social-icons {
-    display: flex;
-    gap: 15px;
-    margin-top: 20px;
-}
-
-.social-icons a {
-    color: white;
-    background: rgba(255,255,255,0.1);
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: all 0.3s;
-}
-
-.social-icons a:hover {
-    background: var(--primary);
-    transform: translateY(-5px);
-}
-
-.footer-bottom {
-    text-align: center;
-    padding-top: 20px;
-    border-top: 1px solid rgba(255,255,255,0.1);
-    font-size: 0.9rem;
-    color: #aaa;
-}
-
-@media (max-width: 768px) {
-    .nav-links {
-        width: 100%;
-        margin-top: 15px;
-        flex-direction: column;
-        display: none;
-    }
-    
-    .nav-links.active {
-        display: flex;
-    }
-    
-    .menu-toggle {
-        display: block;
-        color: white;
-        font-size: 1.5rem;
-        cursor: pointer;
-    }
-    
-    .feature {
-        flex: 1 1 100%;
-    }
-    
-    .hero h1 {
-        font-size: 2.2rem;
-    }
-    
-    .hero p {
-        font-size: 1rem;
-    }
-    
-    .section-title {
-        font-size: 1.8rem;
-    }
-}
-
-@media (min-width: 769px) {
-    .menu-toggle {
-        display: none;
-    }
-}
-
-.brand-logos {
-    display: flex;
-    justify-content: center;
-    gap: 30px;
-    margin: 40px 0;
-    flex-wrap: wrap;
-}
-
-.brand-logo {
-    background: white;
-    width: 150px;
-    height: 100px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 10px;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
-    font-weight: bold;
-    font-size: 1.4rem;
-    color: var(--dark);
-    transition: transform 0.3s;
-}
-
-.brand-logo:hover {
-    transform: scale(1.05);
-}
-
-.testimonials {
-    background: white;
-    border-radius: 10px;
-    padding: 30px;
-    margin-top: 40px;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
-}
-
-.testimonial {
-    text-align: center;
-    padding: 20px;
-}
-
-.testimonial-text {
-    font-style: italic;
-    margin-bottom: 20px;
-    position: relative;
-}
-
-.testimonial-text::before,
-.testimonial-text::after {
-    content: '"';
-    font-size: 3rem;
-    color: var(--primary);
-    opacity: 0.3;
-    position: absolute;
-}
-
-.testimonial-text::before {
-    top: -20px;
-    left: -10px;
-}
-
-.testimonial-text::after {
-    bottom: -40px;
-    right: -10px;
-}
-
-.testimonial-author {
-    font-weight: bold;
-    color: var(--dark);
-}
-
-.testimonial-role {
-    color: #777;
-    font-size: 0.9rem;
-}
-
-.swiper-pagination-bullet-active {
-    background: var(--primary) !important;
-}
-
-.filter-buttons {
-    display: flex;
-    justify-content: center;
-    gap: 15px;
-    margin-bottom: 30px;
-    flex-wrap: wrap;
-}
-
-.filter-btn {
-    background: white;
-    border: 2px solid var(--primary);
-    color: var(--primary);
-    padding: 8px 20px;
-    border-radius: 30px;
-    cursor: pointer;
-    font-weight: bold;
-    transition: all 0.3s;
-}
-
-.filter-btn.active, 
-.filter-btn:hover {
-    background: var(--primary);
-    color: white;
-}
-
-.promo-banner {
-    background: linear-gradient(to right, var(--primary), var(--primary-dark));
-    color: white;
-    padding: 15px;
-    text-align: center;
-    margin-bottom: 30px;
-    border-radius: 10px;
-    font-weight: bold;
-    font-size: 1.2rem;
-}
-
-.checkout-form {
-    background: white;
-    border-radius: 10px;
-    padding: 30px;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
-    margin-bottom: 30px;
-}
-
-.form-group {
-    margin-bottom: 20px;
-}
-
-.form-group label {
-    display: block;
-    margin-bottom: 8px;
-    font-weight: bold;
-}
-
-.form-group input,
-.form-group textarea,
-.form-group select {
-    width: 100%;
-    padding: 12px;
-    border: 1px solid var(--gray);
-    border-radius: 5px;
-    font-size: 1rem;
-    transition: border-color 0.3s;
-}
-
-.form-group input:focus,
-.form-group textarea:focus,
-.form-group select:focus {
-    border-color: var(--primary);
-    outline: none;
-}
-
-.form-row {
-    display: flex;
-    gap: 20px;
-    margin-bottom: 20px;
-}
-
-.form-col {
-    flex: 1;
-}
-
-.payment-methods {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 15px;
-    margin-top: 15px;
-}
-
-.payment-method {
-    flex: 1;
-    min-width: 120px;
-    background: #f9f9f9;
-    border: 1px solid var(--gray);
-    border-radius: 5px;
-    padding: 15px;
-    text-align: center;
-    cursor: pointer;
-    transition: all 0.3s;
-}
-
-.payment-method.active {
-    border-color: var(--primary);
-    background: rgba(255, 102, 0, 0.1);
-}
-
-.payment-method i {
-    font-size: 2rem;
-    margin-bottom: 10px;
-    color: var(--primary);
-}
-
-.order-summary {
-    background: white;
-    border-radius: 10px;
-    padding: 30px;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
-}
-
-.summary-item {
-    display: flex;
-    justify-content: space-between;
-    padding: 10px 0;
-    border-bottom: 1px solid var(--gray);
-}
-
-.summary-total {
-    font-weight: bold;
-    font-size: 1.2rem;
-    margin-top: 15px;
-    padding-top: 15px;
-    border-top: 2px solid var(--gray);
-}
-
-.stock-badge {
-    display: inline-block;
-    padding: 3px 8px;
-    border-radius: 10px;
-    font-size: 0.8rem;
-    font-weight: bold;
-    margin-top: 5px;
-}
-
-.in-stock {
-    background: #e6f7ee;
-    color: var(--success);
-}
-
-.low-stock {
-    background: #fff8e6;
-    color: var(--warning);
-}
-
-.out-stock {
-    background: #fce8e6;
-    color: #f44336;
-}
-
-.back-to-top {
-    position: fixed;
-    bottom: 30px;
-    right: 30px;
-    background: var(--primary);
-    color: white;
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 1.5rem;
-    cursor: pointer;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
-    z-index: 999;
-    opacity: 0;
-    visibility: hidden;
-    transition: all 0.3s;
-}
-
-.back-to-top.visible {
-    opacity: 1;
-    visibility: visible;
-}
-</style>
-</head>
-<body>
-
-<header>
-    <div class="container">
-        <nav>
-            <a href="#" class="logo" data-section="home">
-                <i class="fas fa-motorcycle"></i>
-                <span>MOTOPRO</span>
-            </a>
-            
-            <ul class="nav-links" id="navLinks">
-                <li><a href="#" class="active" data-section="home">Главная</a></li>
-                <li><a href="#" data-section="catalog">Каталог</a></li>
-                <li><a href="#" data-section="about">О нас</a></li>
-                <li><a href="#" data-section="delivery">Доставка</a></li>
-                <li><a href="#" data-section="contacts">Контакты</a></li>
-                <li>
-                    <a href="#" data-section="cart" class="cart-icon">
-                        <i class="fas fa-shopping-cart"></i>
-                        <span class="cart-count">0</span>
-                    </a>
-                </li>
-            </ul>
-            
-            <div class="menu-toggle" id="menuToggle">
-                <i class="fas fa-bars"></i>
-            </div>
-        </nav>
-    </div>
-</header>
-
-<section id="home" class="section active">
-    <div class="hero">
-        <div class="container hero-content">
-            <h1>Мототехника KAYO и ATAKI</h1>
-            <p>Официальный дилер с гарантией и сервисным обслуживанием</p>
-            <a href="#" class="btn" data-section="catalog">Смотреть каталог</a>
-            <a href="#" class="btn btn-outline" data-section="delivery">Узнать о доставке</a>
-        </div>
-    </div>
-    
-    <div class="container">
-        <div class="promo-banner">
-            <i class="fas fa-gift"></i> Специальное предложение: Скидка 10% на первый заказ!
-        </div>
-        
-        <div class="brand-logos">
-            <div class="brand-logo">KAYO</div>
-            <div class="brand-logo">ATAKI</div>
-        </div>
-        
-        <h2 class="section-title">Популярные категории</h2>
-        
-        <div class="features">
-            <div class="feature" data-category="quad">
-                <i class="fas fa-atv"></i>
-                <h3>Квадроциклы</h3>
-                <p>Мощные и надежные ATV для бездорожья и работы</p>
-            </div>
-            
-            <div class="feature" data-category="pitbike">
-                <i class="fas fa-motorcycle"></i>
-                <h3>Питбайки</h3>
-                <p>Легкие и маневренные для начинающих и профессионалов</p>
-            </div>
-            
-            <div class="feature" data-category="cross">
-                <i class="fas fa-biking"></i>
-                <h3>Кроссовые</h3>
-                <p>Профессиональные мотоциклы для спорта и отдыха</p>
-            </div>
-        </div>
-        
-        <h2 class="section-title">Отзывы клиентов</h2>
-        
-        <div class="testimonials">
-            <div class="swiper">
-                <div class="swiper-wrapper">
-                    <div class="swiper-slide">
-                        <div class="testimonial">
-                            <div class="testimonial-text">
-                                Отличный магазин! Купил питбайк ATAKI 125cc, качество на высоте. 
-                                Доставка быстрая, менеджеры помогли с выбором. Обязательно вернусь за аксессуарами!
-                            </div>
-                            <div class="testimonial-author">Иван Петров</div>
-                            <div class="testimonial-role">Клиент, Москва</div>
-                        </div>
-                    </div>
-                    <div class="swiper-slide">
-                        <div class="testimonial">
-                            <div class="testimonial-text">
-                                Заказывал квадроцикл KAYO Bull 250 для дачи. Привезли вовремя, собрали на месте. 
-                                Техника работает отлично, никаких нареканий. Спасибо за профессиональный подход!
-                            </div>
-                            <div class="testimonial-author">Алексей Смирнов</div>
-                            <div class="testimonial-role">Клиент, Санкт-Петербург</div>
-                        </div>
-                    </div>
-                    <div class="swiper-slide">
-                        <div class="testimonial">
-                            <div class="testimonial-text">
-                                Покупал кроссовый мотоцикл для сына. Выбрали KAYO T2 250. 
-                                Ребенок в восторге! Качество сборки отличное, доставили даже раньше срока. 
-                                Рекомендую этот магазин.
-                            </div>
-                            <div class="testimonial-author">Дмитрий Иванов</div>
-                            <div class="testimonial-role">Клиент, Екатеринбург</div>
-                        </div>
-                    </div>
-                </div>
-                <div class="swiper-pagination"></div>
-            </div>
-        </div>
-    </div>
-</section>
-
-<!DOCTYPE html>
-<html lang="ru">
-<head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MOTOPRO - Каталог мототехники</title>
+    <title>MOTOPRO - Мототехника KAYO и ATAKI</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
             --primary: #ff6600;
             --primary-dark: #e55d00;
+            --primary-light: #ff944d;
             --secondary: #222;
-            --light: #f4f4f4;
-            --dark: #333;
+            --light: #f8f9fa;
+            --dark: #212529;
             --gray: #e0e0e0;
+            --light-gray: #f1f1f1;
+            --success: #28a745;
+            --warning: #ffc107;
+            --danger: #dc3545;
+            --box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+            --transition: all 0.3s ease;
         }
 
         * {
-            box-sizing: border-box;
             margin: 0;
             padding: 0;
+            box-sizing: border-box;
         }
 
         body {
@@ -987,31 +33,222 @@ footer {
             background: var(--light);
             color: var(--dark);
             line-height: 1.6;
+            overflow-x: hidden;
+            position: relative;
+            min-height: 100vh;
+            padding-bottom: 300px;
+        }
+
+        header {
+            background: var(--secondary);
+            padding: 10px 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
         }
 
         .container {
             width: 90%;
             max-width: 1200px;
             margin: 0 auto;
-            padding: 20px;
+            padding: 0 15px;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .logo {
+            color: white;
+            font-size: 1.8rem;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            text-decoration: none;
+        }
+
+        .logo i {
+            color: var(--primary);
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .nav-links li a {
+            color: white;
+            text-decoration: none;
+            padding: 10px 15px;
+            display: block;
+            transition: var(--transition);
+            border-radius: 4px;
+            position: relative;
+        }
+
+        .nav-links li a:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            width: 0;
+            height: 3px;
+            background: var(--primary);
+            transition: var(--transition);
+            transform: translateX(-50%);
+        }
+
+        .nav-links li a:hover, 
+        .nav-links li a.active {
+            color: var(--primary);
+        }
+
+        .nav-links li a:hover:after,
+        .nav-links li a.active:after {
+            width: 80%;
+        }
+
+        .cart-icon {
+            position: relative;
+            margin-left: 20px;
+        }
+
+        .cart-count {
+            position: absolute;
+            top: -8px;
+            right: -8px;
+            background: var(--primary);
+            color: white;
+            border-radius: 50%;
+            width: 22px;
+            height: 22px;
+            font-size: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+        }
+
+        .section {
+            display: none;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+            padding: 80px 0 40px;
+        }
+
+        .section.active {
+            display: block;
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .hero {
+            background: linear-gradient(rgba(0,0,0,0.7), url('https://images.unsplash.com/photo-1558981285-501cd9af9426?ixlib=rb-4.0.3') center/cover;
+            color: white;
+            text-align: center;
+            padding: 120px 20px;
+            position: relative;
+            margin-top: -80px;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 800px;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+            font-weight: 800;
+            letter-spacing: -0.5px;
+        }
+
+        .hero p {
+            font-size: 1.4rem;
+            margin: 0 auto 40px;
+            max-width: 700px;
+            font-weight: 300;
+        }
+
+        .btn-container {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--primary);
+            color: white;
+            padding: 14px 35px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: var(--transition);
+            border: 2px solid var(--primary);
+            font-size: 1.1rem;
+            cursor: pointer;
+            gap: 10px;
+            box-shadow: 0 4px 10px rgba(255, 102, 0, 0.3);
+        }
+
+        .btn:hover {
+            background: transparent;
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+            color: white;
+        }
+
+        .btn-outline {
+            background: transparent;
+            border: 2px solid white;
+        }
+
+        .btn-outline:hover {
+            background: white;
+            color: var(--primary);
         }
 
         .section-title {
             text-align: center;
             color: var(--primary);
-            margin: 30px 0;
-            font-size: 2.2rem;
+            margin-bottom: 50px;
+            font-size: 2.5rem;
             position: relative;
+            font-weight: 700;
         }
 
-        .section-title::after {
-            content: "";
+        .section-title:after {
+            content: '';
             display: block;
-            width: 80px;
-            height: 4px;
+            width: 100px;
+            height: 5px;
             background: var(--primary);
-            margin: 15px auto;
-            border-radius: 2px;
+            border-radius: 5px;
+            margin: 15px auto 0;
+        }
+
+        /* Каталог */
+        .catalog-container {
+            background: var(--light-gray);
+            padding: 60px 0;
         }
 
         .filter-buttons {
@@ -1026,55 +263,57 @@ footer {
             background: white;
             border: 2px solid var(--primary);
             color: var(--primary);
-            padding: 8px 20px;
-            border-radius: 30px;
+            padding: 10px 25px;
+            border-radius: 50px;
             cursor: pointer;
             font-weight: bold;
-            transition: all 0.3s;
+            transition: var(--transition);
         }
 
         .filter-btn.active, 
         .filter-btn:hover {
             background: var(--primary);
             color: white;
+            transform: translateY(-3px);
         }
 
         .products {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-            gap: 25px;
-            margin-top: 30px;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
         }
 
         .product {
             background: white;
-            border-radius: 10px;
+            border-radius: 15px;
             overflow: hidden;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
-            transition: transform 0.3s;
+            box-shadow: var(--box-shadow);
+            transition: var(--transition);
             position: relative;
+            display: flex;
+            flex-direction: column;
         }
 
         .product:hover {
             transform: translateY(-10px);
-            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.15);
         }
 
         .product-badge {
             position: absolute;
-            top: 10px;
-            right: 10px;
+            top: 15px;
+            right: 15px;
             background: var(--primary);
             color: white;
-            padding: 5px 10px;
-            border-radius: 3px;
-            font-size: 0.8rem;
+            padding: 6px 15px;
+            border-radius: 20px;
+            font-size: 0.9rem;
             font-weight: bold;
             z-index: 2;
         }
 
         .product-img {
-            height: 200px;
+            height: 220px;
             background: var(--gray);
             display: flex;
             align-items: center;
@@ -1094,628 +333,945 @@ footer {
         }
 
         .product-info {
-            padding: 20px;
+            padding: 25px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
         }
 
         .product h3 {
             margin-bottom: 10px;
             color: var(--dark);
-            font-size: 1.2rem;
+            font-size: 1.3rem;
+            font-weight: 700;
         }
 
         .product-category {
             color: #777;
-            font-size: 0.9rem;
-            margin-bottom: 10px;
+            font-size: 0.95rem;
+            margin-bottom: 15px;
         }
 
         .price {
-            font-size: 1.4rem;
+            font-size: 1.6rem;
             font-weight: bold;
             color: var(--primary);
-            margin: 10px 0;
+            margin: 10px 0 15px;
         }
 
         .specs {
             margin: 15px 0;
+            flex-grow: 1;
         }
 
         .spec-item {
             display: flex;
             justify-content: space-between;
-            padding: 5px 0;
+            padding: 8px 0;
             border-bottom: 1px dashed var(--gray);
-            font-size: 0.9rem;
+            font-size: 0.95rem;
         }
 
         .spec-value {
-            font-weight: bold;
+            font-weight: 600;
+            color: var(--dark);
         }
 
         .add-to-cart {
             background: var(--primary);
             color: white;
             border: none;
-            padding: 10px 20px;
-            border-radius: 5px;
+            padding: 12px 20px;
+            border-radius: 8px;
             cursor: pointer;
             font-weight: bold;
             width: 100%;
-            transition: background 0.3s;
+            transition: var(--transition);
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 8px;
+            gap: 10px;
+            font-size: 1.05rem;
+            margin-top: 15px;
         }
 
         .add-to-cart:hover {
             background: var(--primary-dark);
+            transform: translateY(-3px);
+        }
+
+        /* Корзина */
+        .cart-section {
+            padding: 60px 0;
+            background: var(--light);
+        }
+
+        .cart-container {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .cart-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+        }
+
+        .clear-cart {
+            background: var(--danger);
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .clear-cart:hover {
+            background: #bd2130;
+        }
+
+        .cart-items {
+            background: white;
+            border-radius: 15px;
+            padding: 25px;
+            box-shadow: var(--box-shadow);
+            margin-bottom: 30px;
+        }
+
+        .cart-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+            border-bottom: 1px solid var(--light-gray);
+        }
+
+        .cart-item-info {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            flex: 1;
+        }
+
+        .cart-item-img {
+            width: 100px;
+            height: 80px;
+            border-radius: 10px;
+            overflow: hidden;
+            background: var(--light-gray);
+        }
+
+        .cart-item-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .cart-item-details h4 {
+            font-size: 1.2rem;
+            margin-bottom: 5px;
+        }
+
+        .cart-item-details .price {
+            font-size: 1.3rem;
+            margin: 0;
+        }
+
+        .cart-item-controls {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .quantity-control {
+            display: flex;
+            align-items: center;
+            border: 1px solid var(--gray);
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        .quantity-btn {
+            background: var(--light-gray);
+            border: none;
+            width: 40px;
+            height: 40px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: var(--transition);
+            font-size: 1.2rem;
+        }
+
+        .quantity-btn:hover {
+            background: var(--gray);
+        }
+
+        .quantity-input {
+            width: 50px;
+            height: 40px;
+            text-align: center;
+            border: none;
+            border-left: 1px solid var(--gray);
+            border-right: 1px solid var(--gray);
+            font-size: 1.1rem;
+            font-weight: bold;
+        }
+
+        .remove-item {
+            background: none;
+            border: none;
+            color: var(--danger);
+            cursor: pointer;
+            font-size: 1.4rem;
+            transition: var(--transition);
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+        }
+
+        .remove-item:hover {
+            background: rgba(220, 53, 69, 0.1);
+            color: #bd2130;
+        }
+
+        .cart-summary {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: var(--box-shadow);
+        }
+
+        .summary-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 12px 0;
+            font-size: 1.1rem;
+        }
+
+        .summary-total {
+            font-weight: bold;
+            font-size: 1.5rem;
+            margin-top: 15px;
+            padding-top: 15px;
+            border-top: 2px solid var(--gray);
+        }
+
+        .checkout-btn {
+            background: var(--success);
+            color: white;
+            border: none;
+            padding: 15px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: bold;
+            width: 100%;
+            transition: var(--transition);
+            font-size: 1.2rem;
+            margin-top: 25px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .checkout-btn:hover {
+            background: #218838;
+            transform: translateY(-3px);
+        }
+
+        /* О нас */
+        .about-section {
+            padding: 80px 0;
+            background: url('https://images.unsplash.com/photo-1584345604476-8ec5e12e42dd?ixlib=rb-4.0.3') center/cover;
+            color: white;
+            position: relative;
+        }
+
+        .about-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+        }
+
+        .about-content {
+            position: relative;
+            z-index: 2;
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .about-content h2 {
+            font-size: 2.8rem;
+            margin-bottom: 30px;
+        }
+
+        .about-content p {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+            line-height: 1.8;
+        }
+
+        /* Контакты */
+        .contact-section {
+            padding: 80px 0;
+            background: var(--light);
+        }
+
+        .contact-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+        }
+
+        .contact-info {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: var(--box-shadow);
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 25px;
+        }
+
+        .contact-item i {
+            font-size: 1.8rem;
+            color: var(--primary);
+            min-width: 50px;
+            margin-top: 5px;
+        }
+
+        .contact-details h3 {
+            font-size: 1.4rem;
+            margin-bottom: 5px;
+        }
+
+        .contact-details p {
+            font-size: 1.1rem;
+            color: #555;
+        }
+
+        .map-container {
+            height: 400px;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: var(--box-shadow);
+        }
+
+        /* Футер */
+        footer {
+            background: var(--secondary);
+            color: white;
+            padding: 60px 0 20px;
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-section h3 {
+            color: var(--primary);
+            margin-bottom: 20px;
+            font-size: 1.4rem;
+            position: relative;
+            padding-bottom: 10px;
+        }
+
+        .footer-section h3:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 3px;
+            background: var(--primary);
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 12px;
+        }
+
+        .footer-links a {
+            color: #ccc;
+            text-decoration: none;
+            transition: var(--transition);
+            display: block;
+            padding: 5px 0;
+        }
+
+        .footer-links a:hover {
+            color: var(--primary);
+            padding-left: 5px;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            font-size: 0.95rem;
+            color: #aaa;
+        }
+
+        /* Адаптивность */
+        @media (max-width: 992px) {
+            .hero h1 {
+                font-size: 2.8rem;
+            }
+            
+            .hero p {
+                font-size: 1.2rem;
+            }
+            
+            .section-title {
+                font-size: 2.2rem;
+            }
         }
 
         @media (max-width: 768px) {
-            .products {
-                grid-template-columns: 1fr;
+            .nav-links {
+                position: fixed;
+                top: 70px;
+                left: -100%;
+                width: 100%;
+                height: calc(100vh - 70px);
+                background: var(--secondary);
+                flex-direction: column;
+                transition: var(--transition);
+                z-index: 999;
+                padding: 20px 0;
             }
             
-            .filter-buttons {
+            .nav-links.active {
+                left: 0;
+            }
+            
+            .menu-toggle {
+                display: block;
+                color: white;
+                font-size: 1.8rem;
+                cursor: pointer;
+            }
+            
+            .hero {
+                padding: 100px 20px;
+            }
+            
+            .hero h1 {
+                font-size: 2.3rem;
+            }
+            
+            .hero p {
+                font-size: 1.1rem;
+            }
+            
+            .btn {
+                width: 100%;
+                margin-bottom: 15px;
+            }
+            
+            .btn-container {
                 flex-direction: column;
                 align-items: center;
             }
+            
+            .section-title {
+                font-size: 1.9rem;
+            }
+            
+            .cart-item {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 20px;
+            }
+            
+            .cart-item-controls {
+                width: 100%;
+                justify-content: space-between;
+            }
+        }
+
+        @media (min-width: 769px) {
+            .menu-toggle {
+                display: none;
+            }
+        }
+
+        /* Меню бургер */
+        .menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.8rem;
+            cursor: pointer;
+        }
+
+        /* Плавная прокрутка */
+        html {
+            scroll-behavior: smooth;
         }
     </style>
 </head>
 <body>
-    <section id="catalog">
+    <!-- Шапка сайта -->
+    <header>
         <div class="container">
-            <h2 class="section-title">Каталог мототехники</h2>
-            
-            <div class="filter-buttons">
-                <button class="filter-btn active" data-filter="all">Все товары</button>
-                <button class="filter-btn" data-filter="pitbike">Питбайки</button>
-                <button class="filter-btn" data-filter="cross">Кроссовые</button>
-                <button class="filter-btn" data-filter="dual">Дуал-спорт</button>
-                <button class="filter-btn" data-filter="kids">Детские</button>
+            <nav>
+                <a href="#home" class="logo">
+                    <i class="fas fa-motorcycle"></i>
+                    <span>MOTOPRO</span>
+                </a>
+                
+                <button class="menu-toggle" id="menuToggle">
+                    <i class="fas fa-bars"></i>
+                </button>
+                
+                <ul class="nav-links" id="navLinks">
+                    <li><a href="#home" class="active">Главная</a></li>
+                    <li><a href="#catalog">Каталог</a></li>
+                    <li><a href="#about">О нас</a></li>
+                    <li><a href="#delivery">Доставка</a></li>
+                    <li><a href="#cart">Корзина</a></li>
+                    <li><a href="#contacts">Контакты</a></li>
+                    <li>
+                        <a href="#cart" class="cart-icon">
+                            <i class="fas fa-shopping-cart"></i>
+                            <span class="cart-count">0</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Главный экран -->
+    <section id="home" class="section active">
+        <div class="hero">
+            <div class="hero-content">
+                <h1>Мототехника KAYO и ATAKI</h1>
+                <p>Официальный дилер с гарантией и сервисным обслуживанием</p>
+                <div class="btn-container">
+                    <a href="#catalog" class="btn">
+                        <i class="fas fa-biking"></i> Смотреть каталог
+                    </a>
+                    <a href="#delivery" class="btn btn-outline">
+                        <i class="fas fa-truck"></i> Узнать о доставке
+                    </a>
+                </div>
             </div>
-            
-            <div class="products">
-                <!-- KAYO BASIC K125EM 17/14 KRZ -->
-                <div class="product" data-category="pitbike">
-                    <div class="product-badge">2024</div>
-                    <div class="product-img">
-                        <img src="https://example.com/kayo-k125em.jpg" alt="KAYO BASIC K125EM">
-                    </div>
-                    <div class="product-info">
-                        <h3>KAYO BASIC K125EM 17/14 KRZ</h3>
-                        <div class="product-category">Питбайк</div>
-                        <div class="price">104 990 ₽</div>
-                        <div class="specs">
-                            <div class="spec-item">
-                                <span>Двигатель:</span>
-                                <span class="spec-value">125 см³, 9 л.с.</span>
-                            </div>
-                            <div class="spec-item">
-                                <span>Трансмиссия:</span>
-                                <span class="spec-value">4-ступ. (механика)</span>
-                            </div>
-                            <div class="spec-item">
-                                <span>Вес:</span>
-                                <span class="spec-value">72 кг</span>
-                            </div>
-                            <div class="spec-item">
-                                <span>Бак:</span>
-                                <span class="spec-value">5.5 л</span>
-                            </div>
-                        </div>
-                        <button class="add-to-cart"><i class="fas fa-cart-plus"></i> В корзину</button>
-                    </div>
+        </div>
+    </section>
+
+    <!-- Каталог -->
+    <section id="catalog" class="section">
+        <div class="catalog-container">
+            <div class="container">
+                <h2 class="section-title">Каталог мототехники</h2>
+                
+                <div class="filter-buttons">
+                    <button class="filter-btn active" data-filter="all">Все товары</button>
+                    <button class="filter-btn" data-filter="pitbike">Питбайки</button>
+                    <button class="filter-btn" data-filter="cross">Кроссовые</button>
+                    <button class="filter-btn" data-filter="dual">Дуал-спорт</button>
+                    <button class="filter-btn" data-filter="kids">Детские</button>
                 </div>
                 
-                <!-- KAYO BASIC K125EA 17/14 KRZ -->
-                <div class="product" data-category="pitbike">
-                    <div class="product-badge">2024</div>
-                    <div class="product-img">
-                        <img src="https://example.com/kayo-k125ea.jpg" alt="KAYO BASIC K125EA">
-                    </div>
-                    <div class="product-info">
-                        <h3>KAYO BASIC K125EA 17/14 KRZ</h3>
-                        <div class="product-category">Питбайк (полуавтомат)</div>
-                        <div class="price">104 990 ₽</div>
-                        <div class="specs">
-                            <div class="spec-item">
-                                <span>Двигатель:</span>
-                                <span class="spec-value">125 см³, 9 л.с.</span>
-                            </div>
-                            <div class="spec-item">
-                                <span>Трансмиссия:</span>
-                                <span class="spec-value">4-ступ. (полуавтомат)</span>
-                            </div>
-                            <div class="spec-item">
-                                <span>Вес:</span>
-                                <span class="spec-value">73 кг</span>
-                            </div>
-                            <div class="spec-item">
-                                <span>Бак:</span>
-                                <span class="spec-value">5.5 л</span>
-                            </div>
+                <div class="products">
+                    <!-- KAYO BASIC K125EM 17/14 KRZ -->
+                    <div class="product" data-category="pitbike">
+                        <div class="product-badge">2024</div>
+                        <div class="product-img">
+                            <img src="https://images.unsplash.com/photo-1568772585407-9361f9bf3a87?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=400&q=80" alt="KAYO BASIC K125EM">
                         </div>
-                        <button class="add-to-cart"><i class="fas fa-cart-plus"></i> В корзину</button>
-                    </div>
-                </div>
-                
-                <!-- KAYO BASIC TT140 17/14 KRZ -->
-                <div class="product" data-category="pitbike">
-                    <div class="product-img">
-                        <img src="https://example.com/kayo-tt140.jpg" alt="KAYO BASIC TT140">
-                    </div>
-                    <div class="product-info">
-                        <h3>KAYO BASIC TT140 17/14 KRZ</h3>
-                        <div class="product-category">Питбайк</div>
-                        <div class="price">104 990 ₽</div>
-                        <div class="specs">
-                            <div class="spec-item">
-                                <span>Двигатель:</span>
-                                <span class="spec-value">140 см³, 10 л.с.</span>
+                        <div class="product-info">
+                            <h3>KAYO BASIC K125EM 17/14 KRZ</h3>
+                            <div class="product-category">Питбайк</div>
+                            <div class="price">104 990 ₽</div>
+                            <div class="specs">
+                                <div class="spec-item">
+                                    <span>Двигатель:</span>
+                                    <span class="spec-value">125 см³, 9 л.с.</span>
+                                </div>
+                                <div class="spec-item">
+                                    <span>Трансмиссия:</span>
+                                    <span class="spec-value">4-ступ. (механика)</span>
+                                </div>
+                                <div class="spec-item">
+                                    <span>Вес:</span>
+                                    <span class="spec-value">72 кг</span>
+                                </div>
+                                <div class="spec-item">
+                                    <span>Бак:</span>
+                                    <span class="spec-value">5.5 л</span>
+                                </div>
                             </div>
-                            <div class="spec-item">
-                                <span>Трансмиссия:</span>
-                                <span class="spec-value">4-ступ. (механика)</span>
-                            </div>
-                            <div class="spec-item">
-                                <span>Вес:</span>
-                                <span class="spec-value">75 кг</span>
-                            </div>
-                            <div class="spec-item">
-                                <span>Бак:</span>
-                                <span class="spec-value">5.5 л</span>
-                            </div>
+                            <button class="add-to-cart"><i class="fas fa-cart-plus"></i> В корзину</button>
                         </div>
-                        <button class="add-to-cart"><i class="fas fa-cart-plus"></i> В корзину</button>
                     </div>
-                </div>
-                
-                <!-- KAYO MINI TD125 14/12 -->
-                <div class="product" data-category="pitbike">
-                    <div class="product-img">
-                        <img src="https://example.com/kayo-td125.jpg" alt="KAYO MINI TD125">
-                    </div>
-                    <div class="product-info">
-                        <h3>KAYO MINI TD125 14/12</h3>
-                        <div class="product-category">Мини-питбайк</div>
-                        <div class="price">104 990 ₽</div>
-                        <div class="specs">
-                            <div class="spec-item">
-                                <span>Двигатель:</span>
-                                <span class="spec-value">125 см³, 9 л.с.</span>
-                            </div>
-                            <div class="spec-item">
-                                <span>Трансмиссия:</span>
-                                <span class="spec-value">4-ступ. (механика)</span>
-                            </div>
-                            <div class="spec-item">
-                                <span>Вес:</span>
-                                <span class="spec-value">60 кг</span>
-                            </div>
-                            <div class="spec-item">
-                                <span>Высота седла:</span>
-                                <span class="spec-value">750 мм</span>
-                            </div>
+                    
+                    <!-- KAYO BASIC K125EA 17/14 KRZ -->
+                    <div class="product" data-category="pitbike">
+                        <div class="product-badge">2024</div>
+                        <div class="product-img">
+                            <img src="https://images.unsplash.com/photo-1558981806-ec527fa84c39?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=400&q=80" alt="KAYO BASIC K125EA">
                         </div>
-                        <button class="add-to-cart"><i class="fas fa-cart-plus"></i> В корзину</button>
-                    </div>
-                </div>
-                
-                <!-- KAYO DBR SX50-A -->
-                <div class="product" data-category="kids">
-                    <div class="product-badge">Детский</div>
-                    <div class="product-img">
-                        <img src="https://example.com/kayo-dbr.jpg" alt="KAYO DBR SX50-A">
-                    </div>
-                    <div class="product-info">
-                        <h3>KAYO DBR SX50-A</h3>
-                        <div class="product-category">Детский питбайк</div>
-                        <div class="price">29 990 ₽</div>
-                        <div class="specs">
-                            <div class="spec-item">
-                                <span>Двигатель:</span>
-                                <span class="spec-value">50 см³, 3 л.с.</span>
+                        <div class="product-info">
+                            <h3>KAYO BASIC K125EA 17/14 KRZ</h3>
+                            <div class="product-category">Питбайк (полуавтомат)</div>
+                            <div class="price">104 990 ₽</div>
+                            <div class="specs">
+                                <div class="spec-item">
+                                    <span>Двигатель:</span>
+                                    <span class="spec-value">125 см³, 9 л.с.</span>
+                                </div>
+                                <div class="spec-item">
+                                    <span>Трансмиссия:</span>
+                                    <span class="spec-value">4-ступ. (полуавтомат)</span>
+                                </div>
+                                <div class="spec-item">
+                                    <span>Вес:</span>
+                                    <span class="spec-value">73 кг</span>
+                                </div>
+                                <div class="spec-item">
+                                    <span>Бак:</span>
+                                    <span class="spec-value">5.5 л</span>
+                                </div>
                             </div>
-                            <div class="spec-item">
-                                <span>Трансмиссия:</span>
-                                <span class="spec-value">Автомат</span>
-                            </div>
-                            <div class="spec-item">
-                                <span>Вес:</span>
-                                <span class="spec-value">40 кг</span>
-                            </div>
-                            <div class="spec-item">
-                                <span>Высота седла:</span>
-                                <span class="spec-value">650 мм</span>
-                            </div>
+                            <button class="add-to-cart"><i class="fas fa-cart-plus"></i> В корзину</button>
                         </div>
-                        <button class="add-to-cart"><i class="fas fa-cart-plus"></i> В корзину</button>
                     </div>
-                </div>
-                
-                <!-- KAYO K1-L 150 MX 19/16 -->
-                <div class="product" data-category="cross">
-                    <div class="product-img">
-                        <img src="https://example.com/kayo-k1.jpg" alt="KAYO K1-L 150 MX">
-                    </div>
-                    <div class="product-info">
-                        <h3>KAYO K1-L 150 MX 19/16</h3>
-                        <div class="product-category">Кроссовый мотоцикл</div>
-                        <div class="price">129 990 ₽</div>
-                        <div class="specs">
-                            <div class="spec-item">
-                                <span>Двигатель:</span>
-                                <span class="spec-value">150 см³, 12 л.с.</span>
-                            </div>
-                            <div class="spec-item">
-                                <span>Трансмиссия:</span>
-                                <span class="spec-value">5-ступ. (механика)</span>
-                            </div>
-                            <div class="spec-item">
-                                <span>Вес:</span>
-                                <span class="spec-value">85 кг</span>
-                            </div>
-                            <div class="spec-item">
-                                <span>Колеса:</span>
-                                <span class="spec-value">19"/16"</span>
-                            </div>
+                    
+                    <!-- KAYO BASIC TT140 17/14 KRZ -->
+                    <div class="product" data-category="pitbike">
+                        <div class="product-img">
+                            <img src="https://images.unsplash.com/photo-1558980664-10e7170b5df9?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=400&q=80" alt="KAYO BASIC TT140">
                         </div>
-                        <button class="add-to-cart"><i class="fas fa-cart-plus"></i> В корзину</button>
-                    </div>
-                </div>
-                
-                <!-- ATAKI BATLLO 300 -->
-                <div class="product" data-category="dual">
-                    <div class="product-img">
-                        <img src="https://example.com/ataki-batllo.jpg" alt="ATAKI BATLLO 300">
-                    </div>
-                    <div class="product-info">
-                        <h3>ATAKI BATLLO 300 (4T PR300)</h3>
-                        <div class="product-category">Дуал-спорт (ПТС)</div>
-                        <div class="price">200 000 ₽</div>
-                        <div class="specs">
-                            <div class="spec-item">
-                                <span>Двигатель:</span>
-                                <span class="spec-value">300 см³, 24 л.с.</span>
+                        <div class="product-info">
+                            <h3>KAYO BASIC TT140 17/14 KRZ</h3>
+                            <div class="product-category">Питбайк</div>
+                            <div class="price">104 990 ₽</div>
+                            <div class="specs">
+                                <div class="spec-item">
+                                    <span>Двигатель:</span>
+                                    <span class="spec-value">140 см³, 10 л.с.</span>
+                                </div>
+                                <div class="spec-item">
+                                    <span>Трансмиссия:</span>
+                                    <span class="spec-value">4-ступ. (механика)</span>
+                                </div>
+                                <div class="spec-item">
+                                    <span>Вес:</span>
+                                    <span class="spec-value">75 кг</span>
+                                </div>
+                                <div class="spec-item">
+                                    <span>Бак:</span>
+                                    <span class="spec-value">5.5 л</span>
+                                </div>
                             </div>
-                            <div class="spec-item">
-                                <span>Трансмиссия:</span>
-                                <span class="spec-value">6-ступ. (механика)</span>
-                            </div>
-                            <div class="spec-item">
-                                <span>Вес:</span>
-                                <span class="spec-value">120 кг</span>
-                            </div>
-                            <div class="spec-item">
-                                <span>Колеса:</span>
-                                <span class="spec-value">17"/17"</span>
-                            </div>
+                            <button class="add-to-cart"><i class="fas fa-cart-plus"></i> В корзину</button>
                         </div>
-                        <button class="add-to-cart"><i class="fas fa-cart-plus"></i> В корзину</button>
                     </div>
-                </div>
-                
-                <!-- ATAKI CARRERA 300 -->
-                <div class="product" data-category="dual">
-                    <div class="product-img">
-                        <img src="https://example.com/ataki-carrera.jpg" alt="ATAKI CARRERA 300">
-                    </div>
-                    <div class="product-info">
-                        <h3>ATAKI CARRERA 300 (4T PR300)</h3>
-                        <div class="product-category">Дуал-спорт (ПТС)</div>
-                        <div class="price">175 000 ₽</div>
-                        <div class="specs">
-                            <div class="spec-item">
-                                <span>Двигатель:</span>
-                                <span class="spec-value">300 см³, 24 л.с.</span>
-                            </div>
-                            <div class="spec-item">
-                                <span>Трансмиссия:</span>
-                                <span class="spec-value">6-ступ. (механика)</span>
-                            </div>
-                            <div class="spec-item">
-                                <span>Вес:</span>
-                                <span class="spec-value">118 кг</span>
-                            </div>
-                            <div class="spec-item">
-                                <span>Колеса:</span>
-                                <span class="spec-value">19"/17"</span>
-                            </div>
+                    
+                    <!-- KAYO MINI TD125 14/12 -->
+                    <div class="product" data-category="pitbike">
+                        <div class="product-img">
+                            <img src="https://images.unsplash.com/photo-1532298229144-0ec0c57515c7?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=400&q=80" alt="KAYO MINI TD125">
                         </div>
-                        <button class="add-to-cart"><i class="fas fa-cart-plus"></i> В корзину</button>
-                    </div>
-                </div>
-                
-                <!-- ATAKI CROSSER 300 -->
-                <div class="product" data-category="dual">
-                    <div class="product-img">
-                        <img src="https://example.com/ataki-crosser.jpg" alt="ATAKI CROSSER 300">
-                    </div>
-                    <div class="product-info">
-                        <h3>ATAKI CROSSER 300 (4T PR300)</h3>
-                        <div class="product-category">Дуал-спорт (ПТС)</div>
-                        <div class="price">170 000 ₽</div>
-                        <div class="specs">
-                            <div class="spec-item">
-                                <span>Двигатель:</span>
-                                <span class="spec-value">271 см³, 24 л.с. :cite[3]:cite[8]</span>
+                        <div class="product-info">
+                            <h3>KAYO MINI TD125 14/12</h3>
+                            <div class="product-category">Мини-питбайк</div>
+                            <div class="price">104 990 ₽</div>
+                            <div class="specs">
+                                <div class="spec-item">
+                                    <span>Двигатель:</span>
+                                    <span class="spec-value">125 см³, 9 л.с.</span>
+                                </div>
+                                <div class="spec-item">
+                                    <span>Трансмиссия:</span>
+                                    <span class="spec-value">4-ступ. (механика)</span>
+                                </div>
+                                <div class="spec-item">
+                                    <span>Вес:</span>
+                                    <span class="spec-value">60 кг</span>
+                                </div>
+                                <div class="spec-item">
+                                    <span>Высота седла:</span>
+                                    <span class="spec-value">750 мм</span>
+                                </div>
                             </div>
-                            <div class="spec-item">
-                                <span>Трансмиссия:</span>
-                                <span class="spec-value">6-ступ. (механика)</span>
-                            </div>
-                            <div class="spec-item">
-                                <span>Бак:</span>
-                                <span class="spec-value">13 л :cite[8]</span>
-                            </div>
-                            <div class="spec-item">
-                                <span>Колеса:</span>
-                                <span class="spec-value">21"/18"</span>
-                            </div>
+                            <button class="add-to-cart"><i class="fas fa-cart-plus"></i> В корзину</button>
                         </div>
-                        <button class="add-to-cart"><i class="fas fa-cart-plus"></i> В корзину</button>
+                    </div>
+                    
+                    <!-- KAYO DBR SX50-A -->
+                    <div class="product" data-category="kids">
+                        <div class="product-badge">Детский</div>
+                        <div class="product-img">
+                            <img src="https://images.unsplash.com/photo-1517646287270-a5a9ca602e5c?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=400&q=80" alt="KAYO DBR SX50-A">
+                        </div>
+                        <div class="product-info">
+                            <h3>KAYO DBR SX50-A</h3>
+                            <div class="product-category">Детский питбайк</div>
+                            <div class="price">29 990 ₽</div>
+                            <div class="specs">
+                                <div class="spec-item">
+                                    <span>Двигатель:</span>
+                                    <span class="spec-value">50 см³, 3 л.с.</span>
+                                </div>
+                                <div class="spec-item">
+                                    <span>Трансмиссия:</span>
+                                    <span class="spec-value">Автомат</span>
+                                </div>
+                                <div class="spec-item">
+                                    <span>Вес:</span>
+                                    <span class="spec-value">40 кг</span>
+                                </div>
+                                <div class="spec-item">
+                                    <span>Высота седла:</span>
+                                    <span class="spec-value">650 мм</span>
+                                </div>
+                            </div>
+                            <button class="add-to-cart"><i class="fas fa-cart-plus"></i> В корзину</button>
+                        </div>
+                    </div>
+                    
+                    <!-- KAYO K1-L 150 MX 19/16 -->
+                    <div class="product" data-category="cross">
+                        <div class="product-img">
+                            <img src="https://images.unsplash.com/photo-1517846693594-1567da72af75?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=400&q=80" alt="KAYO K1-L 150 MX">
+                        </div>
+                        <div class="product-info">
+                            <h3>KAYO K1-L 150 MX 19/16</h3>
+                            <div class="product-category">Кроссовый мотоцикл</div>
+                            <div class="price">129 990 ₽</div>
+                            <div class="specs">
+                                <div class="spec-item">
+                                    <span>Двигатель:</span>
+                                    <span class="spec-value">150 см³, 12 л.с.</span>
+                                </div>
+                                <div class="spec-item">
+                                    <span>Трансмиссия:</span>
+                                    <span class="spec-value">5-ступ. (механика)</span>
+                                </div>
+                                <div class="spec-item">
+                                    <span>Вес:</span>
+                                    <span class="spec-value">85 кг</span>
+                                </div>
+                                <div class="spec-item">
+                                    <span>Колеса:</span>
+                                    <span class="spec-value">19"/16"</span>
+                                </div>
+                            </div>
+                            <button class="add-to-cart"><i class="fas fa-cart-plus"></i> В корзину</button>
+                        </div>
+                    </div>
+                    
+                    <!-- ATAKI BATLLO 300 -->
+                    <div class="product" data-category="dual">
+                        <div class="product-img">
+                            <img src="https://images.unsplash.com/photo-1558980664-3a0c8c5d4d70?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=400&q=80" alt="ATAKI BATLLO 300">
+                        </div>
+                        <div class="product-info">
+                            <h3>ATAKI BATLLO 300 (4T PR300)</h3>
+                            <div class="product-category">Дуал-спорт (ПТС)</div>
+                            <div class="price">200 000 ₽</div>
+                            <div class="specs">
+                                <div class="spec-item">
+                                    <span>Двигатель:</span>
+                                    <span class="spec-value">300 см³, 24 л.с.</span>
+                                </div>
+                                <div class="spec-item">
+                                    <span>Трансмиссия:</span>
+                                    <span class="spec-value">6-ступ. (механика)</span>
+                                </div>
+                                <div class="spec-item">
+                                    <span>Вес:</span>
+                                    <span class="spec-value">120 кг</span>
+                                </div>
+                                <div class="spec-item">
+                                    <span>Колеса:</span>
+                                    <span class="spec-value">17"/17"</span>
+                                </div>
+                            </div>
+                            <button class="add-to-cart"><i class="fas fa-cart-plus"></i> В корзину</button>
+                        </div>
+                    </div>
+                    
+                    <!-- ATAKI CARRERA 300 -->
+                    <div class="product" data-category="dual">
+                        <div class="product-img">
+                            <img src="https://images.unsplash.com/photo-1558980664-76b2b0b9d1d1?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=400&q=80" alt="ATAKI CARRERA 300">
+                        </div>
+                        <div class="product-info">
+                            <h3>ATAKI CARRERA 300 (4T PR300)</h3>
+                            <div class="product-category">Дуал-спорт (ПТС)</div>
+                            <div class="price">175 000 ₽</div>
+                            <div class="specs">
+                                <div class="spec-item">
+                                    <span>Двигатель:</span>
+                                    <span class="spec-value">300 см³, 24 л.с.</span>
+                                </div>
+                                <div class="spec-item">
+                                    <span>Трансмиссия:</span>
+                                    <span class="spec-value">6-ступ. (механика)</span>
+                                </div>
+                                <div class="spec-item">
+                                    <span>Вес:</span>
+                                    <span class="spec-value">118 кг</span>
+                                </div>
+                                <div class="spec-item">
+                                    <span>Колеса:</span>
+                                    <span class="spec-value">19"/17"</span>
+                                </div>
+                            </div>
+                            <button class="add-to-cart"><i class="fas fa-cart-plus"></i> В корзину</button>
+                        </div>
+                    </div>
+                    
+                    <!-- ATAKI CROSSER 300 -->
+                    <div class="product" data-category="dual">
+                        <div class="product-img">
+                            <img src="https://images.unsplash.com/photo-1558981001-5864b3250a69?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=400&q=80" alt="ATAKI CROSSER 300">
+                        </div>
+                        <div class="product-info">
+                            <h3>ATAKI CROSSER 300 (4T PR300)</h3>
+                            <div class="product-category">Дуал-спорт (ПТС)</div>
+                            <div class="price">170 000 ₽</div>
+                            <div class="specs">
+                                <div class="spec-item">
+                                    <span>Двигатель:</span>
+                                    <span class="spec-value">271 см³, 24 л.с. </span>
+                                </div>
+                                <div class="spec-item">
+                                    <span>Трансмиссия:</span>
+                                    <span class="spec-value">6-ступ. (механика)</span>
+                                </div>
+                                <div class="spec-item">
+                                    <span>Бак:</span>
+                                    <span class="spec-value">13 л </span>
+                                </div>
+                                <div class="spec-item">
+                                    <span>Колеса:</span>
+                                    <span class="spec-value">21"/18"</span>
+                                </div>
+                            </div>
+                            <button class="add-to-cart"><i class="fas fa-cart-plus"></i> В корзину</button>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <script>
-        // Фильтрация товаров
-        const filterBtns = document.querySelectorAll('.filter-btn');
-        const products = document.querySelectorAll('.product');
-        
-        filterBtns.forEach(btn => {
-            btn.addEventListener('click', function() {
-                const filter = this.dataset.filter;
-                
-                // Обновляем активную кнопку
-                filterBtns.forEach(b => b.classList.remove('active'));
-                this.classList.add('active');
-                
-                filterProducts(filter);
-            });
-        });
-        
-        function filterProducts(filter) {
-            products.forEach(product => {
-                if (filter === 'all') {
-                    product.style.display = 'block';
-                } else {
-                    if (product.dataset.category === filter) {
-                        product.style.display = 'block';
-                    } else {
-                        product.style.display = 'none';
-                    }
-                }
-            });
-        }
-    </script>
-</body>
-</html>
+    <!-- О нас -->
+    <section id="about" class="section">
+        <div class="about-section">
+            <div class="about-overlay"></div>
+            <div class="container">
+                <div class="about-content">
+                    <h2>О компании Motopro</h2>
+                    <p>Мы - официальный дилер мототехники KAYO и ATAKI в России. С 2010 года мы предоставляем нашим клиентам качественную технику, профессиональное обслуживание и полную поддержку.</p>
+                    <p>Наша миссия - сделать мир мототехники доступным для каждого. Мы предлагаем широкий выбор моделей для начинающих райдеров, профессионалов и любителей экстрима.</p>
+                    <p>Вся наша техника проходит предпродажную подготовку и имеет официальную гарантию производителя. Наш сервисный центр укомплектован современным оборудованием и оригинальными запчастями.</p>
+                    <a href="#contacts" class="btn">
+                        <i class="fas fa-map-marker-alt"></i> Посетить наш шоурум
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
 
-<section id="about" class="section">
-    <div class="container">
-        <h2 class="section-title">О компании Motopro</h2>
-        
-        <div class="features">
-            <div class="feature">
-                <i class="fas fa-history"></i>
-                <h3>10+ лет опыта</h3>
-                <p>Работаем в мотосфере более десяти лет</p>
-            </div>
+    <!-- Доставка -->
+    <section id="delivery" class="section">
+        <div class="container">
+            <h2 class="section-title">Доставка и оплата</h2>
             
-            <div class="feature">
-                <i class="fas fa-biking"></i>
-                <h3>Широкий ассортимент</h3>
-                <p>Квадроциклы, питбайки, мотоциклы для любых задач</p>
-            </div>
-            
-            <div class="feature">
-                <i class="fas fa-headset"></i>
-                <h3>Поддержка клиентов</h3>
-                <p>Помощь в выборе, доставка и гарантийное обслуживание</p>
-            </div>
-        </div>
-        
-        <div class="testimonials">
-            <p style="margin-top: 30px; text-align: center; max-width: 800px; margin-left: auto; margin-right: auto;">
-                Motopro — это команда профессионалов, увлечённых миром мототехники. 
-                Мы занимаемся продажей и обслуживанием техники KAYO и ATAKI, предлагая 
-                нашим клиентам только надёжные и проверенные модели. Мы ценим каждого 
-                клиента и стремимся сделать покупку максимально удобной и приятной.
-            </p>
-            
-            <div class="features" style="margin-top: 40px;">
-                <div class="feature">
-                    <i class="fas fa-award"></i>
-                    <h3>Официальный дилер</h3>
-                    <p>Прямые поставки от производителей</p>
-                </div>
-                
-                <div class="feature">
-                    <i class="fas fa-tools"></i>
-                    <h3>Сервисный центр</h3>
-                    <p>Профессиональное обслуживание и ремонт</p>
-                </div>
-                
-                <div class="feature">
-                    <i class="fas fa-box-open"></i>
-                    <h3>Запчасти в наличии</h3>
-                    <p>Все необходимые детали для вашей техники</p>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-
-<section id="delivery" class="section">
-    <div class="container">
-        <h2 class="section-title">Доставка и оплата</h2>
-        
-        <div class="features">
-            <div class="feature">
-                <i class="fas fa-truck"></i>
-                <h3>Доставка по РФ</h3>
-                <p>От 15 до 17 дней в любой регион России</p>
-            </div>
-            
-            <div class="feature">
-                <i class="fas fa-store"></i>
-                <h3>Самовывоз</h3>
-                <p>Заберите заказ из нашего магазина</p>
-            </div>
-            
-            <div class="feature">
-                <i class="fas fa-credit-card"></i>
-                <h3>Любая оплата</h3>
-                <p>Выберите удобный способ оплаты</p>
-            </div>
-        </div>
-        
-        <div class="contact-info">
-            <h3 style="margin-bottom: 20px; color: var(--primary);">Подробная информация</h3>
-            
-            <ul class="info-list">
-                <li>
+            <div class="contact-info">
+                <div class="contact-item">
                     <i class="fas fa-shipping-fast"></i>
-                    <div>
-                        <strong>Доставка</strong>
-                        <p>Мы доставляем технику по всей России. Срок доставки составляет от 15 до 17 дней. 
-                        Возможен самовывоз из нашего магазина по адресу: г. Москва, ул. Мотостроителей, д. 15</p>
+                    <div class="contact-details">
+                        <h3>Доставка по всей России</h3>
+                        <p>Мы доставляем технику в любой регион РФ. Срок доставки 15-17 дней. Стоимость рассчитывается индивидуально.</p>
                     </div>
-                </li>
+                </div>
                 
-                <li>
-                    <i class="fas fa-money-bill-wave"></i>
-                    <div>
-                        <strong>Оплата</strong>
-                        <p>Мы предлагаем несколько способов оплаты: наличный расчёт, банковской картой, 
-                        через СБП, по выставленному счёту или подарочной картой</p>
+                <div class="contact-item">
+                    <i class="fas fa-store"></i>
+                    <div class="contact-details">
+                        <h3>Самовывоз</h3>
+                        <p>Заберите заказ из нашего шоурума по адресу: г. Москва, ул. Мотостроителей, д. 15. Предварительно свяжитесь с нами.</p>
                     </div>
-                </li>
+                </div>
                 
-                <li>
+                <div class="contact-item">
+                    <i class="fas fa-credit-card"></i>
+                    <div class="contact-details">
+                        <h3>Способы оплаты</h3>
+                        <p>Наличные, банковские карты, переводы, СБП, подарочные карты. Для юридических лиц - оплата по счету.</p>
+                    </div>
+                </div>
+                
+                <div class="contact-item">
                     <i class="fas fa-shield-alt"></i>
-                    <div>
-                        <strong>Гарантия</strong>
-                        <p>На всю технику предоставляется официальная гарантия производителя 12 месяцев. 
-                        Также мы оказываем сервисное обслуживание и ремонт.</p>
+                    <div class="contact-details">
+                        <h3>Гарантия</h3>
+                        <p>На всю технику предоставляется официальная гарантия 12 месяцев. Сервисное обслуживание и ремонт в нашем центре.</p>
                     </div>
-                </li>
-            </ul>
-        </div>
-        
-        <h3 class="section-title" style="margin-top: 40px;">Как оформить заказ</h3>
-        
-        <div class="features">
-            <div class="feature">
-                <div class="step-number">1</div>
-                <h3>Выбор товара</h3>
-                <p>Выберите технику в каталоге и добавьте в корзину</p>
-            </div>
-            
-            <div class="feature">
-                <div class="step-number">2</div>
-                <h3>Оформление</h3>
-                <p>Заполните контактные данные и выберите способ оплаты</p>
-            </div>
-            
-            <div class="feature">
-                <div class="step-number">3</div>
-                <h3>Получение</h3>
-                <p>Ожидайте доставку или заберите заказ самостоятельно</p>
-            </div>
-        </div>
-    </div>
-</section>
-
-<section id="cart" class="section">
-    <div class="container">
-        <h2 class="section-title">Ваша корзина</h2>
-        
-        <div class="cart-items">
-            <p id="empty-cart-message">Ваша корзина пуста</p>
-            
-            <div class="cart-total" style="display: none;">
-                Итого: <span id="total-price">0</span> ₽
-            </div>
-            
-            <button class="btn" style="width: 100%; margin-top: 20px; display: none;" id="checkout-btn">Оформить заказ</button>
-        </div>
-    </div>
-</section>
-
-<section id="checkout" class="section">
-    <div class="container">
-        <h2 class="section-title">Оформление заказа</h2>
-        
-        <div class="form-row">
-            <div class="form-col">
-                <div class="checkout-form">
-                    <h3>Контактные данные</h3>
-                    <div class="form-group">
-                        <label for="name">ФИО*</label>
-                        <input type="text" id="name" required>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="phone">Телефон*</label>
-                        <input type="tel" id="phone" required>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="email">Email*</label>
-                        <input type="email" id="email" required>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="address">Адрес доставки*</label>
-                        <textarea id="address" rows="3" required></textarea>
-                    </div>
-                    
-                    <h3>Способ оплаты</h3>
-                    <div class="payment-methods">
-                        <div class="payment-method active">
-                            <i class="fas fa-credit-card"></i>
-                            <div>Карта</div>
-                        </div>
-                        <div class="payment-method">
-                            <i class="fas fa-money-bill-wave"></i>
-                            <div>Наличные</div>
-                        </div>
-                        <div class="payment-method">
-                            <i class="fas fa-file-invoice"></i>
-                            <div>Счёт</div>
-                        </div>
-                        <div class="payment-method">
-                            <i class="fas fa-gift"></i>
-                            <div>Подарочная карта</div>
-                        </div>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="comments">Комментарий к заказу</label>
-                        <textarea id="comments" rows="3"></textarea>
-                    </div>
-                    
-                    <button class="btn" id="confirm-order">Подтвердить заказ</button>
                 </div>
             </div>
-            
-            <div class="form-col">
-                <div class="order-summary">
-                    <h3>Ваш заказ</h3>
+        </div>
+    </section>
+
+    <!-- Корзина -->
+    <section id="cart" class="section">
+        <div class="cart-section">
+            <div class="container cart-container">
+                <h2 class="section-title">Ваша корзина</h2>
+                
+                <div class="cart-header">
+                    <h3>Товары в корзине</h3>
+                    <button class="clear-cart" id="clearCart">
+                        <i class="fas fa-trash"></i> Очистить корзину
+                    </button>
+                </div>
+                
+                <div class="cart-items" id="cartItemsContainer">
+                    <p id="empty-cart-message">Ваша корзина пуста</p>
+                </div>
+                
+                <div class="cart-summary">
                     <div class="summary-item">
                         <div>Товаров:</div>
-                        <div><span id="summary-count">0</span> шт.</div>
+                        <div><span id="items-count">0</span> шт.</div>
                     </div>
                     <div class="summary-item">
                         <div>Сумма:</div>
-                        <div><span id="summary-sum">0</span> ₽</div>
+                        <div><span id="items-sum">0</span> ₽</div>
                     </div>
                     <div class="summary-item">
                         <div>Доставка:</div>
@@ -1723,393 +1279,324 @@ footer {
                     </div>
                     <div class="summary-total">
                         <div>Итого:</div>
-                        <div><span id="summary-total">0</span> ₽</div>
+                        <div><span id="total-sum">0</span> ₽</div>
                     </div>
                     
-                    <div class="promo" style="margin-top: 20px;">
-                        <div class="form-group">
-                            <label for="promo-code">Промокод</label>
-                            <input type="text" id="promo-code" placeholder="Введите промокод">
+                    <button class="checkout-btn" id="checkoutBtn">
+                        <i class="fas fa-credit-card"></i> Оформить заказ
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Контакты -->
+    <section id="contacts" class="section">
+        <div class="contact-section">
+            <div class="container">
+                <h2 class="section-title">Контакты</h2>
+                
+                <div class="contact-container">
+                    <div class="contact-info">
+                        <div class="contact-item">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <div class="contact-details">
+                                <h3>Адрес</h3>
+                                <p>г. Москва, ул. Мотостроителей, д. 15</p>
+                            </div>
                         </div>
-                        <button class="btn" style="width: 100%; margin-top: 10px;">Применить</button>
+                        
+                        <div class="contact-item">
+                            <i class="fas fa-phone"></i>
+                            <div class="contact-details">
+                                <h3>Телефон</h3>
+                                <p>+7 (495) 123-45-67</p>
+                            </div>
+                        </div>
+                        
+                        <div class="contact-item">
+                            <i class="fas fa-envelope"></i>
+                            <div class="contact-details">
+                                <h3>Email</h3>
+                                <p>info@motopro.ru</p>
+                            </div>
+                        </div>
+                        
+                        <div class="contact-item">
+                            <i class="fas fa-clock"></i>
+                            <div class="contact-details">
+                                <h3>Режим работы</h3>
+                                <p>Пн-Пт: 9:00 - 20:00<br>Сб-Вс: 10:00 - 18:00</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="map-container">
+                        <iframe src="https://yandex.ru/map-widget/v1/?um=constructor%3A7b7d9d8d4e7b0a1f0f0f0f0f0f0f0f0f0f0&amp;source=constructor" 
+                                width="100%" height="100%" frameborder="0"></iframe>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-</section>
+    </section>
 
-<section id="contacts" class="section">
-    <div class="container">
-        <h2 class="section-title">Контакты</h2>
-        
-        <div class="contact-info">
-            <div class="contact-item">
-                <i class="fas fa-map-marker-alt"></i>
-                <div>
-                    <h3>Адрес</h3>
-                    <p>г. Москва, ул. Мотостроителей, д. 15</p>
+    <!-- Подвал -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <a href="#home" class="logo">
+                        <i class="fas fa-motorcycle"></i>
+                        <span>MOTOPRO</span>
+                    </a>
+                    <p>Официальный дилер мототехники KAYO и ATAKI в России. Продажа, сервис, запчасти.</p>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Навигация</h3>
+                    <ul class="footer-links">
+                        <li><a href="#home">Главная</a></li>
+                        <li><a href="#catalog">Каталог</a></li>
+                        <li><a href="#about">О нас</a></li>
+                        <li><a href="#delivery">Доставка</a></li>
+                        <li><a href="#contacts">Контакты</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Помощь</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">Как выбрать?</a></li>
+                        <li><a href="#">Сервис и ремонт</a></li>
+                        <li><a href="#">Возврат товара</a></li>
+                        <li><a href="#">Вопросы и ответы</a></li>
+                    </ul>
                 </div>
             </div>
             
-            <div class="contact-item">
-                <i class="fas fa-phone"></i>
-                <div>
-                    <h3>Телефон</h3>
-                    <p>+7 (495) 123-45-67</p>
-                </div>
-            </div>
-            
-            <div class="contact-item">
-                <i class="fas fa-envelope"></i>
-                <div>
-                    <h3>Email</h3>
-                    <p>info@motopro.ru</p>
-                </div>
-            </div>
-            
-            <div class="contact-item">
-                <i class="fas fa-clock"></i>
-                <div>
-                    <h3>Режим работы</h3>
-                    <p>Пн-Пт: 9:00 - 20:00<br>Сб-Вс: 10:00 - 18:00</p>
-                </div>
+            <div class="footer-bottom">
+                <p>&copy; 2023 Motopro. Все права защищены. ИНН: 1234567890 ОГРН: 1234567890123</p>
             </div>
         </div>
-        
-        <div style="margin-top: 40px; background: white; border-radius: 10px; overflow: hidden;">
-            <iframe src="https://yandex.ru/map-widget/v1/?um=constructor%3A7b7d9d8d4e7b0a1f0f0f0f0f0f0f0f0f0f0&amp;source=constructor" 
-                    width="100%" height="400" frameborder="0"></iframe>
-        </div>
-    </div>
-</section>
+    </footer>
 
-<footer>
-    <div class="container">
-        <div class="footer-content">
-            <div class="footer-section">
-                <a href="#" class="logo" data-section="home">
-                    <i class="fas fa-motorcycle"></i>
-                    <span>MOTOPRO</span>
-                </a>
-                <p>Официальный дилер мототехники KAYO и ATAKI в России. Продажа, сервис, запчасти.</p>
-                <div class="social-icons">
-                    <a href="#"><i class="fab fa-vk"></i></a>
-                    <a href="#"><i class="fab fa-telegram"></i></a>
-                    <a href="#"><i class="fab fa-youtube"></i></a>
-                    <a href="#"><i class="fab fa-instagram"></i></a>
-                </div>
-            </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Навигация
+            const navLinks = document.querySelectorAll('.nav-links a, .footer-links a');
+            const menuToggle = document.getElementById('menuToggle');
+            const navMenu = document.getElementById('navLinks');
             
-            <div class="footer-section">
-                <h3>Каталог</h3>
-                <ul class="footer-links">
-                    <li><a href="#" data-section="catalog">Квадроциклы</a></li>
-                    <li><a href="#" data-section="catalog">Питбайки</a></li>
-                    <li><a href="#" data-section="catalog">Кроссовые мотоциклы</a></li>
-                    <li><a href="#" data-section="catalog">Запчасти</a></li>
-                    <li><a href="#" data-section="catalog">Аксессуары</a></li>
-                </ul>
-            </div>
-            
-            <div class="footer-section">
-                <h3>Компания</h3>
-                <ul class="footer-links">
-                    <li><a href="#" data-section="about">О нас</a></li>
-                    <li><a href="#" data-section="delivery">Доставка и оплата</a></li>
-                    <li><a href="#" data-section="delivery">Гарантия</a></li>
-                    <li><a href="#" data-section="contacts">Контакты</a></li>
-                    <li><a href="#">Отзывы</a></li>
-                </ul>
-            </div>
-            
-            <div class="footer-section">
-                <h3>Помощь</h3>
-                <ul class="footer-links">
-                    <li><a href="#">Как выбрать?</a></li>
-                    <li><a href="#">Сервис и ремонт</a></li>
-                    <li><a href="#">Возврат товара</a></li>
-                    <li><a href="#">Вопросы и ответы</a></li>
-                    <li><a href="#">Политика конфиденциальности</a></li>
-                </ul>
-            </div>
-        </div>
-        
-        <div class="footer-bottom">
-            <p>&copy; 2023 Motopro. Все права защищены. ИНН: 1234567890 ОГРН: 1234567890123</p>
-        </div>
-    </div>
-</footer>
-
-<div class="back-to-top" id="backToTop">
-    <i class="fas fa-arrow-up"></i>
-</div>
-
-<script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/8.4.5/swiper-bundle.min.js"></script>
-<script>
-document.addEventListener('DOMContentLoaded', function() {
-    // Инициализация Swiper
-    const swiper = new Swiper('.swiper', {
-        loop: true,
-        autoplay: {
-            delay: 5000,
-        },
-        pagination: {
-            el: '.swiper-pagination',
-            clickable: true,
-        },
-    });
-
-    // Навигация
-    const navLinks = document.querySelectorAll('.nav-links a, .footer-links a, .btn, .feature');
-    const sections = document.querySelectorAll('.section');
-    const menuToggle = document.getElementById('menuToggle');
-    const navMenu = document.getElementById('navLinks');
-    
-    // Переключение секций
-    function showSection(sectionId) {
-        sections.forEach(section => {
-            section.classList.remove('active');
-        });
-        document.getElementById(sectionId).classList.add('active');
-        
-        // Обновление активной ссылки
-        navLinks.forEach(link => {
-            link.classList.remove('active');
-            if (link.dataset.section === sectionId) {
-                link.classList.add('active');
-            }
-        });
-        
-        // Прокрутка наверх
-        window.scrollTo({ top: 0, behavior: 'smooth' });
-    }
-    
-    // Обработчики для навигации
-    navLinks.forEach(link => {
-        link.addEventListener('click', function(e) {
-            e.preventDefault();
-            const sectionId = this.dataset.section;
-            if (sectionId) {
-                showSection(sectionId);
-                if (window.innerWidth <= 768) {
-                    navMenu.classList.remove('active');
-                }
-            } else if (this.classList.contains('feature')) {
-                showSection('catalog');
-                const category = this.dataset.category;
-                if (category) {
-                    filterProducts(category);
-                }
-            }
-        });
-    });
-    
-    // Мобильное меню
-    menuToggle.addEventListener('click', function() {
-        navMenu.classList.toggle('active');
-    });
-    
-    // Корзина
-    const cartCount = document.querySelector('.cart-count');
-    const emptyCartMessage = document.getElementById('empty-cart-message');
-    const totalPriceElement = document.getElementById('total-price');
-    const checkoutBtn = document.getElementById('checkout-btn');
-    const addToCartButtons = document.querySelectorAll('.add-to-cart');
-    
-    let cartItems = [];
-    let totalPrice = 0;
-    
-    // Добавление в корзину
-    addToCartButtons.forEach(button => {
-        button.addEventListener('click', function() {
-            const product = this.closest('.product');
-            const productName = product.querySelector('h3').textContent;
-            const productPrice = parseFloat(product.querySelector('.price').textContent.replace(/[^\d]/g, ''));
-            const productId = productName.replace(/\s+/g, '-').toLowerCase();
-            
-            // Проверяем, есть ли товар уже в корзине
-            const existingItem = cartItems.find(item => item.id === productId);
-            
-            if (existingItem) {
-                existingItem.quantity += 1;
-            } else {
-                cartItems.push({
-                    id: productId,
-                    name: productName,
-                    price: productPrice,
-                    quantity: 1
+            // Переключение активного пункта меню
+            function setActiveLink() {
+                const sections = document.querySelectorAll('.section');
+                let currentSection = '';
+                
+                sections.forEach(section => {
+                    const sectionTop = section.offsetTop;
+                    const sectionHeight = section.clientHeight;
+                    
+                    if (window.scrollY >= sectionTop - 100) {
+                        currentSection = section.getAttribute('id');
+                    }
+                });
+                
+                navLinks.forEach(link => {
+                    link.classList.remove('active');
+                    if (link.getAttribute('href') === `#${currentSection}`) {
+                        link.classList.add('active');
+                    }
                 });
             }
             
-            updateCart();
-            showSection('cart');
-        });
-    });
-    
-    // Обновление корзины
-    function updateCart() {
-        cartCount.textContent = cartItems.reduce((sum, item) => sum + item.quantity, 0);
-        totalPrice = cartItems.reduce((sum, item) => sum + (item.price * item.quantity), 0);
-        
-        if (cartItems.length > 0) {
-            emptyCartMessage.style.display = 'none';
-            totalPriceElement.textContent = totalPrice.toLocaleString();
-            totalPriceElement.parentElement.style.display = 'block';
-            checkoutBtn.style.display = 'block';
-            
-            // Генерация элементов корзины
-            const cartItemsContainer = document.querySelector('.cart-items');
-            cartItemsContainer.innerHTML = '';
-            
-            cartItems.forEach((item, index) => {
-                const cartItemElement = document.createElement('div');
-                cartItemElement.classList.add('cart-item');
-                cartItemElement.innerHTML = `
-                    <div class="cart-item-info">
-                        <div><strong>${item.name}</strong></div>
-                        <div>${item.price.toLocaleString()} ₽ x ${item.quantity}</div>
-                    </div>
-                    <div class="cart-item-controls">
-                        <div class="quantity-control">
-                            <button class="quantity-btn minus" data-id="${item.id}">-</button>
-                            <input type="text" class="quantity-input" value="${item.quantity}" readonly>
-                            <button class="quantity-btn plus" data-id="${item.id}">+</button>
-                        </div>
-                        <button class="remove-item" data-id="${item.id}">
-                            <i class="fas fa-trash"></i>
-                        </button>
-                    </div>
-                `;
-                cartItemsContainer.appendChild(cartItemElement);
+            // Мобильное меню
+            menuToggle.addEventListener('click', function() {
+                navMenu.classList.toggle('active');
             });
             
-            const totalElement = document.createElement('div');
-            totalElement.classList.add('cart-total');
-            totalElement.innerHTML = `Итого: <span id="total-price">${totalPrice.toLocaleString()}</span> ₽`;
-            cartItemsContainer.appendChild(totalElement);
-            
-            cartItemsContainer.appendChild(checkoutBtn);
-            
-            // Добавляем обработчики для кнопок в корзине
-            document.querySelectorAll('.quantity-btn.minus').forEach(btn => {
-                btn.addEventListener('click', function() {
-                    const id = this.dataset.id;
-                    const item = cartItems.find(item => item.id === id);
-                    if (item && item.quantity > 1) {
-                        item.quantity -= 1;
-                        updateCart();
+            // Закрытие меню при клике на ссылку
+            navLinks.forEach(link => {
+                link.addEventListener('click', function() {
+                    if (window.innerWidth <= 768) {
+                        navMenu.classList.remove('active');
                     }
                 });
             });
             
-            document.querySelectorAll('.quantity-btn.plus').forEach(btn => {
+            // Фильтрация товаров
+            const filterBtns = document.querySelectorAll('.filter-btn');
+            const products = document.querySelectorAll('.product');
+            
+            filterBtns.forEach(btn => {
                 btn.addEventListener('click', function() {
-                    const id = this.dataset.id;
-                    const item = cartItems.find(item => item.id === id);
-                    if (item) {
-                        item.quantity += 1;
-                        updateCart();
-                    }
+                    const filter = this.dataset.filter;
+                    
+                    // Обновляем активную кнопку
+                    filterBtns.forEach(b => b.classList.remove('active'));
+                    this.classList.add('active');
+                    
+                    // Фильтруем товары
+                    products.forEach(product => {
+                        if (filter === 'all') {
+                            product.style.display = 'block';
+                        } else {
+                            if (product.dataset.category === filter) {
+                                product.style.display = 'block';
+                            } else {
+                                product.style.display = 'none';
+                            }
+                        }
+                    });
                 });
             });
             
-            document.querySelectorAll('.remove-item').forEach(btn => {
-                btn.addEventListener('click', function() {
-                    const id = this.dataset.id;
-                    cartItems = cartItems.filter(item => item.id !== id);
+            // Корзина
+            const cartCount = document.querySelector('.cart-count');
+            const emptyCartMessage = document.getElementById('empty-cart-message');
+            const cartItemsContainer = document.getElementById('cartItemsContainer');
+            const clearCartBtn = document.getElementById('clearCart');
+            const checkoutBtn = document.getElementById('checkoutBtn');
+            const addToCartButtons = document.querySelectorAll('.add-to-cart');
+            const itemsCountEl = document.getElementById('items-count');
+            const itemsSumEl = document.getElementById('items-sum');
+            const totalSumEl = document.getElementById('total-sum');
+            
+            let cartItems = [];
+            let totalPrice = 0;
+            
+            // Добавление в корзину
+            addToCartButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    const product = this.closest('.product');
+                    const productName = product.querySelector('h3').textContent;
+                    const productPrice = parseFloat(product.querySelector('.price').textContent.replace(/\s+/g, '').replace('₽', ''));
+                    const productImg = product.querySelector('.product-img img').src;
+                    
+                    cartItems.push({
+                        name: productName,
+                        price: productPrice,
+                        quantity: 1,
+                        img: productImg
+                    });
+                    
                     updateCart();
+                    
+                    // Плавный скролл к корзине
+                    document.querySelector('#cart').scrollIntoView({ behavior: 'smooth' });
                 });
             });
-        } else {
-            emptyCartMessage.style.display = 'block';
-            totalPriceElement.parentElement.style.display = 'none';
-            checkoutBtn.style.display = 'none';
-        }
-        
-        // Обновление данных для оформления заказа
-        document.getElementById('summary-count').textContent = cartItems.reduce((sum, item) => sum + item.quantity, 0);
-        document.getElementById('summary-sum').textContent = totalPrice.toLocaleString();
-        document.getElementById('summary-total').textContent = totalPrice.toLocaleString();
-    }
-    
-    // Оформление заказа
-    checkoutBtn.addEventListener('click', function() {
-        showSection('checkout');
-    });
-    
-    // Подтверждение заказа
-    document.getElementById('confirm-order').addEventListener('click', function() {
-        const name = document.getElementById('name').value;
-        if (!name) {
-            alert('Пожалуйста, заполните все обязательные поля');
-            return;
-        }
-        
-        alert(`Заказ оформлен, ${name}!\nСумма: ${totalPrice.toLocaleString()} ₽\nТоваров: ${cartItems.reduce((sum, item) => sum + item.quantity, 0)}`);
-        cartItems = [];
-        updateCart();
-        showSection('home');
-    });
-    
-    // Фильтрация товаров
-    const filterBtns = document.querySelectorAll('.filter-btn');
-    const products = document.querySelectorAll('.product');
-    
-    filterBtns.forEach(btn => {
-        btn.addEventListener('click', function() {
-            const filter = this.dataset.filter;
             
-            // Обновляем активную кнопку
-            filterBtns.forEach(b => b.classList.remove('active'));
-            this.classList.add('active');
-            
-            filterProducts(filter);
-        });
-    });
-    
-    function filterProducts(filter) {
-        products.forEach(product => {
-            if (filter === 'all') {
-                product.style.display = 'block';
-            } else {
-                if (product.dataset.category.includes(filter)) {
-                    product.style.display = 'block';
+            // Обновление корзины
+            function updateCart() {
+                cartCount.textContent = cartItems.length;
+                totalPrice = cartItems.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+                
+                if (cartItems.length > 0) {
+                    emptyCartMessage.style.display = 'none';
+                    
+                    // Генерация элементов корзины
+                    cartItemsContainer.innerHTML = '';
+                    
+                    cartItems.forEach((item, index) => {
+                        const cartItemElement = document.createElement('div');
+                        cartItemElement.classList.add('cart-item');
+                        cartItemElement.innerHTML = `
+                            <div class="cart-item-info">
+                                <div class="cart-item-img">
+                                    <img src="${item.img}" alt="${item.name}">
+                                </div>
+                                <div class="cart-item-details">
+                                    <h4>${item.name}</h4>
+                                    <div class="price">${item.price.toLocaleString()} ₽</div>
+                                </div>
+                            </div>
+                            <div class="cart-item-controls">
+                                <div class="quantity-control">
+                                    <button class="quantity-btn minus" data-index="${index}">-</button>
+                                    <input type="text" class="quantity-input" value="${item.quantity}" readonly>
+                                    <button class="quantity-btn plus" data-index="${index}">+</button>
+                                </div>
+                                <button class="remove-item" data-index="${index}">
+                                    <i class="fas fa-trash"></i>
+                                </button>
+                            </div>
+                        `;
+                        cartItemsContainer.appendChild(cartItemElement);
+                    });
+                    
+                    // Добавляем обработчики для кнопок в корзине
+                    document.querySelectorAll('.quantity-btn.minus').forEach(btn => {
+                        btn.addEventListener('click', function() {
+                            const index = this.dataset.index;
+                            if (cartItems[index].quantity > 1) {
+                                cartItems[index].quantity -= 1;
+                                updateCart();
+                            }
+                        });
+                    });
+                    
+                    document.querySelectorAll('.quantity-btn.plus').forEach(btn => {
+                        btn.addEventListener('click', function() {
+                            const index = this.dataset.index;
+                            cartItems[index].quantity += 1;
+                            updateCart();
+                        });
+                    });
+                    
+                    document.querySelectorAll('.remove-item').forEach(btn => {
+                        btn.addEventListener('click', function() {
+                            const index = this.dataset.index;
+                            cartItems.splice(index, 1);
+                            updateCart();
+                        });
+                    });
                 } else {
-                    product.style.display = 'none';
+                    emptyCartMessage.style.display = 'block';
+                }
+                
+                // Обновление итогов
+                const totalItems = cartItems.reduce((sum, item) => sum + item.quantity, 0);
+                const totalSum = cartItems.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+                
+                itemsCountEl.textContent = totalItems;
+                itemsSumEl.textContent = totalSum.toLocaleString();
+                totalSumEl.textContent = totalSum.toLocaleString();
+            }
+            
+            // Очистка корзины
+            clearCartBtn.addEventListener('click', function() {
+                cartItems = [];
+                updateCart();
+            });
+            
+            // Оформление заказа
+            checkoutBtn.addEventListener('click', function() {
+                if (cartItems.length > 0) {
+                    alert(`Заказ оформлен!\nСумма: ${totalPrice.toLocaleString()} ₽\nТоваров: ${cartItems.length}`);
+                    cartItems = [];
+                    updateCart();
+                } else {
+                    alert('Ваша корзина пуста!');
+                }
+            });
+            
+            // Прокрутка при загрузке страницы
+            if (window.location.hash) {
+                const targetSection = document.querySelector(window.location.hash);
+                if (targetSection) {
+                    window.scrollTo({
+                        top: targetSection.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
                 }
             }
+            
+            // Следим за прокруткой для обновления меню
+            window.addEventListener('scroll', setActiveLink);
+            
+            // Инициализация
+            setActiveLink();
         });
-    }
-    
-    // Способ оплаты
-    const paymentMethods = document.querySelectorAll('.payment-method');
-    paymentMethods.forEach(method => {
-        method.addEventListener('click', function() {
-            paymentMethods.forEach(m => m.classList.remove('active'));
-            this.classList.add('active');
-        });
-    });
-    
-    // Кнопка "Наверх"
-    const backToTopBtn = document.getElementById('backToTop');
-    
-    window.addEventListener('scroll', function() {
-        if (window.pageYOffset > 300) {
-            backToTopBtn.classList.add('visible');
-        } else {
-            backToTopBtn.classList.remove('visible');
-        }
-    });
-    
-    backToTopBtn.addEventListener('click', function() {
-        window.scrollTo({ top: 0, behavior: 'smooth' });
-    });
-    
-    // Инициализация
-    showSection('home');
-});
-</script>
-
+    </script>
 </body>
 </html>
