@@ -718,43 +718,6 @@
             z-index: 10000;
             display: none;
         }
-        
-        .test-results {
-            background: white;
-            border-radius: 10px;
-            padding: 30px;
-            margin: 30px 0;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
-        }
-        
-        .test-title {
-            font-size: 1.8rem;
-            color: #1a3a6c;
-            margin-bottom: 20px;
-            text-align: center;
-        }
-        
-        .test-item {
-            display: flex;
-            align-items: center;
-            padding: 15px;
-            border-bottom: 1px solid #eee;
-        }
-        
-        .test-icon {
-            font-size: 1.5rem;
-            margin-right: 15px;
-            width: 40px;
-            text-align: center;
-        }
-        
-        .success {
-            color: #00a651;
-        }
-        
-        .warning {
-            color: #ffcc00;
-        }
     </style>
 </head>
 <body>
@@ -829,70 +792,6 @@
                     <div class="product-info">
                         <div class="category-name">Мотоциклы</div>
                         <div class="product-description">Широкий выбор дорожных и спортивных мотоциклов</div>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="test-results">
-                <h2 class="test-title">Результаты тестирования функционала</h2>
-                
-                <div class="test-item">
-                    <div class="test-icon success">
-                        <i class="fas fa-check-circle"></i>
-                    </div>
-                    <div>
-                        <h3>Добавление товаров в корзину</h3>
-                        <p>Функция работает корректно - товары добавляются, счетчик обновляется</p>
-                    </div>
-                </div>
-                
-                <div class="test-item">
-                    <div class="test-icon success">
-                        <i class="fas fa-check-circle"></i>
-                    </div>
-                    <div>
-                        <h3>Изменение количества товаров</h3>
-                        <p>Количество можно увеличивать/уменьшать, общая сумма пересчитывается</p>
-                    </div>
-                </div>
-                
-                <div class="test-item">
-                    <div class="test-icon success">
-                        <i class="fas fa-check-circle"></i>
-                    </div>
-                    <div>
-                        <h3>Удаление товаров из корзины</h3>
-                        <p>Товары удаляются по одному или все сразу через "Очистить корзину"</p>
-                    </div>
-                </div>
-                
-                <div class="test-item">
-                    <div class="test-icon success">
-                        <i class="fas fa-check-circle"></i>
-                    </div>
-                    <div>
-                        <h3>Оформление заказа</h3>
-                        <p>Заказы отправляются на почту dima.nogowitsin1906@gmail.com и в Telegram @Elemcheg</p>
-                    </div>
-                </div>
-                
-                <div class="test-item">
-                    <div class="test-icon success">
-                        <i class="fas fa-check-circle"></i>
-                    </div>
-                    <div>
-                        <h3>Навигация по сайту</h3>
-                        <p>Все разделы работают корректно, переходы между страницами плавные</p>
-                    </div>
-                </div>
-                
-                <div class="test-item">
-                    <div class="test-icon success">
-                        <i class="fas fa-check-circle"></i>
-                    </div>
-                    <div>
-                        <h3>Адаптивность</h3>
-                        <p>Сайт корректно отображается на мобильных устройствах и планшетах</p>
                     </div>
                 </div>
             </div>
@@ -1628,8 +1527,11 @@
         
         // Отправка в Telegram
         function sendTelegram(orderText) {
+            const botToken = 'YOUR_BOT_TOKEN'; // Замените на реальный токен бота
+            const chatId = '@Elemcheg'; // Ваш Telegram ID или имя канала
+            
             // В реальном проекте:
-            // fetch(`https://api.telegram.org/botYOUR_BOT_TOKEN/sendMessage?chat_id=@Elemcheg&text=${encodeURIComponent(orderText)}`)
+            // fetch(`https://api.telegram.org/bot${botToken}/sendMessage?chat_id=${chatId}&text=${encodeURIComponent(orderText)}`)
             
             console.log("Заказ отправлен в Telegram: @Elemcheg");
             console.log(orderText);
