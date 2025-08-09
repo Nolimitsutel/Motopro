@@ -41,9 +41,10 @@
 
         header {
             background: var(--secondary);
-            padding: 10px 0;
-            position: sticky;
+            padding: 15px 0;
+            position: fixed;
             top: 0;
+            width: 100%;
             z-index: 1000;
             box-shadow: 0 2px 10px rgba(0,0,0,0.2);
         }
@@ -117,7 +118,7 @@
 
         .cart-icon {
             position: relative;
-            margin-left: 20px;
+            margin-left: 10px;
         }
 
         .cart-count {
@@ -141,7 +142,7 @@
             opacity: 0;
             transform: translateY(20px);
             transition: opacity 0.6s ease, transform 0.6s ease;
-            padding: 80px 0 40px;
+            padding: 120px 0 40px;
         }
 
         .section.active {
@@ -154,9 +155,6 @@
             background: linear-gradient(rgba(0,0,0,0.7), url('https://images.unsplash.com/photo-1558981285-501cd9af9426?ixlib=rb-4.0.3') center/cover;
             color: white;
             text-align: center;
-            padding: 120px 20px;
-            position: relative;
-            margin-top: -80px;
             min-height: 100vh;
             display: flex;
             align-items: center;
@@ -167,6 +165,7 @@
             position: relative;
             z-index: 2;
             max-width: 800px;
+            padding: 20px;
         }
 
         .hero h1 {
@@ -247,7 +246,7 @@
 
         /* Каталог */
         .catalog-container {
-            background: var(--light-gray);
+            background: var(--light);
             padding: 60px 0;
         }
 
@@ -842,7 +841,7 @@
     <header>
         <div class="container">
             <nav>
-                <a href="#home" class="logo">
+                <a href="#" class="logo" id="homeLink">
                     <i class="fas fa-motorcycle"></i>
                     <span>MOTOPRO</span>
                 </a>
@@ -852,14 +851,14 @@
                 </button>
                 
                 <ul class="nav-links" id="navLinks">
-                    <li><a href="#home" class="active">Главная</a></li>
-                    <li><a href="#catalog">Каталог</a></li>
-                    <li><a href="#about">О нас</a></li>
-                    <li><a href="#delivery">Доставка</a></li>
-                    <li><a href="#cart">Корзина</a></li>
-                    <li><a href="#contacts">Контакты</a></li>
+                    <li><a href="#" data-target="home" class="active">Главная</a></li>
+                    <li><a href="#" data-target="catalog">Каталог</a></li>
+                    <li><a href="#" data-target="about">О нас</a></li>
+                    <li><a href="#" data-target="delivery">Доставка</a></li>
+                    <li><a href="#" data-target="cart">Корзина</a></li>
+                    <li><a href="#" data-target="contacts">Контакты</a></li>
                     <li>
-                        <a href="#cart" class="cart-icon">
+                        <a href="#" data-target="cart" class="cart-icon">
                             <i class="fas fa-shopping-cart"></i>
                             <span class="cart-count">0</span>
                         </a>
@@ -876,10 +875,10 @@
                 <h1>Мототехника KAYO и ATAKI</h1>
                 <p>Официальный дилер с гарантией и сервисным обслуживанием</p>
                 <div class="btn-container">
-                    <a href="#catalog" class="btn">
+                    <a href="#" class="btn" data-target="catalog">
                         <i class="fas fa-biking"></i> Смотреть каталог
                     </a>
-                    <a href="#delivery" class="btn btn-outline">
+                    <a href="#" class="btn btn-outline" data-target="delivery">
                         <i class="fas fa-truck"></i> Узнать о доставке
                     </a>
                 </div>
@@ -1198,7 +1197,7 @@
                     <p>Мы - официальный дилер мототехники KAYO и ATAKI в России. С 2010 года мы предоставляем нашим клиентам качественную технику, профессиональное обслуживание и полную поддержку.</p>
                     <p>Наша миссия - сделать мир мототехники доступным для каждого. Мы предлагаем широкий выбор моделей для начинающих райдеров, профессионалов и любителей экстрима.</p>
                     <p>Вся наша техника проходит предпродажную подготовку и имеет официальную гарантию производителя. Наш сервисный центр укомплектован современным оборудованием и оригинальными запчастями.</p>
-                    <a href="#contacts" class="btn">
+                    <a href="#" class="btn" data-target="contacts">
                         <i class="fas fa-map-marker-alt"></i> Посетить наш шоурум
                     </a>
                 </div>
@@ -1345,7 +1344,7 @@
         <div class="container">
             <div class="footer-content">
                 <div class="footer-section">
-                    <a href="#home" class="logo">
+                    <a href="#" class="logo" data-target="home">
                         <i class="fas fa-motorcycle"></i>
                         <span>MOTOPRO</span>
                     </a>
@@ -1355,21 +1354,21 @@
                 <div class="footer-section">
                     <h3>Навигация</h3>
                     <ul class="footer-links">
-                        <li><a href="#home">Главная</a></li>
-                        <li><a href="#catalog">Каталог</a></li>
-                        <li><a href="#about">О нас</a></li>
-                        <li><a href="#delivery">Доставка</a></li>
-                        <li><a href="#contacts">Контакты</a></li>
+                        <li><a href="#" data-target="home">Главная</a></li>
+                        <li><a href="#" data-target="catalog">Каталог</a></li>
+                        <li><a href="#" data-target="about">О нас</a></li>
+                        <li><a href="#" data-target="delivery">Доставка</a></li>
+                        <li><a href="#" data-target="contacts">Контакты</a></li>
                     </ul>
                 </div>
                 
                 <div class="footer-section">
                     <h3>Помощь</h3>
                     <ul class="footer-links">
-                        <li><a href="#">Как выбрать?</a></li>
-                        <li><a href="#">Сервис и ремонт</a></li>
-                        <li><a href="#">Возврат товара</a></li>
-                        <li><a href="#">Вопросы и ответы</a></li>
+                        <li><a href="#" data-target="delivery">Доставка и оплата</a></li>
+                        <li><a href="#" data-target="delivery">Гарантия</a></li>
+                        <li><a href="#" data-target="contacts">Контакты</a></li>
+                        <li><a href="#">FAQ</a></li>
                     </ul>
                 </div>
             </div>
@@ -1383,44 +1382,56 @@
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             // Навигация
-            const navLinks = document.querySelectorAll('.nav-links a, .footer-links a');
+            const navLinks = document.querySelectorAll('.nav-links a, .footer-links a, .btn, .logo');
             const menuToggle = document.getElementById('menuToggle');
             const navMenu = document.getElementById('navLinks');
+            const sections = document.querySelectorAll('.section');
             
-            // Переключение активного пункта меню
-            function setActiveLink() {
-                const sections = document.querySelectorAll('.section');
-                let currentSection = '';
-                
+            // Функция переключения секций
+            function showSection(sectionId) {
                 sections.forEach(section => {
-                    const sectionTop = section.offsetTop;
-                    const sectionHeight = section.clientHeight;
-                    
-                    if (window.scrollY >= sectionTop - 100) {
-                        currentSection = section.getAttribute('id');
-                    }
+                    section.classList.remove('active');
                 });
                 
+                const targetSection = document.getElementById(sectionId);
+                if (targetSection) {
+                    targetSection.classList.add('active');
+                    
+                    // Прокрутка к секции
+                    window.scrollTo({
+                        top: targetSection.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+                
+                // Обновление активной ссылки
                 navLinks.forEach(link => {
                     link.classList.remove('active');
-                    if (link.getAttribute('href') === `#${currentSection}`) {
+                    if (link.dataset.target === sectionId) {
                         link.classList.add('active');
                     }
                 });
             }
             
+            // Обработчики навигации
+            navLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const target = this.dataset.target;
+                    if (target) {
+                        showSection(target);
+                        
+                        // Закрытие мобильного меню
+                        if (window.innerWidth <= 768) {
+                            navMenu.classList.remove('active');
+                        }
+                    }
+                });
+            });
+            
             // Мобильное меню
             menuToggle.addEventListener('click', function() {
                 navMenu.classList.toggle('active');
-            });
-            
-            // Закрытие меню при клике на ссылку
-            navLinks.forEach(link => {
-                link.addEventListener('click', function() {
-                    if (window.innerWidth <= 768) {
-                        navMenu.classList.remove('active');
-                    }
-                });
             });
             
             // Фильтрация товаров
@@ -1481,8 +1492,8 @@
                     
                     updateCart();
                     
-                    // Плавный скролл к корзине
-                    document.querySelector('#cart').scrollIntoView({ behavior: 'smooth' });
+                    // Показ корзины
+                    showSection('cart');
                 });
             });
             
@@ -1575,27 +1586,14 @@
                     alert(`Заказ оформлен!\nСумма: ${totalPrice.toLocaleString()} ₽\nТоваров: ${cartItems.length}`);
                     cartItems = [];
                     updateCart();
+                    showSection('home');
                 } else {
                     alert('Ваша корзина пуста!');
                 }
             });
             
-            // Прокрутка при загрузке страницы
-            if (window.location.hash) {
-                const targetSection = document.querySelector(window.location.hash);
-                if (targetSection) {
-                    window.scrollTo({
-                        top: targetSection.offsetTop - 80,
-                        behavior: 'smooth'
-                    });
-                }
-            }
-            
-            // Следим за прокруткой для обновления меню
-            window.addEventListener('scroll', setActiveLink);
-            
-            // Инициализация
-            setActiveLink();
+            // Показать главную страницу при загрузке
+            showSection('home');
         });
     </script>
 </body>
