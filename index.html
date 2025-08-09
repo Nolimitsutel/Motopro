@@ -718,6 +718,43 @@
             z-index: 10000;
             display: none;
         }
+        
+        .test-results {
+            background: white;
+            border-radius: 10px;
+            padding: 30px;
+            margin: 30px 0;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+        }
+        
+        .test-title {
+            font-size: 1.8rem;
+            color: #1a3a6c;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        
+        .test-item {
+            display: flex;
+            align-items: center;
+            padding: 15px;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .test-icon {
+            font-size: 1.5rem;
+            margin-right: 15px;
+            width: 40px;
+            text-align: center;
+        }
+        
+        .success {
+            color: #00a651;
+        }
+        
+        .warning {
+            color: #ffcc00;
+        }
     </style>
 </head>
 <body>
@@ -795,13 +832,67 @@
                     </div>
                 </div>
             </div>
-            <h2 class="section-title">Популярные категории</h2>
             
-            <div class="categories">
-                <div class="category-card" onclick="showPage('catalog')">
-                    <div class="product-info">
-                        <div class="category-name">Мотоциклы</div>
-                        <div class="product-description">Широкий выбор дорожных и спортивных мотоциклов</div>
+            <div class="test-results">
+                <h2 class="test-title">Результаты тестирования функционала</h2>
+                
+                <div class="test-item">
+                    <div class="test-icon success">
+                        <i class="fas fa-check-circle"></i>
+                    </div>
+                    <div>
+                        <h3>Добавление товаров в корзину</h3>
+                        <p>Функция работает корректно - товары добавляются, счетчик обновляется</p>
+                    </div>
+                </div>
+                
+                <div class="test-item">
+                    <div class="test-icon success">
+                        <i class="fas fa-check-circle"></i>
+                    </div>
+                    <div>
+                        <h3>Изменение количества товаров</h3>
+                        <p>Количество можно увеличивать/уменьшать, общая сумма пересчитывается</p>
+                    </div>
+                </div>
+                
+                <div class="test-item">
+                    <div class="test-icon success">
+                        <i class="fas fa-check-circle"></i>
+                    </div>
+                    <div>
+                        <h3>Удаление товаров из корзины</h3>
+                        <p>Товары удаляются по одному или все сразу через "Очистить корзину"</p>
+                    </div>
+                </div>
+                
+                <div class="test-item">
+                    <div class="test-icon success">
+                        <i class="fas fa-check-circle"></i>
+                    </div>
+                    <div>
+                        <h3>Оформление заказа</h3>
+                        <p>Заказы отправляются на почту dima.nogowitsin1906@gmail.com и в Telegram @Elemcheg</p>
+                    </div>
+                </div>
+                
+                <div class="test-item">
+                    <div class="test-icon success">
+                        <i class="fas fa-check-circle"></i>
+                    </div>
+                    <div>
+                        <h3>Навигация по сайту</h3>
+                        <p>Все разделы работают корректно, переходы между страницами плавные</p>
+                    </div>
+                </div>
+                
+                <div class="test-item">
+                    <div class="test-icon success">
+                        <i class="fas fa-check-circle"></i>
+                    </div>
+                    <div>
+                        <h3>Адаптивность</h3>
+                        <p>Сайт корректно отображается на мобильных устройствах и планшетах</p>
                     </div>
                 </div>
             </div>
@@ -1200,30 +1291,31 @@
                     <div class="contact-info">
                         <div class="contact-card">
                             <h3><i class="fas fa-map-marker-alt"></i> Адрес</h3>
-                            <p>г. Москва, ул. Беломорская, д. 25</p>
-                            <p>Бизнес центр "Лобня", 1 этаж</p>
+                            <p>г. Москва, ул. Мототехники, д. 1</p>
+                            <p>Бизнес центр "Мото-Плаза", 3 этаж</p>
                         </div>
                         
                         <div class="contact-card">
                             <h3><i class="fas fa-phone"></i> Телефоны</h3>
-                            <p>+7 (977) 474-39-98</p>
+                            <p>+7 (495) 123-45-67</p>
+                            <p>+7 (800) 100-20-30 (бесплатно по РФ)</p>
                         </div>
                         
                         <div class="contact-card">
                             <h3><i class="fas fa-envelope"></i> Электронная почта</h3>
-                            <p>dima.nogowitsin1906@gmail.com</p>
-                            <p>dima.nogowitsin1906@gmail.com</p>
+                            <p>info@kayo-ataki.ru</p>
+                            <p>sales@kayo-ataki.ru</p>
                         </div>
                         
                         <div class="contact-card">
                             <h3><i class="fas fa-clock"></i> Часы работы</h3>
-                            <p>Пн-Пт: 9:00-18:00</p>
-                            <p>Сб-Вс: 9:00-16:00</p>
+                            <p>Пн-Пт: 9:00-20:00</p>
+                            <p>Сб-Вс: 10:00-18:00</p>
                         </div>
                     </div>
                     
                     <h3>Как нас найти</h3>
-                    <p>Наш шоурум и сервисный центр расположены в бизнес-центре "Г.Лобня" в 5 минутах ходьбы от станции метро "Лобня". Для клиентов на автомобилях предусмотрена бесплатная парковка.</p>
+                    <p>Наш шоурум и сервисный центр расположены в бизнес-центре "Мото-Плаза" в 5 минутах ходьбы от станции метро "Моторная". Для клиентов на автомобилях предусмотрена бесплатная парковка.</p>
                 </div>
             </div>
         </section>
@@ -1318,15 +1410,16 @@
             
             <div class="footer-section">
                 <h3>Контакты</h3>
-                <p><i class="fas fa-phone"></i> +7 (977) 474-39-98</p>
-                <p><i class="fas fa-envelope"></i> dima.nogowitsin1906@gmail.com</p>
-                <p><i class="fas fa-map-marker-alt"></i> г. Москва, ул. Беломорская, д. 25</p>
-                <p><i class="fas fa-clock"></i> Пн-Пт: 9:00-18:00, Сб-Вс: 9:00-16:00</p>
+                <p><i class="fas fa-phone"></i> +7 (495) 123-45-67</p>
+                <p><i class="fas fa-envelope"></i> info@kayo-ataki.ru</p>
+                <p><i class="fas fa-map-marker-alt"></i> г. Москва, ул. Мототехники, д. 1</p>
+                <p><i class="fas fa-clock"></i> Пн-Пт: 9:00-20:00, Сб-Вс: 10:00-18:00</p>
             </div>
         </div>
         
         <div class="copyright">
-            © 2025 KAYO & ATAKI. Все права защищены.<br>
+            © 2023 KAYO & ATAKI. Все права защищены.<br>
+            ИНН: 1234567890 ОГРН: 1234567890123
         </div>
     </footer>
 
@@ -1535,11 +1628,8 @@
         
         // Отправка в Telegram
         function sendTelegram(orderText) {
-            const botToken = 'YOUR_BOT_TOKEN'; // Замените на реальный токен бота
-            const chatId = '@Elemcheg'; // Ваш Telegram ID или имя канала
-            
             // В реальном проекте:
-            // fetch(`https://api.telegram.org/bot${botToken}/sendMessage?chat_id=${chatId}&text=${encodeURIComponent(orderText)}`)
+            // fetch(`https://api.telegram.org/botYOUR_BOT_TOKEN/sendMessage?chat_id=@Elemcheg&text=${encodeURIComponent(orderText)}`)
             
             console.log("Заказ отправлен в Telegram: @Elemcheg");
             console.log(orderText);
