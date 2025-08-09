@@ -777,13 +777,28 @@
     <div class="container">
         <!-- Главная страница -->
         <section id="home-page" class="page-section active-page">
-            <div class="hero">
-                <h1>Официальный дилер мототехники KAYO и ATAKI в России</h1>
-                <p>Продажа, сервис, запчасти с гарантией качества. Лучшие цены на рынке!</p>
-                <button class="btn" onclick="showPage('catalog')" style="background: #00cc66; padding: 15px 40px;">
-                    <i class="fas fa-motorcycle"></i> Выбрать мотоцикл
-                </button>
-            </div>
+          <div class="hero" style="
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; /* Высота окна браузера */
+    text-align: center;
+    padding: 0 20px;
+    box-sizing: border-box;
+">
+    <h1>Официальный дилер мототехники KAYO и ATAKI в России</h1>
+    <p>Продажа, сервис, запчасти с гарантией качества. Лучшие цены на рынке!</p>
+    <img
+        src="https://sun9-67.userapi.com/impf/znPLJU8CBoa_3e0uCaEuPVY1dt1ZAbi3yr1EVQ/Mih3-Q1mZB8.jpg?size=1920x768&quality=95&crop=0,202,1169,467&sign=f690987755f77e87f67199a031baa6e1&type=cover_group"
+        alt="Мототехника KAYO и ATAKI"
+        style="max-width: 100%; height: auto; margin: 20px 0; border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.1);"
+    >
+    <button class="btn" onclick="showPage('catalog')" style="background: #00cc66; padding: 15px 40px;">
+        <i class="fas fa-motorcycle"></i> Выбрать мотоцикл
+    </button>
+</div>
+
             
             <h2 class="section-title">Популярные категории</h2>
             
