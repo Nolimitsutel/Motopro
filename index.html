@@ -3,15 +3,19 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Motopro - Мототехника KAYO и ATAKI</title>
+<title>MOTOPRO - Официальный дилер мототехники KAYO и ATAKI</title>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/8.4.5/swiper-bundle.min.css">
 <style>
 :root {
     --primary: #ff6600;
+    --primary-dark: #e55d00;
     --secondary: #222;
     --light: #f4f4f4;
     --dark: #333;
     --gray: #e0e0e0;
+    --success: #28a745;
+    --warning: #ffc107;
 }
 
 * {
@@ -27,6 +31,9 @@ body {
     background: var(--light);
     color: var(--dark);
     line-height: 1.6;
+    position: relative;
+    min-height: 100vh;
+    padding-bottom: 100px;
 }
 
 header {
@@ -59,6 +66,7 @@ nav {
     display: flex;
     align-items: center;
     gap: 10px;
+    text-decoration: none;
 }
 
 .logo i {
@@ -127,6 +135,12 @@ nav {
     color: white;
     text-align: center;
     padding: 100px 20px;
+    position: relative;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2;
 }
 
 .hero h1 {
@@ -151,6 +165,7 @@ nav {
     font-weight: bold;
     transition: all 0.3s;
     border: 2px solid var(--primary);
+    cursor: pointer;
 }
 
 .btn:hover {
@@ -159,11 +174,32 @@ nav {
     box-shadow: 0 5px 15px rgba(0,0,0,0.2);
 }
 
+.btn-outline {
+    background: transparent;
+    border: 2px solid white;
+}
+
+.btn-outline:hover {
+    background: white;
+    color: var(--primary);
+}
+
 .section-title {
     text-align: center;
     color: var(--primary);
     margin-bottom: 30px;
     font-size: 2.2rem;
+    position: relative;
+}
+
+.section-title::after {
+    content: "";
+    display: block;
+    width: 80px;
+    height: 4px;
+    background: var(--primary);
+    margin: 15px auto;
+    border-radius: 2px;
 }
 
 .features {
@@ -181,10 +217,12 @@ nav {
     text-align: center;
     box-shadow: 0 5px 15px rgba(0,0,0,0.05);
     transition: transform 0.3s;
+    cursor: pointer;
 }
 
 .feature:hover {
     transform: translateY(-10px);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
 }
 
 .feature i {
@@ -211,10 +249,25 @@ nav {
     overflow: hidden;
     box-shadow: 0 5px 15px rgba(0,0,0,0.05);
     transition: transform 0.3s;
+    position: relative;
 }
 
 .product:hover {
     transform: translateY(-10px);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+}
+
+.product-badge {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: var(--success);
+    color: white;
+    padding: 5px 10px;
+    border-radius: 3px;
+    font-size: 0.8rem;
+    font-weight: bold;
+    z-index: 2;
 }
 
 .product-img {
@@ -225,6 +278,18 @@ nav {
     justify-content: center;
     color: var(--dark);
     font-size: 3rem;
+    overflow: hidden;
+}
+
+.product-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s;
+}
+
+.product:hover .product-img img {
+    transform: scale(1.1);
 }
 
 .product-info {
@@ -234,6 +299,13 @@ nav {
 .product h3 {
     margin-bottom: 10px;
     color: var(--dark);
+    font-size: 1.2rem;
+}
+
+.product-category {
+    color: #777;
+    font-size: 0.9rem;
+    margin-bottom: 10px;
 }
 
 .price {
@@ -241,6 +313,13 @@ nav {
     font-weight: bold;
     color: var(--primary);
     margin: 10px 0;
+}
+
+.old-price {
+    text-decoration: line-through;
+    color: #999;
+    font-size: 1rem;
+    margin-right: 10px;
 }
 
 .add-to-cart {
@@ -253,10 +332,14 @@ nav {
     font-weight: bold;
     width: 100%;
     transition: background 0.3s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
 }
 
 .add-to-cart:hover {
-    background: #e55d00;
+    background: var(--primary-dark);
 }
 
 ul.info-list {
@@ -292,8 +375,63 @@ ul.info-list li i {
 .cart-item {
     display: flex;
     justify-content: space-between;
+    align-items: center;
     padding: 15px 0;
     border-bottom: 1px solid var(--gray);
+}
+
+.cart-item-info {
+    flex: 1;
+}
+
+.cart-item-controls {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.quantity-control {
+    display: flex;
+    align-items: center;
+    border: 1px solid var(--gray);
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+.quantity-btn {
+    background: #f8f8f8;
+    border: none;
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background 0.3s;
+}
+
+.quantity-btn:hover {
+    background: var(--gray);
+}
+
+.quantity-input {
+    width: 40px;
+    height: 30px;
+    text-align: center;
+    border: none;
+    border-left: 1px solid var(--gray);
+    border-right: 1px solid var(--gray);
+}
+
+.remove-item {
+    background: none;
+    border: none;
+    color: #ff4d4d;
+    cursor: pointer;
+    font-size: 1.2rem;
+    transition: color 0.3s;
+}
+
+.remove-item:hover {
+    color: #ff1a1a;
 }
 
 .cart-total {
@@ -327,7 +465,9 @@ footer {
     background: var(--secondary);
     color: white;
     padding: 40px 0 20px;
-    margin-top: 40px;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
 }
 
 .footer-content {
@@ -459,6 +599,247 @@ footer {
     font-weight: bold;
     font-size: 1.4rem;
     color: var(--dark);
+    transition: transform 0.3s;
+}
+
+.brand-logo:hover {
+    transform: scale(1.05);
+}
+
+.testimonials {
+    background: white;
+    border-radius: 10px;
+    padding: 30px;
+    margin-top: 40px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+}
+
+.testimonial {
+    text-align: center;
+    padding: 20px;
+}
+
+.testimonial-text {
+    font-style: italic;
+    margin-bottom: 20px;
+    position: relative;
+}
+
+.testimonial-text::before,
+.testimonial-text::after {
+    content: '"';
+    font-size: 3rem;
+    color: var(--primary);
+    opacity: 0.3;
+    position: absolute;
+}
+
+.testimonial-text::before {
+    top: -20px;
+    left: -10px;
+}
+
+.testimonial-text::after {
+    bottom: -40px;
+    right: -10px;
+}
+
+.testimonial-author {
+    font-weight: bold;
+    color: var(--dark);
+}
+
+.testimonial-role {
+    color: #777;
+    font-size: 0.9rem;
+}
+
+.swiper-pagination-bullet-active {
+    background: var(--primary) !important;
+}
+
+.filter-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-bottom: 30px;
+    flex-wrap: wrap;
+}
+
+.filter-btn {
+    background: white;
+    border: 2px solid var(--primary);
+    color: var(--primary);
+    padding: 8px 20px;
+    border-radius: 30px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: all 0.3s;
+}
+
+.filter-btn.active, 
+.filter-btn:hover {
+    background: var(--primary);
+    color: white;
+}
+
+.promo-banner {
+    background: linear-gradient(to right, var(--primary), var(--primary-dark));
+    color: white;
+    padding: 15px;
+    text-align: center;
+    margin-bottom: 30px;
+    border-radius: 10px;
+    font-weight: bold;
+    font-size: 1.2rem;
+}
+
+.checkout-form {
+    background: white;
+    border-radius: 10px;
+    padding: 30px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+    margin-bottom: 30px;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: bold;
+}
+
+.form-group input,
+.form-group textarea,
+.form-group select {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid var(--gray);
+    border-radius: 5px;
+    font-size: 1rem;
+    transition: border-color 0.3s;
+}
+
+.form-group input:focus,
+.form-group textarea:focus,
+.form-group select:focus {
+    border-color: var(--primary);
+    outline: none;
+}
+
+.form-row {
+    display: flex;
+    gap: 20px;
+    margin-bottom: 20px;
+}
+
+.form-col {
+    flex: 1;
+}
+
+.payment-methods {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    margin-top: 15px;
+}
+
+.payment-method {
+    flex: 1;
+    min-width: 120px;
+    background: #f9f9f9;
+    border: 1px solid var(--gray);
+    border-radius: 5px;
+    padding: 15px;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.payment-method.active {
+    border-color: var(--primary);
+    background: rgba(255, 102, 0, 0.1);
+}
+
+.payment-method i {
+    font-size: 2rem;
+    margin-bottom: 10px;
+    color: var(--primary);
+}
+
+.order-summary {
+    background: white;
+    border-radius: 10px;
+    padding: 30px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+}
+
+.summary-item {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 0;
+    border-bottom: 1px solid var(--gray);
+}
+
+.summary-total {
+    font-weight: bold;
+    font-size: 1.2rem;
+    margin-top: 15px;
+    padding-top: 15px;
+    border-top: 2px solid var(--gray);
+}
+
+.stock-badge {
+    display: inline-block;
+    padding: 3px 8px;
+    border-radius: 10px;
+    font-size: 0.8rem;
+    font-weight: bold;
+    margin-top: 5px;
+}
+
+.in-stock {
+    background: #e6f7ee;
+    color: var(--success);
+}
+
+.low-stock {
+    background: #fff8e6;
+    color: var(--warning);
+}
+
+.out-stock {
+    background: #fce8e6;
+    color: #f44336;
+}
+
+.back-to-top {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    background: var(--primary);
+    color: white;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    cursor: pointer;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    z-index: 999;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s;
+}
+
+.back-to-top.visible {
+    opacity: 1;
+    visibility: visible;
 }
 </style>
 </head>
@@ -467,10 +848,10 @@ footer {
 <header>
     <div class="container">
         <nav>
-            <div class="logo">
+            <a href="#" class="logo" data-section="home">
                 <i class="fas fa-motorcycle"></i>
                 <span>MOTOPRO</span>
-            </div>
+            </a>
             
             <ul class="nav-links" id="navLinks">
                 <li><a href="#" class="active" data-section="home">Главная</a></li>
@@ -495,14 +876,19 @@ footer {
 
 <section id="home" class="section active">
     <div class="hero">
-        <div class="container">
+        <div class="container hero-content">
             <h1>Мототехника KAYO и ATAKI</h1>
-            <p>Квадроциклы, питбайки и кроссовые мотоциклы от официального дилера с гарантией и сервисным обслуживанием</p>
+            <p>Официальный дилер с гарантией и сервисным обслуживанием</p>
             <a href="#" class="btn" data-section="catalog">Смотреть каталог</a>
+            <a href="#" class="btn btn-outline" data-section="delivery">Узнать о доставке</a>
         </div>
     </div>
     
     <div class="container">
+        <div class="promo-banner">
+            <i class="fas fa-gift"></i> Специальное предложение: Скидка 10% на первый заказ!
+        </div>
+        
         <div class="brand-logos">
             <div class="brand-logo">KAYO</div>
             <div class="brand-logo">ATAKI</div>
@@ -511,22 +897,63 @@ footer {
         <h2 class="section-title">Популярные категории</h2>
         
         <div class="features">
-            <div class="feature">
+            <div class="feature" data-category="quad">
                 <i class="fas fa-atv"></i>
                 <h3>Квадроциклы</h3>
                 <p>Мощные и надежные ATV для бездорожья и работы</p>
             </div>
             
-            <div class="feature">
+            <div class="feature" data-category="pitbike">
                 <i class="fas fa-motorcycle"></i>
                 <h3>Питбайки</h3>
                 <p>Легкие и маневренные для начинающих и профессионалов</p>
             </div>
             
-            <div class="feature">
+            <div class="feature" data-category="cross">
                 <i class="fas fa-biking"></i>
                 <h3>Кроссовые</h3>
                 <p>Профессиональные мотоциклы для спорта и отдыха</p>
+            </div>
+        </div>
+        
+        <h2 class="section-title">Отзывы клиентов</h2>
+        
+        <div class="testimonials">
+            <div class="swiper">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide">
+                        <div class="testimonial">
+                            <div class="testimonial-text">
+                                Отличный магазин! Купил питбайк ATAKI 125cc, качество на высоте. 
+                                Доставка быстрая, менеджеры помогли с выбором. Обязательно вернусь за аксессуарами!
+                            </div>
+                            <div class="testimonial-author">Иван Петров</div>
+                            <div class="testimonial-role">Клиент, Москва</div>
+                        </div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="testimonial">
+                            <div class="testimonial-text">
+                                Заказывал квадроцикл KAYO Bull 250 для дачи. Привезли вовремя, собрали на месте. 
+                                Техника работает отлично, никаких нареканий. Спасибо за профессиональный подход!
+                            </div>
+                            <div class="testimonial-author">Алексей Смирнов</div>
+                            <div class="testimonial-role">Клиент, Санкт-Петербург</div>
+                        </div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="testimonial">
+                            <div class="testimonial-text">
+                                Покупал кроссовый мотоцикл для сына. Выбрали KAYO T2 250. 
+                                Ребенок в восторге! Качество сборки отличное, доставили даже раньше срока. 
+                                Рекомендую этот магазин.
+                            </div>
+                            <div class="testimonial-author">Дмитрий Иванов</div>
+                            <div class="testimonial-role">Клиент, Екатеринбург</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="swiper-pagination"></div>
             </div>
         </div>
     </div>
@@ -536,40 +963,107 @@ footer {
     <div class="container">
         <h2 class="section-title">Каталог техники</h2>
         
+        <div class="filter-buttons">
+            <button class="filter-btn active" data-filter="all">Все товары</button>
+            <button class="filter-btn" data-filter="quad">Квадроциклы</button>
+            <button class="filter-btn" data-filter="pitbike">Питбайки</button>
+            <button class="filter-btn" data-filter="cross">Кроссовые</button>
+            <button class="filter-btn" data-filter="new">Новинки</button>
+            <button class="filter-btn" data-filter="sale">Скидки</button>
+        </div>
+        
         <div class="products">
-            <div class="product">
+            <div class="product" data-category="quad new">
+                <div class="product-badge">Новинка</div>
                 <div class="product-img">
                     <i class="fas fa-atv"></i>
                 </div>
                 <div class="product-info">
                     <h3>Квадроцикл KAYO Bull 250</h3>
+                    <div class="product-category">Квадроциклы</div>
                     <p>Мощный квадроцикл для бездорожья</p>
                     <div class="price">189 900 ₽</div>
-                    <button class="add-to-cart">В корзину</button>
+                    <div class="stock-badge in-stock">В наличии</div>
+                    <button class="add-to-cart"><i class="fas fa-cart-plus"></i> В корзину</button>
                 </div>
             </div>
             
-            <div class="product">
+            <div class="product" data-category="pitbike sale">
+                <div class="product-badge">Скидка 10%</div>
                 <div class="product-img">
                     <i class="fas fa-motorcycle"></i>
                 </div>
                 <div class="product-info">
                     <h3>Питбайк ATAKI 125cc</h3>
+                    <div class="product-category">Питбайки</div>
                     <p>Легкий и маневренный для начинающих</p>
-                    <div class="price">89 900 ₽</div>
-                    <button class="add-to-cart">В корзину</button>
+                    <div class="price">
+                        <span class="old-price">99 900 ₽</span>
+                        89 900 ₽
+                    </div>
+                    <div class="stock-badge low-stock">Мало в наличии</div>
+                    <button class="add-to-cart"><i class="fas fa-cart-plus"></i> В корзину</button>
                 </div>
             </div>
             
-            <div class="product">
+            <div class="product" data-category="cross">
                 <div class="product-img">
                     <i class="fas fa-biking"></i>
                 </div>
                 <div class="product-info">
                     <h3>Кроссовый KAYO T2 250</h3>
+                    <div class="product-category">Кроссовые</div>
                     <p>Профессиональный для спортивных соревнований</p>
                     <div class="price">219 900 ₽</div>
-                    <button class="add-to-cart">В корзину</button>
+                    <div class="stock-badge in-stock">В наличии</div>
+                    <button class="add-to-cart"><i class="fas fa-cart-plus"></i> В корзину</button>
+                </div>
+            </div>
+            
+            <div class="product" data-category="quad">
+                <div class="product-img">
+                    <i class="fas fa-atv"></i>
+                </div>
+                <div class="product-info">
+                    <h3>Квадроцикл ATAKI 300</h3>
+                    <div class="product-category">Квадроциклы</div>
+                    <p>Модель для профессионалов с увеличенным клиренсом</p>
+                    <div class="price">249 900 ₽</div>
+                    <div class="stock-badge in-stock">В наличии</div>
+                    <button class="add-to-cart"><i class="fas fa-cart-plus"></i> В корзину</button>
+                </div>
+            </div>
+            
+            <div class="product" data-category="pitbike new">
+                <div class="product-badge">Новинка</div>
+                <div class="product-img">
+                    <i class="fas fa-motorcycle"></i>
+                </div>
+                <div class="product-info">
+                    <h3>Питбайк KAYO 150cc Pro</h3>
+                    <div class="product-category">Питбайки</div>
+                    <p>Профессиональная модель с усиленной рамой</p>
+                    <div class="price">129 900 ₽</div>
+                    <div class="stock-badge in-stock">В наличии</div>
+                    <button class="add-to-cart"><i class="fas fa-cart-plus"></i> В корзину</button>
+                </div>
+            </div>
+            
+            <div class="product" data-category="cross sale">
+                <div class="product-badge">Скидка 5%</div>
+                <div class="product-img">
+                    <i class="fas fa-biking"></i>
+                </div>
+                <div class="product-info">
+                    <h3>Кроссовый ATAKI MX 200</h3>
+                    <div class="product-category">Кроссовые</div>
+                    <p>Идеальный выбор для начинающих райдеров</p>
+                    <div class="price">
+                        <span class="old-price">179 900 ₽</span>
+                        170 900 ₽
+                    </div>
+                    <div class="stock-badge in-stock">В наличии</div>
+                    <button class="add-to-cart"><i class="fas fa-cart-plus"></i> В корзину</button>
                 </div>
             </div>
         </div>
@@ -600,12 +1094,34 @@ footer {
             </div>
         </div>
         
-        <p style="margin-top: 30px; text-align: center; max-width: 800px; margin-left: auto; margin-right: auto;">
-            Motopro — это команда профессионалов, увлечённых миром мототехники. 
-            Мы занимаемся продажей и обслуживанием техники KAYO и ATAKI, предлагая 
-            нашим клиентам только надёжные и проверенные модели. Мы ценим каждого 
-            клиента и стремимся сделать покупку максимально удобной и приятной.
-        </p>
+        <div class="testimonials">
+            <p style="margin-top: 30px; text-align: center; max-width: 800px; margin-left: auto; margin-right: auto;">
+                Motopro — это команда профессионалов, увлечённых миром мототехники. 
+                Мы занимаемся продажей и обслуживанием техники KAYO и ATAKI, предлагая 
+                нашим клиентам только надёжные и проверенные модели. Мы ценим каждого 
+                клиента и стремимся сделать покупку максимально удобной и приятной.
+            </p>
+            
+            <div class="features" style="margin-top: 40px;">
+                <div class="feature">
+                    <i class="fas fa-award"></i>
+                    <h3>Официальный дилер</h3>
+                    <p>Прямые поставки от производителей</p>
+                </div>
+                
+                <div class="feature">
+                    <i class="fas fa-tools"></i>
+                    <h3>Сервисный центр</h3>
+                    <p>Профессиональное обслуживание и ремонт</p>
+                </div>
+                
+                <div class="feature">
+                    <i class="fas fa-box-open"></i>
+                    <h3>Запчасти в наличии</h3>
+                    <p>Все необходимые детали для вашей техники</p>
+                </div>
+            </div>
+        </div>
     </div>
 </section>
 
@@ -665,6 +1181,28 @@ footer {
                 </li>
             </ul>
         </div>
+        
+        <h3 class="section-title" style="margin-top: 40px;">Как оформить заказ</h3>
+        
+        <div class="features">
+            <div class="feature">
+                <div class="step-number">1</div>
+                <h3>Выбор товара</h3>
+                <p>Выберите технику в каталоге и добавьте в корзину</p>
+            </div>
+            
+            <div class="feature">
+                <div class="step-number">2</div>
+                <h3>Оформление</h3>
+                <p>Заполните контактные данные и выберите способ оплаты</p>
+            </div>
+            
+            <div class="feature">
+                <div class="step-number">3</div>
+                <h3>Получение</h3>
+                <p>Ожидайте доставку или заберите заказ самостоятельно</p>
+            </div>
+        </div>
     </div>
 </section>
 
@@ -680,6 +1218,96 @@ footer {
             </div>
             
             <button class="btn" style="width: 100%; margin-top: 20px; display: none;" id="checkout-btn">Оформить заказ</button>
+        </div>
+    </div>
+</section>
+
+<section id="checkout" class="section">
+    <div class="container">
+        <h2 class="section-title">Оформление заказа</h2>
+        
+        <div class="form-row">
+            <div class="form-col">
+                <div class="checkout-form">
+                    <h3>Контактные данные</h3>
+                    <div class="form-group">
+                        <label for="name">ФИО*</label>
+                        <input type="text" id="name" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="phone">Телефон*</label>
+                        <input type="tel" id="phone" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="email">Email*</label>
+                        <input type="email" id="email" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="address">Адрес доставки*</label>
+                        <textarea id="address" rows="3" required></textarea>
+                    </div>
+                    
+                    <h3>Способ оплаты</h3>
+                    <div class="payment-methods">
+                        <div class="payment-method active">
+                            <i class="fas fa-credit-card"></i>
+                            <div>Карта</div>
+                        </div>
+                        <div class="payment-method">
+                            <i class="fas fa-money-bill-wave"></i>
+                            <div>Наличные</div>
+                        </div>
+                        <div class="payment-method">
+                            <i class="fas fa-file-invoice"></i>
+                            <div>Счёт</div>
+                        </div>
+                        <div class="payment-method">
+                            <i class="fas fa-gift"></i>
+                            <div>Подарочная карта</div>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="comments">Комментарий к заказу</label>
+                        <textarea id="comments" rows="3"></textarea>
+                    </div>
+                    
+                    <button class="btn" id="confirm-order">Подтвердить заказ</button>
+                </div>
+            </div>
+            
+            <div class="form-col">
+                <div class="order-summary">
+                    <h3>Ваш заказ</h3>
+                    <div class="summary-item">
+                        <div>Товаров:</div>
+                        <div><span id="summary-count">0</span> шт.</div>
+                    </div>
+                    <div class="summary-item">
+                        <div>Сумма:</div>
+                        <div><span id="summary-sum">0</span> ₽</div>
+                    </div>
+                    <div class="summary-item">
+                        <div>Доставка:</div>
+                        <div>0 ₽</div>
+                    </div>
+                    <div class="summary-total">
+                        <div>Итого:</div>
+                        <div><span id="summary-total">0</span> ₽</div>
+                    </div>
+                    
+                    <div class="promo" style="margin-top: 20px;">
+                        <div class="form-group">
+                            <label for="promo-code">Промокод</label>
+                            <input type="text" id="promo-code" placeholder="Введите промокод">
+                        </div>
+                        <button class="btn" style="width: 100%; margin-top: 10px;">Применить</button>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </section>
@@ -733,10 +1361,10 @@ footer {
     <div class="container">
         <div class="footer-content">
             <div class="footer-section">
-                <div class="logo">
+                <a href="#" class="logo" data-section="home">
                     <i class="fas fa-motorcycle"></i>
                     <span>MOTOPRO</span>
-                </div>
+                </a>
                 <p>Официальный дилер мототехники KAYO и ATAKI в России. Продажа, сервис, запчасти.</p>
                 <div class="social-icons">
                     <a href="#"><i class="fab fa-vk"></i></a>
@@ -767,18 +1395,46 @@ footer {
                     <li><a href="#">Отзывы</a></li>
                 </ul>
             </div>
+            
+            <div class="footer-section">
+                <h3>Помощь</h3>
+                <ul class="footer-links">
+                    <li><a href="#">Как выбрать?</a></li>
+                    <li><a href="#">Сервис и ремонт</a></li>
+                    <li><a href="#">Возврат товара</a></li>
+                    <li><a href="#">Вопросы и ответы</a></li>
+                    <li><a href="#">Политика конфиденциальности</a></li>
+                </ul>
+            </div>
         </div>
         
         <div class="footer-bottom">
-            <p>&copy; 2023 Motopro. Все права защищены.</p>
+            <p>&copy; 2023 Motopro. Все права защищены. ИНН: 1234567890 ОГРН: 1234567890123</p>
         </div>
     </div>
 </footer>
 
+<div class="back-to-top" id="backToTop">
+    <i class="fas fa-arrow-up"></i>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/8.4.5/swiper-bundle.min.js"></script>
 <script>
 document.addEventListener('DOMContentLoaded', function() {
+    // Инициализация Swiper
+    const swiper = new Swiper('.swiper', {
+        loop: true,
+        autoplay: {
+            delay: 5000,
+        },
+        pagination: {
+            el: '.swiper-pagination',
+            clickable: true,
+        },
+    });
+
     // Навигация
-    const navLinks = document.querySelectorAll('.nav-links a, .footer-links a, .btn');
+    const navLinks = document.querySelectorAll('.nav-links a, .footer-links a, .btn, .feature');
     const sections = document.querySelectorAll('.section');
     const menuToggle = document.getElementById('menuToggle');
     const navMenu = document.getElementById('navLinks');
@@ -797,6 +1453,9 @@ document.addEventListener('DOMContentLoaded', function() {
                 link.classList.add('active');
             }
         });
+        
+        // Прокрутка наверх
+        window.scrollTo({ top: 0, behavior: 'smooth' });
     }
     
     // Обработчики для навигации
@@ -808,6 +1467,12 @@ document.addEventListener('DOMContentLoaded', function() {
                 showSection(sectionId);
                 if (window.innerWidth <= 768) {
                     navMenu.classList.remove('active');
+                }
+            } else if (this.classList.contains('feature')) {
+                showSection('catalog');
+                const category = this.dataset.category;
+                if (category) {
+                    filterProducts(category);
                 }
             }
         });
@@ -833,12 +1498,22 @@ document.addEventListener('DOMContentLoaded', function() {
         button.addEventListener('click', function() {
             const product = this.closest('.product');
             const productName = product.querySelector('h3').textContent;
-            const productPrice = parseFloat(product.querySelector('.price').textContent.replace(/\D/g, ''));
+            const productPrice = parseFloat(product.querySelector('.price').textContent.replace(/[^\d]/g, ''));
+            const productId = productName.replace(/\s+/g, '-').toLowerCase();
             
-            cartItems.push({
-                name: productName,
-                price: productPrice
-            });
+            // Проверяем, есть ли товар уже в корзине
+            const existingItem = cartItems.find(item => item.id === productId);
+            
+            if (existingItem) {
+                existingItem.quantity += 1;
+            } else {
+                cartItems.push({
+                    id: productId,
+                    name: productName,
+                    price: productPrice,
+                    quantity: 1
+                });
+            }
             
             updateCart();
             showSection('cart');
@@ -847,8 +1522,8 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Обновление корзины
     function updateCart() {
-        cartCount.textContent = cartItems.length;
-        totalPrice = cartItems.reduce((sum, item) => sum + item.price, 0);
+        cartCount.textContent = cartItems.reduce((sum, item) => sum + item.quantity, 0);
+        totalPrice = cartItems.reduce((sum, item) => sum + (item.price * item.quantity), 0);
         
         if (cartItems.length > 0) {
             emptyCartMessage.style.display = 'none';
@@ -864,8 +1539,20 @@ document.addEventListener('DOMContentLoaded', function() {
                 const cartItemElement = document.createElement('div');
                 cartItemElement.classList.add('cart-item');
                 cartItemElement.innerHTML = `
-                    <div>${item.name}</div>
-                    <div>${item.price.toLocaleString()} ₽</div>
+                    <div class="cart-item-info">
+                        <div><strong>${item.name}</strong></div>
+                        <div>${item.price.toLocaleString()} ₽ x ${item.quantity}</div>
+                    </div>
+                    <div class="cart-item-controls">
+                        <div class="quantity-control">
+                            <button class="quantity-btn minus" data-id="${item.id}">-</button>
+                            <input type="text" class="quantity-input" value="${item.quantity}" readonly>
+                            <button class="quantity-btn plus" data-id="${item.id}">+</button>
+                        </div>
+                        <button class="remove-item" data-id="${item.id}">
+                            <i class="fas fa-trash"></i>
+                        </button>
+                    </div>
                 `;
                 cartItemsContainer.appendChild(cartItemElement);
             });
@@ -876,19 +1563,120 @@ document.addEventListener('DOMContentLoaded', function() {
             cartItemsContainer.appendChild(totalElement);
             
             cartItemsContainer.appendChild(checkoutBtn);
+            
+            // Добавляем обработчики для кнопок в корзине
+            document.querySelectorAll('.quantity-btn.minus').forEach(btn => {
+                btn.addEventListener('click', function() {
+                    const id = this.dataset.id;
+                    const item = cartItems.find(item => item.id === id);
+                    if (item && item.quantity > 1) {
+                        item.quantity -= 1;
+                        updateCart();
+                    }
+                });
+            });
+            
+            document.querySelectorAll('.quantity-btn.plus').forEach(btn => {
+                btn.addEventListener('click', function() {
+                    const id = this.dataset.id;
+                    const item = cartItems.find(item => item.id === id);
+                    if (item) {
+                        item.quantity += 1;
+                        updateCart();
+                    }
+                });
+            });
+            
+            document.querySelectorAll('.remove-item').forEach(btn => {
+                btn.addEventListener('click', function() {
+                    const id = this.dataset.id;
+                    cartItems = cartItems.filter(item => item.id !== id);
+                    updateCart();
+                });
+            });
         } else {
             emptyCartMessage.style.display = 'block';
             totalPriceElement.parentElement.style.display = 'none';
             checkoutBtn.style.display = 'none';
         }
+        
+        // Обновление данных для оформления заказа
+        document.getElementById('summary-count').textContent = cartItems.reduce((sum, item) => sum + item.quantity, 0);
+        document.getElementById('summary-sum').textContent = totalPrice.toLocaleString();
+        document.getElementById('summary-total').textContent = totalPrice.toLocaleString();
     }
     
     // Оформление заказа
     checkoutBtn.addEventListener('click', function() {
-        alert(`Заказ оформлен!\nСумма: ${totalPrice.toLocaleString()} ₽\nТоваров: ${cartItems.length}`);
+        showSection('checkout');
+    });
+    
+    // Подтверждение заказа
+    document.getElementById('confirm-order').addEventListener('click', function() {
+        const name = document.getElementById('name').value;
+        if (!name) {
+            alert('Пожалуйста, заполните все обязательные поля');
+            return;
+        }
+        
+        alert(`Заказ оформлен, ${name}!\nСумма: ${totalPrice.toLocaleString()} ₽\nТоваров: ${cartItems.reduce((sum, item) => sum + item.quantity, 0)}`);
         cartItems = [];
         updateCart();
         showSection('home');
+    });
+    
+    // Фильтрация товаров
+    const filterBtns = document.querySelectorAll('.filter-btn');
+    const products = document.querySelectorAll('.product');
+    
+    filterBtns.forEach(btn => {
+        btn.addEventListener('click', function() {
+            const filter = this.dataset.filter;
+            
+            // Обновляем активную кнопку
+            filterBtns.forEach(b => b.classList.remove('active'));
+            this.classList.add('active');
+            
+            filterProducts(filter);
+        });
+    });
+    
+    function filterProducts(filter) {
+        products.forEach(product => {
+            if (filter === 'all') {
+                product.style.display = 'block';
+            } else {
+                if (product.dataset.category.includes(filter)) {
+                    product.style.display = 'block';
+                } else {
+                    product.style.display = 'none';
+                }
+            }
+        });
+    }
+    
+    // Способ оплаты
+    const paymentMethods = document.querySelectorAll('.payment-method');
+    paymentMethods.forEach(method => {
+        method.addEventListener('click', function() {
+            paymentMethods.forEach(m => m.classList.remove('active'));
+            this.classList.add('active');
+        });
+    });
+    
+    // Кнопка "Наверх"
+    const backToTopBtn = document.getElementById('backToTop');
+    
+    window.addEventListener('scroll', function() {
+        if (window.pageYOffset > 300) {
+            backToTopBtn.classList.add('visible');
+        } else {
+            backToTopBtn.classList.remove('visible');
+        }
+    });
+    
+    backToTopBtn.addEventListener('click', function() {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
     });
     
     // Инициализация
