@@ -21,11 +21,29 @@
         
         /* Шапка */
         header {
-            background: linear-gradient(135deg, #d10000, #a00000);
+            background: linear-gradient(135deg, #1a3a6c, #2a5298);
             color: white;
             padding: 20px 0;
             text-align: center;
             box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .header-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('https://images.unsplash.com/photo-1566891439633-e183f368d236?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2000&q=80') center/cover no-repeat;
+            opacity: 0.3;
+            z-index: 0;
+        }
+        
+        .header-content {
+            position: relative;
+            z-index: 1;
         }
         
         .logo {
@@ -34,19 +52,22 @@
             margin-bottom: 10px;
             text-transform: uppercase;
             letter-spacing: 1px;
+            color: #fff;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.5);
         }
         
         .slogan {
-            font-size: 1.2rem;
+            font-size: 1.5rem;
             margin-bottom: 15px;
-            opacity: 0.9;
+            font-weight: 500;
+            text-shadow: 0 1px 2px rgba(0,0,0,0.5);
         }
         
         .cta-buttons {
             display: flex;
             justify-content: center;
             gap: 20px;
-            margin-top: 15px;
+            margin-top: 25px;
             flex-wrap: wrap;
         }
         
@@ -63,6 +84,8 @@
             display: inline-flex;
             align-items: center;
             gap: 8px;
+            z-index: 1;
+            position: relative;
         }
         
         .btn:hover {
@@ -175,7 +198,7 @@
             text-align: center;
             padding: 60px 20px;
             background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), 
-                        url('https://images.unsplash.com/photo-1558981403-c5f9899a28bc?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1200&q=80') center/cover no-repeat;
+                        url('https://images.unsplash.com/photo-1600679472829-3044539ce8ed?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2000&q=80') center/cover no-repeat;
             color: white;
             text-shadow: 0 2px 4px rgba(0,0,0,0.7);
             border-radius: 10px;
@@ -200,7 +223,7 @@
             text-align: center;
             margin: 40px 0 30px;
             font-size: 2.2rem;
-            color: #d10000;
+            color: #1a3a6c;
             position: relative;
         }
         
@@ -227,6 +250,7 @@
             overflow: hidden;
             box-shadow: 0 5px 15px rgba(0,0,0,0.08);
             transition: transform 0.3s, box-shadow 0.3s;
+            border: 1px solid #eee;
         }
         
         .product-card:hover {
@@ -285,7 +309,7 @@
         
         .add-to-cart {
             width: 100%;
-            background: #222;
+            background: #1a3a6c;
             color: white;
             border: none;
             padding: 12px;
@@ -300,7 +324,7 @@
         }
         
         .add-to-cart:hover {
-            background: #d10000;
+            background: #2a5298;
         }
         
         /* Корзина */
@@ -310,7 +334,7 @@
             top: 0;
             right: 0;
             width: 100%;
-            max-width: 400px;
+            max-width: 500px;
             height: 100%;
             background: white;
             box-shadow: -5px 0 15px rgba(0,0,0,0.1);
@@ -324,7 +348,7 @@
             justify-content: space-between;
             align-items: center;
             padding: 20px;
-            background: #222;
+            background: #1a3a6c;
             color: white;
         }
         
@@ -351,6 +375,7 @@
             justify-content: space-between;
             padding: 15px 0;
             border-bottom: 1px solid #eee;
+            align-items: center;
         }
         
         .item-info {
@@ -365,6 +390,43 @@
         .item-price {
             color: #d10000;
             font-weight: bold;
+        }
+        
+        .item-quantity {
+            display: flex;
+            align-items: center;
+            margin: 10px 0;
+        }
+        
+        .quantity-btn {
+            width: 30px;
+            height: 30px;
+            background: #f0f0f0;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .quantity-input {
+            width: 40px;
+            height: 30px;
+            text-align: center;
+            border: 1px solid #ddd;
+            margin: 0 5px;
+            border-radius: 4px;
+        }
+        
+        .remove-item {
+            background: none;
+            border: none;
+            color: #ff0000;
+            cursor: pointer;
+            font-size: 1.2rem;
+            margin-left: 15px;
         }
         
         .cart-total {
@@ -403,6 +465,49 @@
             z-index: 999;
         }
         
+        /* Форма заказа */
+        .order-form {
+            padding: 20px;
+            background: #f9f9f9;
+            border-radius: 10px;
+            margin-top: 20px;
+            display: none;
+        }
+        
+        .form-title {
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+            color: #1a3a6c;
+        }
+        
+        .form-group {
+            margin-bottom: 15px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: 500;
+        }
+        
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 1rem;
+        }
+        
+        .form-row {
+            display: flex;
+            gap: 15px;
+        }
+        
+        .form-row .form-group {
+            flex: 1;
+        }
+        
         /* Страницы информации */
         .info-section {
             background: white;
@@ -414,7 +519,7 @@
         
         .info-title {
             font-size: 1.8rem;
-            color: #d10000;
+            color: #1a3a6c;
             margin-bottom: 20px;
             padding-bottom: 10px;
             border-bottom: 2px solid #ffcc00;
@@ -449,7 +554,7 @@
         
         .contact-card h3 {
             margin-bottom: 15px;
-            color: #d10000;
+            color: #1a3a6c;
             display: flex;
             align-items: center;
             gap: 10px;
@@ -502,7 +607,7 @@
         
         .category-name {
             font-size: 1.6rem;
-            color: #d10000;
+            color: #1a3a6c;
             font-weight: bold;
             margin-bottom: 15px;
         }
@@ -594,22 +699,43 @@
                 padding: 10px 20px;
                 font-size: 0.9rem;
             }
+            
+            .form-row {
+                flex-direction: column;
+                gap: 0;
+            }
+        }
+        
+        .notification {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            padding: 15px 25px;
+            background: #00a651;
+            color: white;
+            border-radius: 5px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            z-index: 10000;
+            display: none;
         }
     </style>
 </head>
 <body>
     <!-- Шапка сайта -->
     <header>
-        <div class="logo">Мототехника KAYO и ATAKI!</div>
-        <div class="slogan">Официальный дилер с гарантией и сервисным обслуживанием</div>
-        
-        <div class="cta-buttons">
-            <button class="btn" onclick="showPage('catalog')">
-                <i class="fas fa-list"></i> Смотреть каталог
-            </button>
-            <button class="btn" onclick="showPage('delivery')">
-                <i class="fas fa-truck"></i> Узнать о доставке
-            </button>
+        <div class="header-overlay"></div>
+        <div class="header-content">
+            <div class="logo">Мототехника KAYO и ATAKI!</div>
+            <div class="slogan">Официальный дилер мототехники в России</div>
+            
+            <div class="cta-buttons">
+                <button class="btn" onclick="showPage('catalog')">
+                    <i class="fas fa-list"></i> Смотреть каталог
+                </button>
+                <button class="btn" onclick="showPage('delivery')">
+                    <i class="fas fa-truck"></i> Узнать о доставке
+                </button>
+            </div>
         </div>
     </header>
     
@@ -1109,14 +1235,52 @@
         <div class="cart-total">
             Итого: <span id="cart-total-price">0</span> ₽
         </div>
-        <div class="cart-actions">
+        <div class="order-form" id="order-form">
+            <h3 class="form-title">Оформление заказа</h3>
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="name">Имя</label>
+                    <input type="text" id="name" required>
+                </div>
+                <div class="form-group">
+                    <label for="phone">Телефон</label>
+                    <input type="tel" id="phone" required>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" id="email" required>
+            </div>
+            <div class="form-group">
+                <label for="address">Адрес доставки</label>
+                <input type="text" id="address" required>
+            </div>
+            <div class="form-group">
+                <label for="comment">Комментарий к заказу</label>
+                <textarea id="comment" rows="3"></textarea>
+            </div>
+            <div class="cart-actions">
+                <button class="btn btn-clear" onclick="document.getElementById('order-form').style.display='none'">
+                    <i class="fas fa-times"></i> Отмена
+                </button>
+                <button class="btn btn-checkout" onclick="submitOrder()">
+                    <i class="fas fa-paper-plane"></i> Отправить заказ
+                </button>
+            </div>
+        </div>
+        <div class="cart-actions" id="cart-actions">
             <button class="btn btn-clear" id="clear-cart-popup">
                 <i class="fas fa-trash"></i> Очистить
             </button>
-            <button class="btn btn-checkout">
+            <button class="btn btn-checkout" onclick="showOrderForm()">
                 <i class="fas fa-check"></i> Оформить заказ
             </button>
         </div>
+    </div>
+    
+    <!-- Уведомление -->
+    <div class="notification" id="notification">
+        <i class="fas fa-check-circle"></i> Заказ успешно отправлен!
     </div>
     
     <!-- Подвал -->
@@ -1183,15 +1347,22 @@
             
             let totalPrice = 0;
             
-            cart.forEach(item => {
+            cart.forEach((item, index) => {
                 const itemElement = document.createElement('div');
                 itemElement.className = 'cart-item';
                 itemElement.innerHTML = `
                     <div class="item-info">
                         <div class="item-name">${item.name}</div>
-                        <div class="item-price">${item.price.toLocaleString()} ₽ × ${item.quantity}</div>
+                        <div class="item-price">${item.price.toLocaleString()} ₽</div>
+                        <div class="item-quantity">
+                            <button class="quantity-btn" onclick="updateQuantity(${index}, ${item.quantity - 1})">-</button>
+                            <input type="number" class="quantity-input" value="${item.quantity}" min="1" onchange="updateQuantity(${index}, parseInt(this.value))">
+                            <button class="quantity-btn" onclick="updateQuantity(${index}, ${item.quantity + 1})">+</button>
+                        </div>
                     </div>
-                    <div class="item-total">${(item.price * item.quantity).toLocaleString()} ₽</div>
+                    <button class="remove-item" onclick="removeFromCart(${index})">
+                        <i class="fas fa-trash"></i>
+                    </button>
                 `;
                 cartItemsContainer.appendChild(itemElement);
                 
@@ -1199,6 +1370,23 @@
             });
             
             cartTotalPrice.textContent = totalPrice.toLocaleString();
+        }
+        
+        // Обновление количества товара
+        function updateQuantity(index, newQuantity) {
+            if (newQuantity < 1) newQuantity = 1;
+            cart[index].quantity = newQuantity;
+            localStorage.setItem('cart', JSON.stringify(cart));
+            updateCartPopup();
+            updateCartCounter();
+        }
+        
+        // Удаление товара из корзины
+        function removeFromCart(index) {
+            cart.splice(index, 1);
+            localStorage.setItem('cart', JSON.stringify(cart));
+            updateCartPopup();
+            updateCartCounter();
         }
         
         // Добавление товара в корзину
@@ -1223,13 +1411,13 @@
             updateCartCounter();
             
             // Показываем уведомление
-            alert(`Товар "${name}" добавлен в корзину!`);
+            showNotification(`Товар "${name}" добавлен в корзину!`);
         }
         
         // Очистка корзины
         function clearCart() {
             if (cart.length === 0) {
-                alert('Корзина уже пуста!');
+                showNotification('Корзина уже пуста!');
                 return;
             }
             
@@ -1238,7 +1426,7 @@
                 localStorage.setItem('cart', JSON.stringify(cart));
                 updateCartCounter();
                 updateCartPopup();
-                alert('Корзина успешно очищена!');
+                showNotification('Корзина успешно очищена!');
             }
         }
         
@@ -1250,6 +1438,8 @@
             if (cartPopup.style.display === 'flex') {
                 cartPopup.style.display = 'none';
                 overlay.style.display = 'none';
+                document.getElementById('order-form').style.display = 'none';
+                document.getElementById('cart-actions').style.display = 'flex';
             } else {
                 updateCartPopup();
                 cartPopup.style.display = 'flex';
@@ -1260,6 +1450,102 @@
         function closeCart() {
             document.getElementById('cart-popup').style.display = 'none';
             document.getElementById('cart-overlay').style.display = 'none';
+            document.getElementById('order-form').style.display = 'none';
+            document.getElementById('cart-actions').style.display = 'flex';
+        }
+        
+        // Показать форму заказа
+        function showOrderForm() {
+            if (cart.length === 0) {
+                showNotification('Корзина пуста! Добавьте товары перед оформлением заказа.');
+                return;
+            }
+            document.getElementById('order-form').style.display = 'block';
+            document.getElementById('cart-actions').style.display = 'none';
+        }
+        
+        // Отправка заказа
+        function submitOrder() {
+            const name = document.getElementById('name').value;
+            const phone = document.getElementById('phone').value;
+            const email = document.getElementById('email').value;
+            const address = document.getElementById('address').value;
+            const comment = document.getElementById('comment').value;
+            
+            if (!name || !phone || !email || !address) {
+                showNotification('Пожалуйста, заполните все обязательные поля!');
+                return;
+            }
+            
+            // Формируем текст заказа
+            let orderText = `Новый заказ!\n\nКлиент: ${name}\nТелефон: ${phone}\nEmail: ${email}\nАдрес: ${address}\n\nТовары:\n`;
+            
+            let total = 0;
+            cart.forEach(item => {
+                const itemTotal = item.price * item.quantity;
+                orderText += `- ${item.name} (${item.quantity} шт.) - ${itemTotal.toLocaleString()} ₽\n`;
+                total += itemTotal;
+            });
+            
+            orderText += `\nИтого: ${total.toLocaleString()} ₽`;
+            
+            if (comment) {
+                orderText += `\n\nКомментарий: ${comment}`;
+            }
+            
+            // Отправка на почту
+            sendEmail(orderText);
+            
+            // Очистка корзины
+            cart = [];
+            localStorage.setItem('cart', JSON.stringify(cart));
+            updateCartCounter();
+            
+            // Скрываем корзину
+            closeCart();
+            
+            // Сбрасываем форму
+            document.getElementById('name').value = '';
+            document.getElementById('phone').value = '';
+            document.getElementById('email').value = '';
+            document.getElementById('address').value = '';
+            document.getElementById('comment').value = '';
+            
+            showNotification('Заказ успешно отправлен! Мы свяжемся с вами в ближайшее время.');
+        }
+        
+        // Отправка email
+        function sendEmail(orderText) {
+            // В реальном проекте здесь будет код отправки через EmailJS или другой сервис
+            // Для демонстрации просто выводим в консоль
+            console.log("Заказ отправлен на email: dima.nogowitsin1906@gmail.com");
+            console.log(orderText);
+            
+            // Отправка в Telegram
+            sendTelegram(orderText);
+        }
+        
+        // Отправка в Telegram
+        function sendTelegram(orderText) {
+            const botToken = 'YOUR_BOT_TOKEN'; // Замените на реальный токен бота
+            const chatId = '@Elemcheg'; // Ваш Telegram ID или имя канала
+            
+            // В реальном проекте:
+            // fetch(`https://api.telegram.org/bot${botToken}/sendMessage?chat_id=${chatId}&text=${encodeURIComponent(orderText)}`)
+            
+            console.log("Заказ отправлен в Telegram: @Elemcheg");
+            console.log(orderText);
+        }
+        
+        // Показать уведомление
+        function showNotification(message) {
+            const notification = document.getElementById('notification');
+            notification.innerHTML = `<i class="fas fa-check-circle"></i> ${message}`;
+            notification.style.display = 'block';
+            
+            setTimeout(() => {
+                notification.style.display = 'none';
+            }, 3000);
         }
         
         // Переключение страниц
