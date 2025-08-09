@@ -959,116 +959,543 @@ footer {
     </div>
 </section>
 
-<section id="catalog" class="section">
-    <div class="container">
-        <h2 class="section-title">Каталог техники</h2>
-        
-        <div class="filter-buttons">
-            <button class="filter-btn active" data-filter="all">Все товары</button>
-            <button class="filter-btn" data-filter="quad">Квадроциклы</button>
-            <button class="filter-btn" data-filter="pitbike">Питбайки</button>
-            <button class="filter-btn" data-filter="cross">Кроссовые</button>
-            <button class="filter-btn" data-filter="new">Новинки</button>
-            <button class="filter-btn" data-filter="sale">Скидки</button>
-        </div>
-        
-        <div class="products">
-            <div class="product" data-category="quad new">
-                <div class="product-badge">Новинка</div>
-                <div class="product-img">
-                    <i class="fas fa-atv"></i>
-                </div>
-                <div class="product-info">
-                    <h3>Квадроцикл KAYO Bull 250</h3>
-                    <div class="product-category">Квадроциклы</div>
-                    <p>Мощный квадроцикл для бездорожья</p>
-                    <div class="price">189 900 ₽</div>
-                    <div class="stock-badge in-stock">В наличии</div>
-                    <button class="add-to-cart"><i class="fas fa-cart-plus"></i> В корзину</button>
-                </div>
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MOTOPRO - Каталог мототехники</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #ff6600;
+            --primary-dark: #e55d00;
+            --secondary: #222;
+            --light: #f4f4f4;
+            --dark: #333;
+            --gray: #e0e0e0;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: var(--light);
+            color: var(--dark);
+            line-height: 1.6;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .section-title {
+            text-align: center;
+            color: var(--primary);
+            margin: 30px 0;
+            font-size: 2.2rem;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: "";
+            display: block;
+            width: 80px;
+            height: 4px;
+            background: var(--primary);
+            margin: 15px auto;
+            border-radius: 2px;
+        }
+
+        .filter-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 30px;
+            flex-wrap: wrap;
+        }
+
+        .filter-btn {
+            background: white;
+            border: 2px solid var(--primary);
+            color: var(--primary);
+            padding: 8px 20px;
+            border-radius: 30px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: all 0.3s;
+        }
+
+        .filter-btn.active, 
+        .filter-btn:hover {
+            background: var(--primary);
+            color: white;
+        }
+
+        .products {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 25px;
+            margin-top: 30px;
+        }
+
+        .product {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            transition: transform 0.3s;
+            position: relative;
+        }
+
+        .product:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+
+        .product-badge {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: var(--primary);
+            color: white;
+            padding: 5px 10px;
+            border-radius: 3px;
+            font-size: 0.8rem;
+            font-weight: bold;
+            z-index: 2;
+        }
+
+        .product-img {
+            height: 200px;
+            background: var(--gray);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        .product-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+
+        .product:hover .product-img img {
+            transform: scale(1.1);
+        }
+
+        .product-info {
+            padding: 20px;
+        }
+
+        .product h3 {
+            margin-bottom: 10px;
+            color: var(--dark);
+            font-size: 1.2rem;
+        }
+
+        .product-category {
+            color: #777;
+            font-size: 0.9rem;
+            margin-bottom: 10px;
+        }
+
+        .price {
+            font-size: 1.4rem;
+            font-weight: bold;
+            color: var(--primary);
+            margin: 10px 0;
+        }
+
+        .specs {
+            margin: 15px 0;
+        }
+
+        .spec-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 5px 0;
+            border-bottom: 1px dashed var(--gray);
+            font-size: 0.9rem;
+        }
+
+        .spec-value {
+            font-weight: bold;
+        }
+
+        .add-to-cart {
+            background: var(--primary);
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+            width: 100%;
+            transition: background 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+
+        .add-to-cart:hover {
+            background: var(--primary-dark);
+        }
+
+        @media (max-width: 768px) {
+            .products {
+                grid-template-columns: 1fr;
+            }
+            
+            .filter-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <section id="catalog">
+        <div class="container">
+            <h2 class="section-title">Каталог мототехники</h2>
+            
+            <div class="filter-buttons">
+                <button class="filter-btn active" data-filter="all">Все товары</button>
+                <button class="filter-btn" data-filter="pitbike">Питбайки</button>
+                <button class="filter-btn" data-filter="cross">Кроссовые</button>
+                <button class="filter-btn" data-filter="dual">Дуал-спорт</button>
+                <button class="filter-btn" data-filter="kids">Детские</button>
             </div>
             
-            <div class="product" data-category="pitbike sale">
-                <div class="product-badge">Скидка 10%</div>
-                <div class="product-img">
-                    <i class="fas fa-motorcycle"></i>
-                </div>
-                <div class="product-info">
-                    <h3>Питбайк ATAKI 125cc</h3>
-                    <div class="product-category">Питбайки</div>
-                    <p>Легкий и маневренный для начинающих</p>
-                    <div class="price">
-                        <span class="old-price">99 900 ₽</span>
-                        89 900 ₽
+            <div class="products">
+                <!-- KAYO BASIC K125EM 17/14 KRZ -->
+                <div class="product" data-category="pitbike">
+                    <div class="product-badge">2024</div>
+                    <div class="product-img">
+                        <img src="https://example.com/kayo-k125em.jpg" alt="KAYO BASIC K125EM">
                     </div>
-                    <div class="stock-badge low-stock">Мало в наличии</div>
-                    <button class="add-to-cart"><i class="fas fa-cart-plus"></i> В корзину</button>
-                </div>
-            </div>
-            
-            <div class="product" data-category="cross">
-                <div class="product-img">
-                    <i class="fas fa-biking"></i>
-                </div>
-                <div class="product-info">
-                    <h3>Кроссовый KAYO T2 250</h3>
-                    <div class="product-category">Кроссовые</div>
-                    <p>Профессиональный для спортивных соревнований</p>
-                    <div class="price">219 900 ₽</div>
-                    <div class="stock-badge in-stock">В наличии</div>
-                    <button class="add-to-cart"><i class="fas fa-cart-plus"></i> В корзину</button>
-                </div>
-            </div>
-            
-            <div class="product" data-category="quad">
-                <div class="product-img">
-                    <i class="fas fa-atv"></i>
-                </div>
-                <div class="product-info">
-                    <h3>Квадроцикл ATAKI 300</h3>
-                    <div class="product-category">Квадроциклы</div>
-                    <p>Модель для профессионалов с увеличенным клиренсом</p>
-                    <div class="price">249 900 ₽</div>
-                    <div class="stock-badge in-stock">В наличии</div>
-                    <button class="add-to-cart"><i class="fas fa-cart-plus"></i> В корзину</button>
-                </div>
-            </div>
-            
-            <div class="product" data-category="pitbike new">
-                <div class="product-badge">Новинка</div>
-                <div class="product-img">
-                    <i class="fas fa-motorcycle"></i>
-                </div>
-                <div class="product-info">
-                    <h3>Питбайк KAYO 150cc Pro</h3>
-                    <div class="product-category">Питбайки</div>
-                    <p>Профессиональная модель с усиленной рамой</p>
-                    <div class="price">129 900 ₽</div>
-                    <div class="stock-badge in-stock">В наличии</div>
-                    <button class="add-to-cart"><i class="fas fa-cart-plus"></i> В корзину</button>
-                </div>
-            </div>
-            
-            <div class="product" data-category="cross sale">
-                <div class="product-badge">Скидка 5%</div>
-                <div class="product-img">
-                    <i class="fas fa-biking"></i>
-                </div>
-                <div class="product-info">
-                    <h3>Кроссовый ATAKI MX 200</h3>
-                    <div class="product-category">Кроссовые</div>
-                    <p>Идеальный выбор для начинающих райдеров</p>
-                    <div class="price">
-                        <span class="old-price">179 900 ₽</span>
-                        170 900 ₽
+                    <div class="product-info">
+                        <h3>KAYO BASIC K125EM 17/14 KRZ</h3>
+                        <div class="product-category">Питбайк</div>
+                        <div class="price">104 990 ₽</div>
+                        <div class="specs">
+                            <div class="spec-item">
+                                <span>Двигатель:</span>
+                                <span class="spec-value">125 см³, 9 л.с.</span>
+                            </div>
+                            <div class="spec-item">
+                                <span>Трансмиссия:</span>
+                                <span class="spec-value">4-ступ. (механика)</span>
+                            </div>
+                            <div class="spec-item">
+                                <span>Вес:</span>
+                                <span class="spec-value">72 кг</span>
+                            </div>
+                            <div class="spec-item">
+                                <span>Бак:</span>
+                                <span class="spec-value">5.5 л</span>
+                            </div>
+                        </div>
+                        <button class="add-to-cart"><i class="fas fa-cart-plus"></i> В корзину</button>
                     </div>
-                    <div class="stock-badge in-stock">В наличии</div>
-                    <button class="add-to-cart"><i class="fas fa-cart-plus"></i> В корзину</button>
+                </div>
+                
+                <!-- KAYO BASIC K125EA 17/14 KRZ -->
+                <div class="product" data-category="pitbike">
+                    <div class="product-badge">2024</div>
+                    <div class="product-img">
+                        <img src="https://example.com/kayo-k125ea.jpg" alt="KAYO BASIC K125EA">
+                    </div>
+                    <div class="product-info">
+                        <h3>KAYO BASIC K125EA 17/14 KRZ</h3>
+                        <div class="product-category">Питбайк (полуавтомат)</div>
+                        <div class="price">104 990 ₽</div>
+                        <div class="specs">
+                            <div class="spec-item">
+                                <span>Двигатель:</span>
+                                <span class="spec-value">125 см³, 9 л.с.</span>
+                            </div>
+                            <div class="spec-item">
+                                <span>Трансмиссия:</span>
+                                <span class="spec-value">4-ступ. (полуавтомат)</span>
+                            </div>
+                            <div class="spec-item">
+                                <span>Вес:</span>
+                                <span class="spec-value">73 кг</span>
+                            </div>
+                            <div class="spec-item">
+                                <span>Бак:</span>
+                                <span class="spec-value">5.5 л</span>
+                            </div>
+                        </div>
+                        <button class="add-to-cart"><i class="fas fa-cart-plus"></i> В корзину</button>
+                    </div>
+                </div>
+                
+                <!-- KAYO BASIC TT140 17/14 KRZ -->
+                <div class="product" data-category="pitbike">
+                    <div class="product-img">
+                        <img src="https://example.com/kayo-tt140.jpg" alt="KAYO BASIC TT140">
+                    </div>
+                    <div class="product-info">
+                        <h3>KAYO BASIC TT140 17/14 KRZ</h3>
+                        <div class="product-category">Питбайк</div>
+                        <div class="price">104 990 ₽</div>
+                        <div class="specs">
+                            <div class="spec-item">
+                                <span>Двигатель:</span>
+                                <span class="spec-value">140 см³, 10 л.с.</span>
+                            </div>
+                            <div class="spec-item">
+                                <span>Трансмиссия:</span>
+                                <span class="spec-value">4-ступ. (механика)</span>
+                            </div>
+                            <div class="spec-item">
+                                <span>Вес:</span>
+                                <span class="spec-value">75 кг</span>
+                            </div>
+                            <div class="spec-item">
+                                <span>Бак:</span>
+                                <span class="spec-value">5.5 л</span>
+                            </div>
+                        </div>
+                        <button class="add-to-cart"><i class="fas fa-cart-plus"></i> В корзину</button>
+                    </div>
+                </div>
+                
+                <!-- KAYO MINI TD125 14/12 -->
+                <div class="product" data-category="pitbike">
+                    <div class="product-img">
+                        <img src="https://example.com/kayo-td125.jpg" alt="KAYO MINI TD125">
+                    </div>
+                    <div class="product-info">
+                        <h3>KAYO MINI TD125 14/12</h3>
+                        <div class="product-category">Мини-питбайк</div>
+                        <div class="price">104 990 ₽</div>
+                        <div class="specs">
+                            <div class="spec-item">
+                                <span>Двигатель:</span>
+                                <span class="spec-value">125 см³, 9 л.с.</span>
+                            </div>
+                            <div class="spec-item">
+                                <span>Трансмиссия:</span>
+                                <span class="spec-value">4-ступ. (механика)</span>
+                            </div>
+                            <div class="spec-item">
+                                <span>Вес:</span>
+                                <span class="spec-value">60 кг</span>
+                            </div>
+                            <div class="spec-item">
+                                <span>Высота седла:</span>
+                                <span class="spec-value">750 мм</span>
+                            </div>
+                        </div>
+                        <button class="add-to-cart"><i class="fas fa-cart-plus"></i> В корзину</button>
+                    </div>
+                </div>
+                
+                <!-- KAYO DBR SX50-A -->
+                <div class="product" data-category="kids">
+                    <div class="product-badge">Детский</div>
+                    <div class="product-img">
+                        <img src="https://example.com/kayo-dbr.jpg" alt="KAYO DBR SX50-A">
+                    </div>
+                    <div class="product-info">
+                        <h3>KAYO DBR SX50-A</h3>
+                        <div class="product-category">Детский питбайк</div>
+                        <div class="price">29 990 ₽</div>
+                        <div class="specs">
+                            <div class="spec-item">
+                                <span>Двигатель:</span>
+                                <span class="spec-value">50 см³, 3 л.с.</span>
+                            </div>
+                            <div class="spec-item">
+                                <span>Трансмиссия:</span>
+                                <span class="spec-value">Автомат</span>
+                            </div>
+                            <div class="spec-item">
+                                <span>Вес:</span>
+                                <span class="spec-value">40 кг</span>
+                            </div>
+                            <div class="spec-item">
+                                <span>Высота седла:</span>
+                                <span class="spec-value">650 мм</span>
+                            </div>
+                        </div>
+                        <button class="add-to-cart"><i class="fas fa-cart-plus"></i> В корзину</button>
+                    </div>
+                </div>
+                
+                <!-- KAYO K1-L 150 MX 19/16 -->
+                <div class="product" data-category="cross">
+                    <div class="product-img">
+                        <img src="https://example.com/kayo-k1.jpg" alt="KAYO K1-L 150 MX">
+                    </div>
+                    <div class="product-info">
+                        <h3>KAYO K1-L 150 MX 19/16</h3>
+                        <div class="product-category">Кроссовый мотоцикл</div>
+                        <div class="price">129 990 ₽</div>
+                        <div class="specs">
+                            <div class="spec-item">
+                                <span>Двигатель:</span>
+                                <span class="spec-value">150 см³, 12 л.с.</span>
+                            </div>
+                            <div class="spec-item">
+                                <span>Трансмиссия:</span>
+                                <span class="spec-value">5-ступ. (механика)</span>
+                            </div>
+                            <div class="spec-item">
+                                <span>Вес:</span>
+                                <span class="spec-value">85 кг</span>
+                            </div>
+                            <div class="spec-item">
+                                <span>Колеса:</span>
+                                <span class="spec-value">19"/16"</span>
+                            </div>
+                        </div>
+                        <button class="add-to-cart"><i class="fas fa-cart-plus"></i> В корзину</button>
+                    </div>
+                </div>
+                
+                <!-- ATAKI BATLLO 300 -->
+                <div class="product" data-category="dual">
+                    <div class="product-img">
+                        <img src="https://example.com/ataki-batllo.jpg" alt="ATAKI BATLLO 300">
+                    </div>
+                    <div class="product-info">
+                        <h3>ATAKI BATLLO 300 (4T PR300)</h3>
+                        <div class="product-category">Дуал-спорт (ПТС)</div>
+                        <div class="price">200 000 ₽</div>
+                        <div class="specs">
+                            <div class="spec-item">
+                                <span>Двигатель:</span>
+                                <span class="spec-value">300 см³, 24 л.с.</span>
+                            </div>
+                            <div class="spec-item">
+                                <span>Трансмиссия:</span>
+                                <span class="spec-value">6-ступ. (механика)</span>
+                            </div>
+                            <div class="spec-item">
+                                <span>Вес:</span>
+                                <span class="spec-value">120 кг</span>
+                            </div>
+                            <div class="spec-item">
+                                <span>Колеса:</span>
+                                <span class="spec-value">17"/17"</span>
+                            </div>
+                        </div>
+                        <button class="add-to-cart"><i class="fas fa-cart-plus"></i> В корзину</button>
+                    </div>
+                </div>
+                
+                <!-- ATAKI CARRERA 300 -->
+                <div class="product" data-category="dual">
+                    <div class="product-img">
+                        <img src="https://example.com/ataki-carrera.jpg" alt="ATAKI CARRERA 300">
+                    </div>
+                    <div class="product-info">
+                        <h3>ATAKI CARRERA 300 (4T PR300)</h3>
+                        <div class="product-category">Дуал-спорт (ПТС)</div>
+                        <div class="price">175 000 ₽</div>
+                        <div class="specs">
+                            <div class="spec-item">
+                                <span>Двигатель:</span>
+                                <span class="spec-value">300 см³, 24 л.с.</span>
+                            </div>
+                            <div class="spec-item">
+                                <span>Трансмиссия:</span>
+                                <span class="spec-value">6-ступ. (механика)</span>
+                            </div>
+                            <div class="spec-item">
+                                <span>Вес:</span>
+                                <span class="spec-value">118 кг</span>
+                            </div>
+                            <div class="spec-item">
+                                <span>Колеса:</span>
+                                <span class="spec-value">19"/17"</span>
+                            </div>
+                        </div>
+                        <button class="add-to-cart"><i class="fas fa-cart-plus"></i> В корзину</button>
+                    </div>
+                </div>
+                
+                <!-- ATAKI CROSSER 300 -->
+                <div class="product" data-category="dual">
+                    <div class="product-img">
+                        <img src="https://example.com/ataki-crosser.jpg" alt="ATAKI CROSSER 300">
+                    </div>
+                    <div class="product-info">
+                        <h3>ATAKI CROSSER 300 (4T PR300)</h3>
+                        <div class="product-category">Дуал-спорт (ПТС)</div>
+                        <div class="price">170 000 ₽</div>
+                        <div class="specs">
+                            <div class="spec-item">
+                                <span>Двигатель:</span>
+                                <span class="spec-value">271 см³, 24 л.с. :cite[3]:cite[8]</span>
+                            </div>
+                            <div class="spec-item">
+                                <span>Трансмиссия:</span>
+                                <span class="spec-value">6-ступ. (механика)</span>
+                            </div>
+                            <div class="spec-item">
+                                <span>Бак:</span>
+                                <span class="spec-value">13 л :cite[8]</span>
+                            </div>
+                            <div class="spec-item">
+                                <span>Колеса:</span>
+                                <span class="spec-value">21"/18"</span>
+                            </div>
+                        </div>
+                        <button class="add-to-cart"><i class="fas fa-cart-plus"></i> В корзину</button>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
-</section>
+    </section>
+
+    <script>
+        // Фильтрация товаров
+        const filterBtns = document.querySelectorAll('.filter-btn');
+        const products = document.querySelectorAll('.product');
+        
+        filterBtns.forEach(btn => {
+            btn.addEventListener('click', function() {
+                const filter = this.dataset.filter;
+                
+                // Обновляем активную кнопку
+                filterBtns.forEach(b => b.classList.remove('active'));
+                this.classList.add('active');
+                
+                filterProducts(filter);
+            });
+        });
+        
+        function filterProducts(filter) {
+            products.forEach(product => {
+                if (filter === 'all') {
+                    product.style.display = 'block';
+                } else {
+                    if (product.dataset.category === filter) {
+                        product.style.display = 'block';
+                    } else {
+                        product.style.display = 'none';
+                    }
+                }
+            });
+        }
+    </script>
+</body>
+</html>
 
 <section id="about" class="section">
     <div class="container">
