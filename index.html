@@ -198,7 +198,7 @@
             text-align: center;
             padding: 60px 20px;
             background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), 
-                        url('https://images.unsplash.com/photo-1600679472829-3044539ce8ed?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2000&q=80') center/cover no-repeat;
+                        url('https://images.unsplash.com/photo-1558981285-501cd9af9426?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2000&q=80') center/cover no-repeat;
             color: white;
             text-shadow: 0 2px 4px rgba(0,0,0,0.7);
             border-radius: 10px;
@@ -825,7 +825,7 @@
                                 <span class="spec-value">4-ступенчатая</span>
                             </div>
                         </div>
-                        <button class="add-to-cart" onclick="addToCart('AYO BASIC K125EM 17/14 KRZ', 104990)">
+                        <button class="add-to-cart" onclick="addToCart('KAYO BASIC K125EM 17/14 KRZ', 104990)">
                             <i class="fas fa-cart-plus"></i> В корзину
                         </button>
                     </div>
@@ -1351,7 +1351,9 @@
                 itemElement.innerHTML = `
                     <div class="item-info">
                         <div class="item-name">${item.name}</div>
-                        <div class="item-price">${item.price.toLocaleString()} ₽</div>
+                        <div class="item-price">${item.price.toLocaleString()} ₽ × ${item.quantity} = 
+                            <strong>${(item.price * item.quantity).toLocaleString()} ₽</strong>
+                        </div>
                         <div class="item-quantity">
                             <button class="quantity-btn" onclick="updateQuantity(${index}, ${item.quantity - 1})">-</button>
                             <input type="number" class="quantity-input" value="${item.quantity}" min="1" onchange="updateQuantity(${index}, parseInt(this.value))">
@@ -1372,7 +1374,7 @@
         
         // Обновление количества товара
         function updateQuantity(index, newQuantity) {
-            if (newQuantity < 1) newQuantity = 1;
+            if (isNaN(newQuantity) || newQuantity < 1) newQuantity = 1;
             cart[index].quantity = newQuantity;
             localStorage.setItem('cart', JSON.stringify(cart));
             updateCartPopup();
@@ -1470,7 +1472,21 @@
             const address = document.getElementById('address').value;
             const comment = document.getElementById('comment').value;
             
-            if (!name || !phone || !email || !address) {
+            // Сбрасываем ошибки
+            document.querySelectorAll('.form-group input').forEach(i => i.classList.remove('error'));
+            
+            let isValid = true;
+            const requiredFields = ['name', 'phone', 'email', 'address'];
+            
+            requiredFields.forEach(fieldId => {
+                const field = document.getElementById(fieldId);
+                if (!field.value.trim()) {
+                    field.classList.add('error');
+                    isValid = false;
+                }
+            });
+            
+            if (!isValid) {
                 showNotification('Пожалуйста, заполните все обязательные поля!');
                 return;
             }
@@ -1556,6 +1572,14 @@
             // Показать выбранную страницу
             document.getElementById(`${pageId}-page`).classList.add('active-page');
             
+            // Обновляем активные ссылки
+            document.querySelectorAll('.nav-link').forEach(link => {
+                link.classList.remove('active');
+            });
+            
+            const activeLinks = document.querySelectorAll(`.nav-link[onclick*="${pageId}"]`);
+            activeLinks.forEach(link => link.classList.add('active'));
+            
             // Если открываем каталог - прокрутить в начало
             if (pageId === 'catalog') {
                 window.scrollTo(0, 0);
@@ -1569,6 +1593,15 @@
             // Обработчики для кнопок очистки корзины
             document.getElementById('clear-cart-btn').addEventListener('click', clearCart);
             document.getElementById('clear-cart-popup').addEventListener('click', clearCart);
+            
+            // Добавляем обработчики для полей формы
+            ['name', 'phone', 'email', 'address'].forEach(field => {
+                document.getElementById(field).addEventListener('input', function() {
+                    if (this.value.trim()) {
+                        this.classList.remove('error');
+                    }
+                });
+            });
             
             // Показать главную страницу по умолчанию
             showPage('home');
