@@ -20,21 +20,6 @@
             overflow-x: hidden;
         }
         
-        /* Минималистичная шапка для всех страниц кроме главной */
-        .minimized-header header {
-            padding: 10px 0;
-            background: #222;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
-        }
-        
-        .minimized-header .header-content {
-            display: none;
-        }
-        
-        .minimized-header .header-overlay {
-            display: none;
-        }
-        
         /* Шапка */
         header {
             background: linear-gradient(135deg, #1a3a6c, #2a5298);
@@ -44,7 +29,6 @@
             box-shadow: 0 4px 12px rgba(0,0,0,0.1);
             position: relative;
             overflow: hidden;
-            transition: all 0.3s ease;
         }
         
         .header-overlay {
@@ -1024,59 +1008,14 @@
             }
         }
         
-        /* Мобильное меню */
+        /* Мобильное меню - ИЗМЕНЕНО: положение и стили */
         .mobile-menu-btn {
             display: none;
-            flex-direction: column;
-            justify-content: space-between;
-            width: 30px;
-            height: 21px;
-            background: transparent;
+            background: none;
             border: none;
+            color: white;
+            font-size: 1.5rem;
             cursor: pointer;
-            padding: 0;
-        }
-        
-        .mobile-menu-btn span {
-            display: block;
-            height: 3px;
-            width: 100%;
-            background: white;
-            border-radius: 2px;
-        }
-        
-        .mobile-nav {
-            display: none;
-            position: fixed;
-            top: 60px;
-            left: 0;
-            width: 100%;
-            background: #333;
-            flex-direction: column;
-            padding: 15px;
-            gap: 10px;
-            transform: translateY(-100%);
-            transition: transform 0.3s ease;
-            z-index: 1000;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
-        }
-        
-        .mobile-nav.active {
-            transform: translateY(0);
-        }
-        
-        .mobile-nav-link {
-            color: #fff;
-            text-decoration: none;
-            font-weight: bold;
-            padding: 10px;
-            border-bottom: 1px solid #444;
-            font-size: 1.1rem;
-            background: #444;
-            border-radius: 5px;
-            display: flex;
-            align-items: center;
-            gap: 10px;
         }
         
         @media (max-width: 480px) {
@@ -1089,15 +1028,26 @@
             }
             
             .mobile-menu-btn {
-                display: flex;
+                display: block;
             }
             
             .nav-section {
-                display: none;
+                position: fixed;
+                top: 70px;
+                left: 0;
+                width: 100%;
+                background: #333;
+                flex-direction: column;
+                padding: 15px;
+                gap: 10px;
+                transform: translateY(-100%);
+                transition: transform 0.3s ease;
+                z-index: 1000;
+                box-shadow: 0 4px 10px rgba(0,0,0,0.2);
             }
             
-            .mobile-nav {
-                display: flex;
+            .nav-section.active {
+                transform: translateY(0);
             }
             
             .nav-link {
@@ -1106,6 +1056,18 @@
                 font-size: 1.1rem;
                 background: #444;
                 border-radius: 5px;
+            }
+            
+            .nav-link i {
+                display: inline-block;
+                margin-right: 10px;
+                width: 25px;
+                text-align: center;
+                font-size: 1.2rem;
+            }
+            
+            .nav-link span {
+                display: inline;
             }
             
             .btn {
@@ -1245,9 +1207,7 @@
     <!-- Навигация -->
     <nav>
         <button class="mobile-menu-btn" onclick="toggleMobileMenu()">
-            <span></span>
-            <span></span>
-            <span></span>
+            <i class="fas fa-bars"></i>
         </button>
         
         <div class="nav-section">
@@ -1281,28 +1241,6 @@
             </button>
         </div>
     </nav>
-    
-    <!-- Мобильное меню -->
-    <div class="mobile-nav" id="mobile-nav">
-        <a href="#" class="mobile-nav-link" onclick="showPage('home'); toggleMobileMenu();">
-            <i class="fas fa-home"></i> Главная
-        </a>
-        <a href="#" class="mobile-nav-link" onclick="showPage('catalog'); toggleMobileMenu();">
-            <i class="fas fa-motorcycle"></i> Каталог
-        </a>
-        <a href="#" class="mobile-nav-link" onclick="showPage('delivery'); toggleMobileMenu();">
-            <i class="fas fa-truck"></i> Доставка
-        </a>
-        <a href="#" class="mobile-nav-link" onclick="showPage('conditions'); toggleMobileMenu();">
-            <i class="fas fa-file-alt"></i> Условия
-        </a>
-        <a href="#" class="mobile-nav-link" onclick="showPage('guarantee'); toggleMobileMenu();">
-            <i class="fas fa-shield-alt"></i> Гарантия
-        </a>
-        <a href="#" class="mobile-nav-link" onclick="showPage('contacts'); toggleMobileMenu();">
-            <i class="fas fa-phone"></i> Контакты
-        </a>
-    </div>
     
     <!-- Основной контент -->
     <div class="container">
@@ -2395,13 +2333,6 @@
         
         // Переключение страниц
         function showPage(pageId) {
-            // Добавляем класс для минимальной шапки на всех страницах кроме главной
-            if (pageId === 'home') {
-                document.body.classList.remove('minimized-header');
-            } else {
-                document.body.classList.add('minimized-header');
-            }
-            
             // Сохраняем текущую страницу
             localStorage.setItem('lastPage', pageId);
             
@@ -2422,7 +2353,7 @@
             activeLinks.forEach(link => link.classList.add('active'));
             
             // Закрываем мобильное меню
-            document.querySelector('.mobile-nav').classList.remove('active');
+            document.querySelector('.nav-section').classList.remove('active');
             
             // Если открываем каталог - прокрутить в начало
             if (pageId === 'catalog') {
@@ -2432,9 +2363,6 @@
         
         // Показать детальную страницу товара
         function showProductDetail(productId) {
-            // Добавляем класс для минимальной шапки
-            document.body.classList.add('minimized-header');
-            
             // Сохраняем информацию о просматриваемом товаре
             localStorage.setItem('lastPage', 'product-detail');
             localStorage.setItem('lastProductId', productId);
@@ -2502,7 +2430,7 @@
         
         // Переключение мобильного меню
         function toggleMobileMenu() {
-            document.getElementById('mobile-nav').classList.toggle('active');
+            document.querySelector('.nav-section').classList.toggle('active');
         }
         
         // Инициализация при загрузке
@@ -2522,8 +2450,14 @@
                 });
             });
             
-            // Всегда показываем главную страницу при загрузке
-            showPage('home');
+            // Восстановление последней открытой страницы
+            const lastPage = localStorage.getItem('lastPage') || 'home';
+            if (lastPage === 'product-detail') {
+                const productId = localStorage.getItem('lastProductId');
+                if (productId) showProductDetail(parseInt(productId));
+            } else {
+                showPage(lastPage);
+            }
         });
     </script>
 </body>
