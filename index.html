@@ -120,6 +120,7 @@
             font-size: 1.1rem;
             position: relative;
             padding: 5px 0;
+            white-space: nowrap;
         }
         
         .nav-link:hover {
@@ -265,13 +266,15 @@
             position: relative;
             height: 200px;
             overflow: hidden;
+            background: #f8f9fa;
         }
         
         .product-image {
             width: 100%;
             height: 100%;
-            object-fit: cover;
+            object-fit: contain;
             transition: transform 0.5s;
+            padding: 10px;
         }
         
         .product-card:hover .product-image {
@@ -692,30 +695,31 @@
         
         /* Адаптивность */
         @media (max-width: 768px) {
-            .nav-section {
-                gap: 15px;
-                font-size: 0.9rem;
-            }
-            
-            .catalog-grid {
-                grid-template-columns: 1fr;
-            }
-            
-            .footer-content {
-                flex-direction: column;
-                gap: 30px;
-            }
-            
-            .hero h1 {
+            .logo {
                 font-size: 2rem;
             }
             
-            .hero p {
-                font-size: 1.1rem;
+            .slogan {
+                font-size: 1.2rem;
+            }
+            
+            .nav-section {
+                gap: 10px;
+                font-size: 0.9rem;
+            }
+            
+            .nav-link i {
+                display: block;
+                margin-bottom: 5px;
+                font-size: 1.2rem;
+            }
+            
+            .nav-link span {
+                display: none;
             }
             
             .cart-section {
-                gap: 10px;
+                gap: 8px;
             }
             
             .btn {
@@ -723,9 +727,94 @@
                 font-size: 0.9rem;
             }
             
+            .hero h1 {
+                font-size: 1.8rem;
+            }
+            
+            .hero p {
+                font-size: 1.1rem;
+            }
+            
+            .section-title {
+                font-size: 1.8rem;
+            }
+            
+            .catalog-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+            
+            .footer-content {
+                flex-direction: column;
+                gap: 30px;
+            }
+            
             .form-row {
                 flex-direction: column;
                 gap: 0;
+            }
+            
+            .cart-popup {
+                max-width: 100%;
+            }
+            
+            .product-name {
+                font-size: 1.3rem;
+            }
+            
+            .product-price {
+                font-size: 1.4rem;
+            }
+        }
+        
+        /* Мобильное меню */
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.8rem;
+            cursor: pointer;
+        }
+        
+        @media (max-width: 480px) {
+            .mobile-menu-btn {
+                display: block;
+            }
+            
+            .nav-section {
+                position: fixed;
+                top: 70px;
+                left: 0;
+                width: 100%;
+                background: #333;
+                flex-direction: column;
+                padding: 20px;
+                gap: 15px;
+                transform: translateY(-100%);
+                transition: transform 0.3s ease;
+                z-index: 99;
+                box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            }
+            
+            .nav-section.active {
+                transform: translateY(0);
+            }
+            
+            .nav-link {
+                padding: 10px;
+                border-bottom: 1px solid #444;
+            }
+            
+            .nav-link i {
+                display: inline-block;
+                margin-right: 10px;
+                width: 20px;
+                text-align: center;
+            }
+            
+            .nav-link span {
+                display: inline;
             }
         }
         
@@ -740,6 +829,11 @@
             box-shadow: 0 5px 15px rgba(0,0,0,0.2);
             z-index: 10000;
             display: none;
+            max-width: 90%;
+        }
+        
+        .error {
+            border-color: #ff0000 !important;
         }
     </style>
 </head>
@@ -764,24 +858,28 @@
     
     <!-- Навигация -->
     <nav>
+        <button class="mobile-menu-btn" onclick="toggleMobileMenu()">
+            <i class="fas fa-bars"></i>
+        </button>
+        
         <div class="nav-section">
             <a href="#" class="nav-link" onclick="showPage('home')">
-                <i class="fas fa-home"></i> Главная
+                <i class="fas fa-home"></i> <span>Главная</span>
             </a>
             <a href="#" class="nav-link" onclick="showPage('catalog')">
-                <i class="fas fa-motorcycle"></i> Каталог
+                <i class="fas fa-motorcycle"></i> <span>Каталог</span>
             </a>
             <a href="#" class="nav-link" onclick="showPage('delivery')">
-                <i class="fas fa-truck"></i> Доставка
+                <i class="fas fa-truck"></i> <span>Доставка</span>
             </a>
             <a href="#" class="nav-link" onclick="showPage('conditions')">
-                <i class="fas fa-file-alt"></i> Условия
+                <i class="fas fa-file-alt"></i> <span>Условия</span>
             </a>
             <a href="#" class="nav-link" onclick="showPage('guarantee')">
-                <i class="fas fa-shield-alt"></i> Гарантия
+                <i class="fas fa-shield-alt"></i> <span>Гарантия</span>
             </a>
             <a href="#" class="nav-link" onclick="showPage('contacts')">
-                <i class="fas fa-phone"></i> Контакты
+                <i class="fas fa-phone"></i> <span>Контакты</span>
             </a>
         </div>
         
@@ -828,7 +926,7 @@
                 <!-- Товар 1 -->
                 <div class="product-card">
                     <div class="product-image-container">
-                        <img src="https://moto-arena.ru/upload/resize_cache/iblock/3dc/800_800_1/3dcf4c9c1c4d4d0c3f7a1a3f1b4f2b0d.jpg" alt="KAYO BASIC K125EM" class="product-image">
+                        <img src="https://static.insales-cdn.com/images/products/1/4418/985862466/07.png" alt="KAYO BASIC K125EM" class="product-image">
                     </div>
                     <div class="product-info">
                         <div class="product-name">KAYO BASIC K125EM 17/14 KRZ (2024)</div>
@@ -862,7 +960,7 @@
                 <!-- Товар 2 -->
                 <div class="product-card">
                     <div class="product-image-container">
-                        <img src="https://moto-arena.ru/upload/resize_cache/iblock/6d3/800_800_1/6d3c4c9c1c4d4d0c3f7a1a3f1b4f2b0d.jpg" alt="KAYO BASIC K125EA" class="product-image">
+                        <img src="https://globaldrive.ru/upload/iblock/088/xe6uevaxb0lz2uijejq04r7xhxswul2f.jpg" alt="KAYO BASIC K125EA" class="product-image">
                     </div>
                     <div class="product-info">
                         <div class="product-name">KAYO BASIC K125EA 17/14 KRZ (2024)</div>
@@ -896,7 +994,7 @@
                 <!-- Товар 3 -->
                 <div class="product-card">
                     <div class="product-image-container">
-                        <img src="https://moto-arena.ru/upload/resize_cache/iblock/9a7/800_800_1/9a7c4c9c1c4d4d0c3f7a1a3f1b4f2b0d.jpg" alt="KAYO BASIC TT140" class="product-image">
+                        <img src="https://globaldrive.ru/upload/iblock/c87/fmqivewnshmdew63g3i3xtema3p4fpow.jpg" alt="KAYO BASIC TT140" class="product-image">
                     </div>
                     <div class="product-info">
                         <div class="product-name">KAYO BASIC TT140 17/14 KRZ</div>
@@ -930,7 +1028,7 @@
                 <!-- Товар 4 -->
                 <div class="product-card">
                     <div class="product-image-container">
-                        <img src="https://moto-arena.ru/upload/resize_cache/iblock/2b9/800_800_1/2b9c4c9c1c4d4d0c3f7a1a3f1b4f2b0d.jpg" alt="KAYO MINI TD125" class="product-image">
+                        <img src="https://globaldrive.ru/upload/iblock/69a/uo2j6l9tdap6r6qfapa2fb3it25vhh3l.jpg" alt="KAYO MINI TD125" class="product-image">
                     </div>
                     <div class="product-info">
                         <div class="product-name">KAYO MINI TD125 14/12</div>
@@ -964,7 +1062,7 @@
                 <!-- Товар 5 -->
                 <div class="product-card">
                     <div class="product-image-container">
-                        <img src="https://moto-arena.ru/upload/resize_cache/iblock/7e1/800_800_1/7e1c4c9c1c4d4d0c3f7a1a3f1b4f2b0d.jpg" alt="Питбайк детский KAYO" class="product-image">
+                        <img src="https://static.insales-cdn.com/images/products/1/6498/985872738/01.png" alt="Питбайк детский KAYO" class="product-image">
                     </div>
                     <div class="product-info">
                         <div class="product-name">Питбайк детский KAYO DBR SX50-A</div>
@@ -998,7 +1096,7 @@
                 <!-- Товар 6 -->
                 <div class="product-card">
                     <div class="product-image-container">
-                        <img src="https://moto-arena.ru/upload/resize_cache/iblock/5f8/800_800_1/5f8c4c9c1c4d4d0c3f7a1a3f1b4f2b0d.jpg" alt="KAYO K1-L 150 MX" class="product-image">
+                        <img src="https://www.rollingmoto.ru/upload/iblock/e84/llc0xx6wgzh1tfk6jnp5ewjfqu36uh3p.jpg" alt="KAYO K1-L 150 MX" class="product-image">
                     </div>
                     <div class="product-info">
                         <div class="product-name">KAYO K1-L 150 MX 19/16</div>
@@ -1032,7 +1130,7 @@
                 <!-- Товар 7 -->
                 <div class="product-card">
                     <div class="product-image-container">
-                        <img src="https://moto-arena.ru/upload/resize_cache/iblock/1c6/800_800_1/1c6c4c9c1c4d4d0c3f7a1a3f1b4f2b0d.jpg" alt="ATAKI BATLLO" class="product-image">
+                        <img src="https://63moto.ru/upload/iblock/9a0/ny4mvfmw0g0i7gax47wcj3mp4fo8h0no.jpg" alt="ATAKI BATLLO" class="product-image">
                     </div>
                     <div class="product-info">
                         <div class="product-name">ATAKI BATLLO (4T PR300) ПТС 17/17</div>
@@ -1066,7 +1164,7 @@
                 <!-- Товар 8 -->
                 <div class="product-card">
                     <div class="product-image-container">
-                        <img src="https://moto-arena.ru/upload/resize_cache/iblock/8f3/800_800_1/8f3c4c9c1c4d4d0c3f7a1a3f1b4f2b0d.jpg" alt="ATAKI CARRERA 300" class="product-image">
+                        <img src="https://www.rollingmoto.ru/upload/iblock/94f/6mdg6qg4kk99fgo7v7m1t39imzk134y2.jpg" alt="ATAKI CARRERA 300" class="product-image">
                     </div>
                     <div class="product-info">
                         <div class="product-name">ATAKI CARRERA 300 (4T PR300) ПТС 19/17</div>
@@ -1100,7 +1198,7 @@
                 <!-- Товар 9 -->
                 <div class="product-card">
                     <div class="product-image-container">
-                        <img src="https://moto-arena.ru/upload/resize_cache/iblock/3a4/800_800_1/3a4c4c9c1c4d4d0c3f7a1a3f1b4f2b0d.jpg" alt="ATAKI CROSSER 300" class="product-image">
+                        <img src="https://63moto.ru/upload/iblock/dc0/83dz0tpfevhth4zhxdl9pwlrerrhc19u.jpg" alt="ATAKI CROSSER 300" class="product-image">
                     </div>
                     <div class="product-info">
                         <div class="product-name">ATAKI CROSSER 300 (4T PR300) ПТС 21/18</div>
@@ -1648,10 +1746,18 @@
             const activeLinks = document.querySelectorAll(`.nav-link[onclick*="${pageId}"]`);
             activeLinks.forEach(link => link.classList.add('active'));
             
+            // Закрываем мобильное меню
+            document.querySelector('.nav-section').classList.remove('active');
+            
             // Если открываем каталог - прокрутить в начало
             if (pageId === 'catalog') {
                 window.scrollTo(0, 0);
             }
+        }
+        
+        // Переключение мобильного меню
+        function toggleMobileMenu() {
+            document.querySelector('.nav-section').classList.toggle('active');
         }
         
         // Инициализация при загрузке
