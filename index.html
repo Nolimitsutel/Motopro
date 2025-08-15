@@ -251,6 +251,9 @@
             box-shadow: 0 5px 15px rgba(0,0,0,0.08);
             transition: transform 0.3s, box-shadow 0.3s;
             border: 1px solid #eee;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
         }
         
         .product-card:hover {
@@ -258,8 +261,28 @@
             box-shadow: 0 12px 20px rgba(0,0,0,0.15);
         }
         
+        .product-image-container {
+            position: relative;
+            height: 200px;
+            overflow: hidden;
+        }
+        
+        .product-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+        
+        .product-card:hover .product-image {
+            transform: scale(1.05);
+        }
+        
         .product-info {
             padding: 20px;
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
         }
         
         .product-name {
@@ -276,18 +299,13 @@
             margin: 15px 0;
         }
         
-        .product-description {
-            color: #666;
-            margin-bottom: 20px;
-            min-height: 80px;
-        }
-        
         .product-specs {
             margin: 15px 0;
             padding: 15px;
             background: #f9f9f9;
             border-radius: 8px;
             border-left: 3px solid #ffcc00;
+            flex-grow: 1;
         }
         
         .spec-item {
@@ -305,6 +323,11 @@
         .spec-value {
             font-weight: bold;
             color: #333;
+        }
+        
+        .add-to-cart-container {
+            margin-top: auto;
+            padding-top: 15px;
         }
         
         .add-to-cart {
@@ -804,6 +827,9 @@
             <div class="catalog-grid">
                 <!-- Товар 1 -->
                 <div class="product-card">
+                    <div class="product-image-container">
+                        <img src="https://moto-arena.ru/upload/resize_cache/iblock/3dc/800_800_1/3dcf4c9c1c4d4d0c3f7a1a3f1b4f2b0d.jpg" alt="KAYO BASIC K125EM" class="product-image">
+                    </div>
                     <div class="product-info">
                         <div class="product-name">KAYO BASIC K125EM 17/14 KRZ (2024)</div>
                         <div class="product-price">104 990 ₽</div>
@@ -825,14 +851,19 @@
                                 <span class="spec-value">4-ступенчатая</span>
                             </div>
                         </div>
-                        <button class="add-to-cart" onclick="addToCart('KAYO BASIC K125EM 17/14 KRZ', 104990)">
-                            <i class="fas fa-cart-plus"></i> В корзину
-                        </button>
+                        <div class="add-to-cart-container">
+                            <button class="add-to-cart" onclick="addToCart('KAYO BASIC K125EM 17/14 KRZ', 104990)">
+                                <i class="fas fa-cart-plus"></i> В корзину
+                            </button>
+                        </div>
                     </div>
                 </div>
                 
                 <!-- Товар 2 -->
                 <div class="product-card">
+                    <div class="product-image-container">
+                        <img src="https://moto-arena.ru/upload/resize_cache/iblock/6d3/800_800_1/6d3c4c9c1c4d4d0c3f7a1a3f1b4f2b0d.jpg" alt="KAYO BASIC K125EA" class="product-image">
+                    </div>
                     <div class="product-info">
                         <div class="product-name">KAYO BASIC K125EA 17/14 KRZ (2024)</div>
                         <div class="product-price">104 990 ₽</div>
@@ -854,14 +885,19 @@
                                 <span class="spec-value">4-ступенчатая</span>
                             </div>
                         </div>
-                        <button class="add-to-cart" onclick="addToCart('KAYO BASIC K125EA 17/14 KRZ', 104990)">
-                            <i class="fas fa-cart-plus"></i> В корзину
-                        </button>
+                        <div class="add-to-cart-container">
+                            <button class="add-to-cart" onclick="addToCart('KAYO BASIC K125EA 17/14 KRZ', 104990)">
+                                <i class="fas fa-cart-plus"></i> В корзину
+                            </button>
+                        </div>
                     </div>
                 </div>
                 
                 <!-- Товар 3 -->
                 <div class="product-card">
+                    <div class="product-image-container">
+                        <img src="https://moto-arena.ru/upload/resize_cache/iblock/9a7/800_800_1/9a7c4c9c1c4d4d0c3f7a1a3f1b4f2b0d.jpg" alt="KAYO BASIC TT140" class="product-image">
+                    </div>
                     <div class="product-info">
                         <div class="product-name">KAYO BASIC TT140 17/14 KRZ</div>
                         <div class="product-price">104 990 ₽</div>
@@ -883,14 +919,19 @@
                                 <span class="spec-value">4-ступенчатая</span>
                             </div>
                         </div>
-                        <button class="add-to-cart" onclick="addToCart('KAYO BASIC TT140 17/14 KRZ', 104990)">
-                            <i class="fas fa-cart-plus"></i> В корзину
-                        </button>
+                        <div class="add-to-cart-container">
+                            <button class="add-to-cart" onclick="addToCart('KAYO BASIC TT140 17/14 KRZ', 104990)">
+                                <i class="fas fa-cart-plus"></i> В корзину
+                            </button>
+                        </div>
                     </div>
                 </div>
                 
                 <!-- Товар 4 -->
                 <div class="product-card">
+                    <div class="product-image-container">
+                        <img src="https://moto-arena.ru/upload/resize_cache/iblock/2b9/800_800_1/2b9c4c9c1c4d4d0c3f7a1a3f1b4f2b0d.jpg" alt="KAYO MINI TD125" class="product-image">
+                    </div>
                     <div class="product-info">
                         <div class="product-name">KAYO MINI TD125 14/12</div>
                         <div class="product-price">104 990 ₽</div>
@@ -912,14 +953,19 @@
                                 <span class="spec-value">4-ступенчатая</span>
                             </div>
                         </div>
-                        <button class="add-to-cart" onclick="addToCart('KAYO MINI TD125 14/12', 104990)">
-                            <i class="fas fa-cart-plus"></i> В корзину
-                        </button>
+                        <div class="add-to-cart-container">
+                            <button class="add-to-cart" onclick="addToCart('KAYO MINI TD125 14/12', 104990)">
+                                <i class="fas fa-cart-plus"></i> В корзину
+                            </button>
+                        </div>
                     </div>
                 </div>
                 
                 <!-- Товар 5 -->
                 <div class="product-card">
+                    <div class="product-image-container">
+                        <img src="https://moto-arena.ru/upload/resize_cache/iblock/7e1/800_800_1/7e1c4c9c1c4d4d0c3f7a1a3f1b4f2b0d.jpg" alt="Питбайк детский KAYO" class="product-image">
+                    </div>
                     <div class="product-info">
                         <div class="product-name">Питбайк детский KAYO DBR SX50-A</div>
                         <div class="product-price">29 990 ₽</div>
@@ -941,14 +987,19 @@
                                 <span class="spec-value">Автомат</span>
                             </div>
                         </div>
-                        <button class="add-to-cart" onclick="addToCart('Питбайк детский KAYO DBR SX50-A', 29990)">
-                            <i class="fas fa-cart-plus"></i> В корзину
-                        </button>
+                        <div class="add-to-cart-container">
+                            <button class="add-to-cart" onclick="addToCart('Питбайк детский KAYO DBR SX50-A', 29990)">
+                                <i class="fas fa-cart-plus"></i> В корзину
+                            </button>
+                        </div>
                     </div>
                 </div>
                 
                 <!-- Товар 6 -->
                 <div class="product-card">
+                    <div class="product-image-container">
+                        <img src="https://moto-arena.ru/upload/resize_cache/iblock/5f8/800_800_1/5f8c4c9c1c4d4d0c3f7a1a3f1b4f2b0d.jpg" alt="KAYO K1-L 150 MX" class="product-image">
+                    </div>
                     <div class="product-info">
                         <div class="product-name">KAYO K1-L 150 MX 19/16</div>
                         <div class="product-price">129 990 ₽</div>
@@ -970,14 +1021,19 @@
                                 <span class="spec-value">5-ступенчатая</span>
                             </div>
                         </div>
-                        <button class="add-to-cart" onclick="addToCart('KAYO K1-L 150 MX 19/16', 129990)">
-                            <i class="fas fa-cart-plus"></i> В корзину
-                        </button>
+                        <div class="add-to-cart-container">
+                            <button class="add-to-cart" onclick="addToCart('KAYO K1-L 150 MX 19/16', 129990)">
+                                <i class="fas fa-cart-plus"></i> В корзину
+                            </button>
+                        </div>
                     </div>
                 </div>
                 
                 <!-- Товар 7 -->
                 <div class="product-card">
+                    <div class="product-image-container">
+                        <img src="https://moto-arena.ru/upload/resize_cache/iblock/1c6/800_800_1/1c6c4c9c1c4d4d0c3f7a1a3f1b4f2b0d.jpg" alt="ATAKI BATLLO" class="product-image">
+                    </div>
                     <div class="product-info">
                         <div class="product-name">ATAKI BATLLO (4T PR300) ПТС 17/17</div>
                         <div class="product-price">200 000 ₽</div>
@@ -999,14 +1055,19 @@
                                 <span class="spec-value">6-ступенчатая</span>
                             </div>
                         </div>
-                        <button class="add-to-cart" onclick="addToCart('ATAKI BATLLO (4T PR300) ПТС 17/17', 200000)">
-                            <i class="fas fa-cart-plus"></i> В корзину
-                        </button>
+                        <div class="add-to-cart-container">
+                            <button class="add-to-cart" onclick="addToCart('ATAKI BATLLO (4T PR300) ПТС 17/17', 200000)">
+                                <i class="fas fa-cart-plus"></i> В корзину
+                            </button>
+                        </div>
                     </div>
                 </div>
                 
                 <!-- Товар 8 -->
                 <div class="product-card">
+                    <div class="product-image-container">
+                        <img src="https://moto-arena.ru/upload/resize_cache/iblock/8f3/800_800_1/8f3c4c9c1c4d4d0c3f7a1a3f1b4f2b0d.jpg" alt="ATAKI CARRERA 300" class="product-image">
+                    </div>
                     <div class="product-info">
                         <div class="product-name">ATAKI CARRERA 300 (4T PR300) ПТС 19/17</div>
                         <div class="product-price">175 000 ₽</div>
@@ -1028,14 +1089,19 @@
                                 <span class="spec-value">6-ступенчатая</span>
                             </div>
                         </div>
-                        <button class="add-to-cart" onclick="addToCart('ATAKI CARRERA 300 (4T PR300) ПТС 19/17', 175000)">
-                            <i class="fas fa-cart-plus"></i> В корзину
-                        </button>
+                        <div class="add-to-cart-container">
+                            <button class="add-to-cart" onclick="addToCart('ATAKI CARRERA 300 (4T PR300) ПТС 19/17', 175000)">
+                                <i class="fas fa-cart-plus"></i> В корзину
+                            </button>
+                        </div>
                     </div>
                 </div>
                 
                 <!-- Товар 9 -->
                 <div class="product-card">
+                    <div class="product-image-container">
+                        <img src="https://moto-arena.ru/upload/resize_cache/iblock/3a4/800_800_1/3a4c4c9c1c4d4d0c3f7a1a3f1b4f2b0d.jpg" alt="ATAKI CROSSER 300" class="product-image">
+                    </div>
                     <div class="product-info">
                         <div class="product-name">ATAKI CROSSER 300 (4T PR300) ПТС 21/18</div>
                         <div class="product-price">170 000 ₽</div>
@@ -1057,9 +1123,11 @@
                                 <span class="spec-value">6-ступенчатая</span>
                             </div>
                         </div>
-                        <button class="addToCart('ATAKI CROSSER 300 (4T PR300) ПТС 21/18', 170000)">
-                            <i class="fas fa-cart-plus"></i> В корзину
-                        </button>
+                        <div class="add-to-cart-container">
+                            <button class="add-to-cart" onclick="addToCart('ATAKI CROSSER 300 (4T PR300) ПТС 21/18', 170000)">
+                                <i class="fas fa-cart-plus"></i> В корзину
+                            </button>
+                        </div>
                     </div>
                 </div>
             </div>
