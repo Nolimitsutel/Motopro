@@ -18,110 +18,6 @@
             color: #333;
             line-height: 1.6;
             overflow-x: hidden;
-            padding-top: 60px;
-        }
-        
-        /* Мобильная навигация */
-        .mobile-header {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            background: #222;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 12px 15px;
-            z-index: 100;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
-        }
-        
-        .logo-mobile {
-            color: white;
-            font-weight: bold;
-            font-size: 1.2rem;
-        }
-        
-        .mobile-nav-btn {
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            width: 30px;
-            height: 21px;
-            background: transparent;
-            border: none;
-            cursor: pointer;
-        }
-        
-        .mobile-nav-btn span {
-            display: block;
-            height: 3px;
-            width: 100%;
-            background: white;
-            border-radius: 2px;
-        }
-        
-        .mobile-nav {
-            position: fixed;
-            top: 60px;
-            left: 0;
-            width: 100%;
-            background: #333;
-            display: flex;
-            flex-direction: column;
-            padding: 15px;
-            gap: 10px;
-            transform: translateY(-100%);
-            transition: transform 0.3s ease;
-            z-index: 100;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
-        }
-        
-        .mobile-nav.active {
-            transform: translateY(0);
-        }
-        
-        .mobile-nav-link {
-            color: #fff;
-            text-decoration: none;
-            font-weight: bold;
-            padding: 10px;
-            border-bottom: 1px solid #444;
-            font-size: 1.1rem;
-            background: #444;
-            border-radius: 5px;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-        
-        .cart-section-mobile {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-        
-        .cart-icon {
-            font-size: 1.5rem;
-            cursor: pointer;
-            position: relative;
-            color: white;
-        }
-        
-        .cart-count {
-            position: absolute;
-            top: -8px;
-            right: -12px;
-            background: #ff0000;
-            color: white;
-            border-radius: 50%;
-            width: 20px;
-            height: 20px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            font-size: 0.75rem;
-            font-weight: bold;
         }
         
         /* Шапка */
@@ -203,24 +99,6 @@
             box-shadow: 0 8px 15px rgba(0,0,0,0.3);
         }
         
-        .btn-mobile {
-            padding: 12px 25px;
-            background: #ffcc00;
-            color: #333;
-            border: none;
-            border-radius: 30px;
-            font-weight: bold;
-            cursor: pointer;
-            transition: all 0.3s;
-            font-size: 1rem;
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            min-width: 100%;
-            justify-content: center;
-            margin-top: 10px;
-        }
-        
         /* Навигация */
         nav {
             display: flex;
@@ -277,6 +155,29 @@
             gap: 10px;
         }
         
+        .cart-icon {
+            font-size: 1.5rem;
+            cursor: pointer;
+            position: relative;
+            color: white;
+        }
+        
+        .cart-count {
+            position: absolute;
+            top: -8px;
+            right: -12px;
+            background: #ff0000;
+            color: white;
+            border-radius: 50%;
+            width: 20px;
+            height: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 0.75rem;
+            font-weight: bold;
+        }
+        
         /* Основной контент */
         .container {
             max-width: 1200px;
@@ -323,23 +224,6 @@
             opacity: 0.9;
         }
         
-        .hero-mobile {
-            text-align: center;
-            padding: 30px 15px;
-            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), 
-                        url('https://a.d-cd.net/rilnuTFu_Og1BMTN9L_RUw_7-Tk-1920.jpg') center/cover no-repeat;
-            color: white;
-            text-shadow: 0 2px 4px rgba(0,0,0,0.7);
-            border-radius: 8px;
-            margin-bottom: 20px;
-        }
-        
-        .hero-mobile h1 {
-            font-size: 1.5rem;
-            margin-bottom: 15px;
-            line-height: 1.3;
-        }
-        
         /* Каталог */
         .section-title {
             text-align: center;
@@ -356,24 +240,6 @@
             height: 3px;
             background: #ffcc00;
             margin: 10px auto;
-            border-radius: 2px;
-        }
-        
-        .section-title-mobile {
-            text-align: center;
-            margin: 20px 0 15px;
-            font-size: 1.5rem;
-            color: #1a3a6c;
-            position: relative;
-        }
-        
-        .section-title-mobile::after {
-            content: '';
-            display: block;
-            width: 50px;
-            height: 3px;
-            background: #ffcc00;
-            margin: 8px auto;
             border-radius: 2px;
         }
         
@@ -656,18 +522,7 @@
             background: #2a5298;
         }
         
-        /* Корзина */
-        .overlay {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0,0,0,0.5);
-            z-index: 1000;
-        }
-        
+        /* Корзина - ИЗМЕНЕНО: боковая панель */
         .cart-popup {
             display: flex;
             position: fixed;
@@ -805,6 +660,17 @@
             background: #00a651;
             color: white;
             flex-grow: 1;
+        }
+        
+        .overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.5);
+            z-index: 1000;
         }
         
         /* Форма заказа */
@@ -964,41 +830,6 @@
             margin-bottom: 15px;
         }
         
-        .category-card-mobile {
-            background: white;
-            border-radius: 8px;
-            overflow: hidden;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.08);
-            margin-bottom: 20px;
-            text-align: center;
-            padding: 20px;
-        }
-        
-        .category-name-mobile {
-            font-size: 1.3rem;
-            color: #1a3a6c;
-            font-weight: bold;
-            margin-bottom: 10px;
-        }
-        
-        .contact-card-mobile {
-            background: white;
-            border-radius: 8px;
-            padding: 15px;
-            margin-bottom: 15px;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
-            border-left: 3px solid #ffcc00;
-        }
-        
-        .contact-card-mobile h3 {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            margin-bottom: 10px;
-            color: #1a3a6c;
-            font-size: 1.1rem;
-        }
-        
         /* Подвал */
         footer {
             background: #222;
@@ -1056,53 +887,8 @@
             opacity: 0.7;
         }
         
-        .footer-mobile {
-            background: #222;
-            color: #ddd;
-            padding: 20px 15px;
-            margin-top: 30px;
-            text-align: center;
-        }
-        
-        .footer-mobile p {
-            margin: 10px 0;
-        }
-        
-        /* Уведомление */
-        .notification {
-            position: fixed;
-            top: 15px;
-            right: 15px;
-            padding: 15px 25px;
-            background: #00a651;
-            color: white;
-            border-radius: 5px;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-            z-index: 10000;
-            display: none;
-            max-width: 90%;
-            font-size: 1rem;
-        }
-        
-        .error {
-            border-color: #ff0000 !important;
-        }
-        
         /* Адаптивность */
         @media (max-width: 768px) {
-            .mobile-header {
-                display: flex;
-            }
-            
-            nav {
-                display: none;
-            }
-            
-            header {
-                padding-top: 60px;
-                padding-bottom: 20px;
-            }
-            
             .logo {
                 font-size: 1.8rem;
             }
@@ -1111,14 +897,29 @@
                 font-size: 1rem;
             }
             
+            .nav-section {
+                gap: 8px;
+                font-size: 0.85rem;
+            }
+            
+            .nav-link i {
+                display: block;
+                margin-bottom: 4px;
+                font-size: 1.1rem;
+            }
+            
+            .nav-link span {
+                display: none;
+            }
+            
+            .cart-section {
+                gap: 6px;
+            }
+            
             .btn {
                 padding: 12px 25px;
                 font-size: 1rem;
                 min-width: 200px;
-            }
-            
-            .hero {
-                padding: 40px 15px;
             }
             
             .hero h1 {
@@ -1205,78 +1006,68 @@
             .category-name {
                 font-size: 1.3rem;
             }
-            
-            /* Мобильные версии элементов */
-            .hero {
-                display: none;
-            }
-            
-            .hero-mobile {
-                display: block;
-            }
-            
-            .section-title {
-                display: none;
-            }
-            
-            .section-title-mobile {
-                display: block;
-            }
-            
-            .category-card {
-                display: none;
-            }
-            
-            .category-card-mobile {
-                display: block;
-            }
-            
-            .contact-card {
-                display: none;
-            }
-            
-            .contact-card-mobile {
-                display: block;
-            }
-            
-            .footer-content {
-                display: none;
-            }
-            
-            .footer-mobile {
-                display: block;
-            }
         }
         
-        @media (min-width: 769px) {
-            .mobile-header {
-                display: none;
-            }
-            
-            .hero-mobile {
-                display: none;
-            }
-            
-            .section-title-mobile {
-                display: none;
-            }
-            
-            .category-card-mobile {
-                display: none;
-            }
-            
-            .contact-card-mobile {
-                display: none;
-            }
-            
-            .footer-mobile {
-                display: none;
-            }
+        /* Мобильное меню - ИЗМЕНЕНО: положение и стили */
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
         }
         
         @media (max-width: 480px) {
+            header {
+                padding-top: 60px;
+            }
+            
             .container {
                 padding-top: 70px;
+            }
+            
+            .mobile-menu-btn {
+                display: block;
+            }
+            
+            .nav-section {
+                position: fixed;
+                top: 70px;
+                left: 0;
+                width: 100%;
+                background: #333;
+                flex-direction: column;
+                padding: 15px;
+                gap: 10px;
+                transform: translateY(-100%);
+                transition: transform 0.3s ease;
+                z-index: 1000;
+                box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+            }
+            
+            .nav-section.active {
+                transform: translateY(0);
+            }
+            
+            .nav-link {
+                padding: 10px;
+                border-bottom: 1px solid #444;
+                font-size: 1.1rem;
+                background: #444;
+                border-radius: 5px;
+            }
+            
+            .nav-link i {
+                display: inline-block;
+                margin-right: 10px;
+                width: 25px;
+                text-align: center;
+                font-size: 1.2rem;
+            }
+            
+            .nav-link span {
+                display: inline;
             }
             
             .btn {
@@ -1288,6 +1079,11 @@
             .cta-buttons {
                 flex-direction: column;
                 gap: 15px;
+            }
+            
+            .hero {
+                padding: 40px 15px;
+                margin-top: 10px;
             }
             
             .product-image-container {
@@ -1328,55 +1124,71 @@
                 width: 100%;
             }
             
+            .category-card {
+                max-width: 100%;
+            }
+            
             .info-title {
                 margin-top: 15px;
                 font-size: 1.4rem;
             }
             
+            /* Улучшения для мобильной версии страницы контактов */
+            .contact-info {
+                grid-template-columns: 1fr;
+                gap: 15px;
+            }
+            
+            .contact-card {
+                padding: 15px;
+                margin-bottom: 15px;
+                background: #fff;
+                border-left: 3px solid #ffcc00;
+            }
+            
+            .contact-card h3 {
+                font-size: 1.3rem;
+            }
+            
+            .contact-card p {
+                font-size: 1.05rem;
+                margin: 8px 0;
+            }
+            
+            .info-content p {
+                font-size: 1.05rem;
+                margin-bottom: 15px;
+            }
+            
+            /* Корзина для мобильных */
             .cart-popup {
                 max-width: 100%;
                 width: 100%;
                 max-width: none;
             }
         }
+        
+        .notification {
+            position: fixed;
+            top: 15px;
+            right: 15px;
+            padding: 15px 25px;
+            background: #00a651;
+            color: white;
+            border-radius: 5px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+            z-index: 10000;
+            display: none;
+            max-width: 90%;
+            font-size: 1rem;
+        }
+        
+        .error {
+            border-color: #ff0000 !important;
+        }
     </style>
 </head>
 <body>
-    <!-- Мобильный хедер -->
-    <div class="mobile-header">
-        <div class="logo-mobile">KAYO & ATAKI</div>
-        <button class="mobile-nav-btn" onclick="toggleMobileMenu()">
-            <span></span>
-            <span></span>
-            <span></span>
-        </button>
-        <div class="cart-section-mobile">
-            <div class="cart-icon" onclick="toggleCart()">
-                <i class="fas fa-shopping-cart"></i>
-                <span class="cart-count">0</span>
-            </div>
-        </div>
-    </div>
-    
-    <!-- Мобильное меню -->
-    <div class="mobile-nav" id="mobile-nav">
-        <a href="#" class="mobile-nav-link" onclick="showPage('home')">
-            <i class="fas fa-home"></i> Главная
-        </a>
-        <a href="#" class="mobile-nav-link" onclick="showPage('catalog')">
-            <i class="fas fa-motorcycle"></i> Каталог
-        </a>
-        <a href="#" class="mobile-nav-link" onclick="showPage('contacts')">
-            <i class="fas fa-phone"></i> Контакты
-        </a>
-        <a href="#" class="mobile-nav-link" onclick="showPage('delivery')">
-            <i class="fas fa-truck"></i> Доставка
-        </a>
-        <a href="#" class="mobile-nav-link" onclick="showPage('guarantee')">
-            <i class="fas fa-shield-alt"></i> Гарантия
-        </a>
-    </div>
-    
     <!-- Шапка сайта -->
     <header>
         <div class="header-overlay"></div>
@@ -1394,6 +1206,10 @@
     
     <!-- Навигация -->
     <nav>
+        <button class="mobile-menu-btn" onclick="toggleMobileMenu()">
+            <i class="fas fa-bars"></i>
+        </button>
+        
         <div class="nav-section">
             <a href="#" class="nav-link" onclick="showPage('home')">
                 <i class="fas fa-home"></i> <span>Главная</span>
@@ -1438,15 +1254,7 @@
                 </button>
             </div>
             
-            <div class="hero-mobile">
-                <h1>Официальный дилер мототехники KAYO и ATAKI</h1>
-                <button class="btn-mobile" onclick="showPage('catalog')">
-                    <i class="fas fa-motorcycle"></i> Выбрать мотоцикл
-                </button>
-            </div>
-            
             <h2 class="section-title">Популярные категории</h2>
-            <h2 class="section-title-mobile">Популярные категории</h2>
             
             <div class="categories">
                 <div class="category-card" onclick="showPage('catalog')">
@@ -1456,17 +1264,11 @@
                     </div>
                 </div>
             </div>
-            
-            <div class="category-card-mobile" onclick="showPage('catalog')">
-                <div class="category-name-mobile">Мотоциклы</div>
-                <div>Широкий выбор дорожных и спортивных моделей</div>
-            </div>
         </section>
         
         <!-- Каталог товаров -->
         <section id="catalog-page" class="page-section">
             <h2 class="section-title">Каталог мототехники</h2>
-            <h2 class="section-title-mobile">Каталог</h2>
             
             <div class="catalog-grid">
                 <!-- Товар 1 -->
@@ -1502,7 +1304,269 @@
                     </div>
                 </div>
                 
-                <!-- Товары 2-9 аналогично -->
+                <!-- Товар 2 -->
+                <div class="product-card">
+                    <div class="product-image-container">
+                        <img src="https://globaldrive.ru/upload/iblock/088/xe6uevaxb0lz2uijejq04r7xhxswul2f.jpg" alt="KAYO BASIC K125EA" class="product-image" loading="lazy">
+                    </div>
+                    <div class="product-info">
+                        <div class="product-name" onclick="showProductDetail(2)">KAYO BASIC K125EA 17/14 KRZ (2024)</div>
+                        <div class="product-price">104 990 ₽</div>
+                        <div class="product-specs">
+                            <div class="spec-item">
+                                <span class="spec-name">Тип двигателя:</span>
+                                <span class="spec-value">4-тактный</span>
+                            </div>
+                            <div class="spec-item">
+                                <span class="spec-name">Объем:</span>
+                                <span class="spec-value">125 см³</span>
+                            </div>
+                            <div class="spec-item">
+                                <span class="spec-name">Мощность:</span>
+                                <span class="spec-value">9 л.с.</span>
+                            </div>
+                        </div>
+                        <div class="product-actions">
+                            <button class="add-to-cart" onclick="addToCart('KAYO BASIC K125EA 17/14 KRZ', 104990)">
+                                <i class="fas fa-cart-plus"></i> В корзину
+                            </button>
+                            <button class="details-btn" onclick="showProductDetail(2)">
+                                <i class="fas fa-eye"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Товар 3 -->
+                <div class="product-card">
+                    <div class="product-image-container">
+                        <img src="https://globaldrive.ru/upload/iblock/c87/fmqivewnshmdew63g3i3xtema3p4fpow.jpg" alt="KAYO BASIC TT140" class="product-image" loading="lazy">
+                    </div>
+                    <div class="product-info">
+                        <div class="product-name" onclick="showProductDetail(3)">KAYO BASIC TT140 17/14 KRZ</div>
+                        <div class="product-price">104 990 ₽</div>
+                        <div class="product-specs">
+                            <div class="spec-item">
+                                <span class="spec-name">Тип двигателя:</span>
+                                <span class="spec-value">4-тактный</span>
+                            </div>
+                            <div class="spec-item">
+                                <span class="spec-name">Объем:</span>
+                                <span class="spec-value">140 см³</span>
+                            </div>
+                            <div class="spec-item">
+                                <span class="spec-name">Мощность:</span>
+                                <span class="spec-value">13 л.с.</span>
+                            </div>
+                        </div>
+                        <div class="product-actions">
+                            <button class="add-to-cart" onclick="addToCart('KAYO BASIC TT140 17/14 KRZ', 104990)">
+                                <i class="fas fa-cart-plus"></i> В корзину
+                            </button>
+                            <button class="details-btn" onclick="showProductDetail(3)">
+                                <i class="fas fa-eye"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Товар 4 -->
+                <div class="product-card">
+                    <div class="product-image-container">
+                        <img src="https://globaldrive.ru/upload/iblock/69a/uo2j6l9tdap6r6qfapa2fb3it25vhh3l.jpg" alt="KAYO MINI TD125" class="product-image" loading="lazy">
+                    </div>
+                    <div class="product-info">
+                        <div class="product-name" onclick="showProductDetail(4)">KAYO MINI TD125 14/12</div>
+                        <div class="product-price">104 990 ₽</div>
+                        <div class="product-specs">
+                            <div class="spec-item">
+                                <span class="spec-name">Тип двигателя:</span>
+                                <span class="spec-value">4-тактный</span>
+                            </div>
+                            <div class="spec-item">
+                                <span class="spec-name">Объем:</span>
+                                <span class="spec-value">125 см³</span>
+                            </div>
+                            <div class="spec-item">
+                                <span class="spec-name">Мощность:</span>
+                                <span class="spec-value">9 л.с.</span>
+                            </div>
+                        </div>
+                        <div class="product-actions">
+                            <button class="add-to-cart" onclick="addToCart('KAYO MINI TD125 14/12', 104990)">
+                                <i class="fas fa-cart-plus"></i> В корзину
+                            </button>
+                            <button class="details-btn" onclick="showProductDetail(4)">
+                                <i class="fas fa-eye"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Товар 5 -->
+                <div class="product-card">
+                    <div class="product-image-container">
+                        <img src="https://static.insales-cdn.com/images/products/1/6498/985872738/01.png" alt="Питбайк детский KAYO" class="product-image" loading="lazy">
+                    </div>
+                    <div class="product-info">
+                        <div class="product-name" onclick="showProductDetail(5)">Питбайк детский KAYO DBR SX50-A</div>
+                        <div class="product-price">29 990 ₽</div>
+                        <div class="product-specs">
+                            <div class="spec-item">
+                                <span class="spec-name">Тип двигателя:</span>
+                                <span class="spec-value">2-тактный</span>
+                            </div>
+                            <div class="spec-item">
+                                <span class="spec-name">Объем:</span>
+                                <span class="spec-value">50 см³</span>
+                            </div>
+                            <div class="spec-item">
+                                <span class="spec-name">Мощность:</span>
+                                <span class="spec-value">2.1 л.с.</span>
+                            </div>
+                        </div>
+                        <div class="product-actions">
+                            <button class="add-to-cart" onclick="addToCart('Питбайк детский KAYO DBR SX50-A', 29990)">
+                                <i class="fas fa-cart-plus"></i> В корзину
+                            </button>
+                            <button class="details-btn" onclick="showProductDetail(5)">
+                                <i class="fas fa-eye"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Товар 6 -->
+                <div class="product-card">
+                    <div class="product-image-container">
+                        <img src="https://www.rollingmoto.ru/upload/iblock/e84/llc0xx6wgzh1tfk6jnp5ewjfqu36uh3p.jpg" alt="KAYO K1-L 150 MX" class="product-image" loading="lazy">
+                    </div>
+                    <div class="product-info">
+                        <div class="product-name" onclick="showProductDetail(6)">KAYO K1-L 150 MX 19/16</div>
+                        <div class="product-price">129 990 ₽</div>
+                        <div class="product-specs">
+                            <div class="spec-item">
+                                <span class="spec-name">Тип двигателя:</span>
+                                <span class="spec-value">4-тактный</span>
+                            </div>
+                            <div class="spec-item">
+                                <span class="spec-name">Объем:</span>
+                                <span class="spec-value">150 см³</span>
+                            </div>
+                            <div class="spec-item">
+                                <span class="spec-name">Мощность:</span>
+                                <span class="spec-value">12 л.с.</span>
+                            </div>
+                        </div>
+                        <div class="product-actions">
+                            <button class="add-to-cart" onclick="addToCart('KAYO K1-L 150 MX 19/16', 129990)">
+                                <i class="fas fa-cart-plus"></i> В корзину
+                            </button>
+                            <button class="details-btn" onclick="showProductDetail(6)">
+                                <i class="fas fa-eye"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Товар 7 -->
+                <div class="product-card">
+                    <div class="product-image-container">
+                        <img src="https://63moto.ru/upload/iblock/9a0/ny4mvfmw0g0i7gax47wcj3mp4fo8h0no.jpg" alt="ATAKI BATLLO" class="product-image" loading="lazy">
+                    </div>
+                    <div class="product-info">
+                        <div class="product-name" onclick="showProductDetail(7)">ATAKI BATLLO (4T PR300) ПТС 17/17</div>
+                        <div class="product-price">200 000 ₽</div>
+                        <div class="product-specs">
+                            <div class="spec-item">
+                                <span class="spec-name">Тип двигателя:</span>
+                                <span class="spec-value">4-тактный</span>
+                            </div>
+                            <div class="spec-item">
+                                <span class="spec-name">Объем:</span>
+                                <span class="spec-value">300 см³</span>
+                            </div>
+                            <div class="spec-item">
+                                <span class="spec-name">Мощность:</span>
+                                <span class="spec-value">24 л.с.</span>
+                            </div>
+                        </div>
+                        <div class="product-actions">
+                            <button class="add-to-cart" onclick="addToCart('ATAKI BATLLO (4T PR300) ПТС 17/17', 200000)">
+                                <i class="fas fa-cart-plus"></i> В корзину
+                            </button>
+                            <button class="details-btn" onclick="showProductDetail(7)">
+                                <i class="fas fa-eye"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Товар 8 -->
+                <div class="product-card">
+                    <div class="product-image-container">
+                        <img src="https://www.rollingmoto.ru/upload/iblock/94f/6mdg6qg4kk99fgo7v7m1t39imzk134y2.jpg" alt="ATAKI CARRERA 300" class="product-image" loading="lazy">
+                    </div>
+                    <div class="product-info">
+                        <div class="product-name" onclick="showProductDetail(8)">ATAKI CARRERA 300 (4T PR300) ПТС 19/17</div>
+                        <div class="product-price">175 000 ₽</div>
+                        <div class="product-specs">
+                            <div class="spec-item">
+                                <span class="spec-name">Тип двигателя:</span>
+                                <span class="spec-value">4-тактный</span>
+                            </div>
+                            <div class="spec-item">
+                                <span class="spec-name">Объем:</span>
+                                <span class="spec-value">300 см³</span>
+                            </div>
+                            <div class="spec-item">
+                                <span class="spec-name">Мощность:</span>
+                                <span class="spec-value">24 л.с.</span>
+                            </div>
+                        </div>
+                        <div class="product-actions">
+                            <button class="add-to-cart" onclick="addToCart('ATAKI CARRERA 300 (4T PR300) ПТС 19/17', 175000)">
+                                <i class="fas fa-cart-plus"></i> В корзину
+                            </button>
+                            <button class="details-btn" onclick="showProductDetail(8)">
+                                <i class="fas fa-eye"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Товар 9 -->
+                <div class="product-card">
+                    <div class="product-image-container">
+                        <img src="https://63moto.ru/upload/iblock/dc0/83dz0tpfevhth4zhxdl9pwlrerrhc19u.jpg" alt="ATAKI CROSSER 300" class="product-image" loading="lazy">
+                    </div>
+                    <div class="product-info">
+                        <div class="product-name" onclick="showProductDetail(9)">ATAKI CROSSER 300 (4T PR300) ПТС 21/18</div>
+                        <div class="product-price">170 000 ₽</div>
+                        <div class="product-specs">
+                            <div class="spec-item">
+                                <span class="spec-name">Тип двигателя:</span>
+                                <span class="spec-value">4-тактный</span>
+                            </div>
+                            <div class="spec-item">
+                                <span class="spec-name">Объем:</span>
+                                <span class="spec-value">300 см³</span>
+                            </div>
+                            <div class="spec-item">
+                                <span class="spec-name">Мощность:</span>
+                                <span class="spec-value">24 л.с.</span>
+                            </div>
+                        </div>
+                        <div class="product-actions">
+                            <button class="add-to-cart" onclick="addToCart('ATAKI CROSSER 300 (4T PR300) ПТС 21/18', 170000)">
+                                <i class="fas fa-cart-plus"></i> В корзину
+                            </button>
+                            <button class="details-btn" onclick="showProductDetail(9)">
+                                <i class="fas fa-eye"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
             </div>
         </section>
         
@@ -1513,23 +1577,147 @@
             </a>
             
             <div class="product-detail">
-                <!-- Детали товара -->
+                <div class="product-gallery">
+                    <div class="main-image-container">
+                        <img id="main-image" src="" alt="Основное изображение" class="main-image" loading="lazy">
+                    </div>
+                    <div class="thumbnails" id="thumbnails-container">
+                        <!-- Миниатюры будут добавлены через JS -->
+                    </div>
+                </div>
+                
+                <div class="product-detail-info">
+                    <h1 class="product-detail-name" id="detail-name"></h1>
+                    <div class="product-detail-price" id="detail-price"></div>
+                    
+                    <div class="product-description" id="detail-description">
+                        <!-- Описание будет добавлено через JS -->
+                    </div>
+                    
+                    <div class="detail-specs" id="detail-specs">
+                        <!-- Характеристики будут добавлены через JS -->
+                    </div>
+                    
+                    <button class="add-to-cart" id="detail-add-to-cart" style="padding: 15px; font-size: 1.2rem;">
+                        <i class="fas fa-cart-plus"></i> Добавить в корзину
+                    </button>
+                </div>
             </div>
         </section>
         
         <!-- Доставка -->
         <section id="delivery-page" class="page-section">
-            <!-- Контент доставки -->
+            <div class="info-section">
+                <h2 class="info-title"><i class="fas fa-truck"></i> Доставка</h2>
+                <div class="info-content">
+                    <p>Мы осуществляем доставку мототехники по всей территории России. Наша логистическая служба работает с надежными транспортными компаниями, чтобы обеспечить своевременную и безопасную доставку вашего заказа.</p>
+                    
+                    <h3>Сроки доставки</h3>
+                    <p>Стандартный срок доставки составляет <strong>от 15 до 17 дней</strong> с момента подтверждения заказа. В отдаленные регионы сроки могут быть увеличены на 3-5 дней.</p>
+                    
+                    <h3>Стоимость доставки</h3>
+                    <p>Стоимость доставки рассчитывается индивидуально в зависимости от вашего региона и выбранной транспортной компании. Мы предлагаем самые выгодные тарифы от наших партнеров.</p>
+                    
+                    <h3>Самовывоз</h3>
+                    <p>Вы также можете забрать заказ самостоятельно с нашего склада в Москве по адресу: ул. Беломорская, д. 25. Перед приездом обязательно свяжитесь с нами для подтверждения наличия товара.</p>
+                </div>
+            </div>
+            
+            <div class="info-section">
+                <h2 class="info-title"><i class="fas fa-credit-card"></i> Способы оплаты</h2>
+                <div class="info-content">
+                    <p>Мы предлагаем несколько удобных способов оплаты для наших клиентов:</p>
+                    
+                    <div class="payment-methods">
+                        <div class="payment-method">
+                            <i class="fas fa-credit-card fa-2x"></i>
+                            <span>Банковской картой</span>
+                        </div>
+                        <div class="payment-method">
+                            <i class="fas fa-file-invoice fa-2x"></i>
+                            <span>Выставление счёта</span>
+                        </div>
+                        <div class="payment-method">
+                            <i class="fas fa-money-bill-wave fa-2x"></i>
+                            <span>Наличными при получении</span>
+                        </div>
+                        <div class="payment-method">
+                            <i class="fas fa-mobile-alt fa-2x"></i>
+                            <span>СБП (Система быстрых платежей)</span>
+                        </div>
+                        <div class="payment-method">
+                            <i class="fas fa-gift fa-2x"></i>
+                            <span>Подарочной картой</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </section>
         
         <!-- Условия -->
         <section id="conditions-page" class="page-section">
-            <!-- Контент условий -->
+            <div class="info-section">
+                <h2 class="info-title"><i class="fas fa-file-alt"></i> Условия заказа</h2>
+                <div class="info-content">
+                    <h3>Обработка заказов</h3>
+                    <p>Все заказы обрабатываются в течение <strong>1-2 рабочих дней</strong>. После оформления заказа с вами свяжется наш менеджер для подтверждения деталей заказа и согласования доставки.</p>
+                    
+                    <h3>Документация</h3>
+                    <p>Мы работаем официально и предоставляем полный комплект документов на технику:</p>
+                    <ul class="info-list">
+                        <li>Договор купли-продажи</li>
+                        <li>Паспорт транспортного средства (ПТС)</li>
+                        <li>Сертификат соответствия</li>
+                        <li>Гарантийный талон</li>
+                        <li>Товарная накладная</li>
+                    </ul>
+                    
+                    <h3>Поддержка клиентов</h3>
+                    <p>Наша служба поддержки работает <strong>пн-пт с 9:00 до 18:00, сб-вс с 9:00 до 16:00</strong>. Мы предоставляем консультации на каждом этапе:</p>
+                    <ul class="info-list">
+                        <li>Помощь в выборе модели</li>
+                        <li>Консультации по техническим характеристикам</li>
+                        <li>Поддержка при оформлении документов</li>
+                        <li>Сервисное обслуживание после покупки</li>
+                    </ul>
+                    
+                    <h3>Возврат товара</h3>
+                    <p>Вы можете вернуть товар в течение <strong>14 дней</strong> с момента получения, при условии сохранения товарного вида, упаковки и комплектности. Техника не должна иметь следов эксплуатации.</p>
+                </div>
+            </div>
         </section>
         
         <!-- Гарантия -->
         <section id="guarantee-page" class="page-section">
-            <!-- Контент гарантии -->
+            <div class="info-section">
+                <h2 class="info-title"><i class="fas fa-shield-alt"></i> Гарантийные условия</h2>
+                <div class="info-content">
+                    <h3>Гарантия на технику KAYO</h3>
+                    <p>На технику KAYO предоставляется гарантия сроком <strong>30 дней</strong> после получения заказа или <strong>20 моточасов</strong> (в зависимости от того, какое из указанных событий наступит раньше).</p>
+                    
+                    <h3>Гарантия на модели ATAKI</h3>
+                    <p>На модели ATAKI Batllo, Crosser, Carrera предоставляется гарантия сроком <strong>12 месяцев</strong> или пробег <strong>3000 км</strong> (в зависимости от того, какое из событий наступит раньше).</p>
+                    
+                    <h3>Что покрывает гарантия</h3>
+                    <ul class="info-list">
+                        <li>Дефекты материалов и производственные недостатки</li>
+                        <li>Неисправности двигателя, коробки передач, сцепления</li>
+                        <li>Проблемы с электрической системой</li>
+                        <li>Дефекты рамы и подвески</li>
+                    </ul>
+                    
+                    <h3>Гарантия не распространяется</h3>
+                    <ul class="info-list">
+                        <li>На расходные материалы (свечи, фильтры, цепи и т.д.)</li>
+                        <li>На повреждения в результате аварий или неправильной эксплуатации</li>
+                        <li>На естественный износ деталей</li>
+                        <li>На технику, подвергшуюся самостоятельному ремонту или модификации</li>
+                    </ul>
+                    
+                    <h3>Сервисное обслуживание</h3>
+                    <p>Мы предоставляем бесплатное сервисное обслуживание в течение гарантийного периода. Для получения сервисного обслуживания обратитесь в наш авторизованный сервисный центр с гарантийным талоном и документами на технику.</p>
+                </div>
+            </div>
         </section>
         
         <!-- Контакты -->
@@ -1540,31 +1728,32 @@
                     <p>Мы всегда рады помочь вам с выбором мототехники и ответить на все ваши вопросы. Свяжитесь с нами удобным для вас способом:</p>
                     
                     <div class="contact-info">
-                        <!-- Десктопные карточки контактов -->
+                        <div class="contact-card">
+                            <h3><i class="fas fa-map-marker-alt"></i> Адрес</h3>
+                            <p>г. Москва, ул. Беломорская, д. 25</p>
+                            <p>Бизнес центр "Лобня"</p>
+                        </div>
+                        
+                        <div class="contact-card">
+                            <h3><i class="fas fa-phone"></i> Телефоны</h3>
+                            <p>+7 (977) 474-39-98</p>
+                        </div>
+                        
+                        <div class="contact-card">
+                            <h3><i class="fas fa-envelope"></i> Электронная почта</h3>
+                            <p>moto.pro1@yandex.ru</p>
+                            <p>moto.pro1@yandex.ru</p>
+                        </div>
+                        
+                        <div class="contact-card">
+                            <h3><i class="fas fa-clock"></i> Часы работы</h3>
+                            <p>Пн-Пт: 9:00-18:00</p>
+                            <p>Сб-Вс: 9:00-16:00</p>
+                        </div>
                     </div>
                     
-                    <!-- Мобильные карточки контактов -->
-                    <div class="contact-card-mobile">
-                        <h3><i class="fas fa-map-marker-alt"></i> Адрес</h3>
-                        <p>г. Москва, ул. Беломорская, д. 25</p>
-                        <p>Бизнес центр "Лобня"</p>
-                    </div>
-                    
-                    <div class="contact-card-mobile">
-                        <h3><i class="fas fa-phone"></i> Телефоны</h3>
-                        <p>+7 (977) 474-39-98</p>
-                    </div>
-                    
-                    <div class="contact-card-mobile">
-                        <h3><i class="fas fa-envelope"></i> Email</h3>
-                        <p>moto.pro1@yandex.ru</p>
-                    </div>
-                    
-                    <div class="contact-card-mobile">
-                        <h3><i class="fas fa-clock"></i> Часы работы</h3>
-                        <p>Пн-Пт: 9:00-18:00</p>
-                        <p>Сб-Вс: 9:00-16:00</p>
-                    </div>
+                    <h3>Как нас найти</h3>
+                    <p>Наш шоурум и сервисный центр расположены в бизнес-центре "Лобня" в 5 минутах ходьбы от станции метро "Лобня". Для клиентов на автомобилях предусмотрена бесплатная парковка.</p>
                 </div>
             </div>
         </section>
@@ -1573,7 +1762,59 @@
     <!-- Корзина -->
     <div class="overlay" id="cart-overlay" onclick="closeCart()"></div>
     <div class="cart-popup" id="cart-popup">
-        <!-- Контент корзины -->
+        <div class="cart-header">
+            <div class="cart-title">Ваша корзина</div>
+            <button class="close-cart" onclick="closeCart()">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        <div class="cart-items" id="cart-items">
+            <!-- Товары будут добавляться сюда -->
+        </div>
+        <div class="cart-total">
+            Итого: <span id="cart-total-price">0</span> ₽
+        </div>
+        <div class="order-form" id="order-form">
+            <h3 class="form-title">Оформление заказа</h3>
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="name">Имя</label>
+                    <input type="text" id="name" required>
+                </div>
+                <div class="form-group">
+                    <label for="phone">Телефон</label>
+                    <input type="tel" id="phone" required>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="email">Email</label>
+                    <input type="email" id="email" required>
+            </div>
+            <div class="form-group">
+                <label for="address">Адрес доставки</label>
+                <input type="text" id="address" required>
+            </div>
+            <div class="form-group">
+                <label for="comment">Комментарий к заказу</label>
+                <textarea id="comment" rows="3"></textarea>
+            </div>
+            <div class="cart-actions">
+                <button class="btn btn-clear" onclick="document.getElementById('order-form').style.display='none'">
+                    <i class="fas fa-times"></i> Отмена
+                </button>
+                <button class="btn btn-checkout" onclick="submitOrder()">
+                    <i class="fas fa-paper-plane"></i> Отправить заказ
+                </button>
+            </div>
+        </div>
+        <div class="cart-actions" id="cart-actions">
+            <button class="btn btn-clear" id="clear-cart-popup">
+                <i class="fas fa-trash"></i> Очистить
+            </button>
+            <button class="btn btn-checkout" onclick="showOrderForm()">
+                <i class="fas fa-check"></i> Оформить заказ
+            </button>
+        </div>
     </div>
     
     <!-- Уведомление -->
@@ -1583,21 +1824,41 @@
     
     <!-- Подвал -->
     <footer>
-        <!-- Десктопный футер -->
         <div class="footer-content">
-            <!-- Контент футера -->
+            <div class="footer-section">
+                <h3>Навигация</h3>
+                <ul class="footer-links">
+                    <li><a href="#" onclick="showPage('home')"><i class="fas fa-home"></i> Главная</a></li>
+                    <li><a href="#" onclick="showPage('catalog')"><i class="fas fa-motorcycle"></i> Каталог</a></li>
+                    <li><a href="#" onclick="showPage('delivery')"><i class="fas fa-truck"></i> Доставка</a></li>
+                    <li><a href="#" onclick="showPage('conditions')"><i class="fas fa-file-alt"></i> Условия</a></li>
+                    <li><a href="#" onclick="showPage('guarantee')"><i class="fas fa-shield-alt"></i> Гарантия</a></li>
+                    <li><a href="#" onclick="showPage('contacts')"><i class="fas fa-phone"></i> Контакты</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-section">
+                <h3>Помощь</h3>
+                <ul class="footer-links">
+                    <li><a href="#" onclick="showPage('delivery')"><i class="fas fa-truck"></i> Доставка и оплата</a></li>
+                    <li><a href="#" onclick="showPage('guarantee')"><i class="fas fa-shield-alt"></i> Гарантия</a></li>
+                    <li><a href="#" onclick="showPage('contacts')"><i class="fas fa-phone"></i> Контакты</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-section">
+                <h3>Контакты</h3>
+                <p><i class="fas fa-phone"></i> +7 (977) 474-39-98</p>
+                <p><i class="fas fa-envelope"></i> moto.pro1@yandex.ru</p>
+                <p><i class="fas fa-map-marker-alt"></i> г. Москва, ул. Беломорская, д. 25</p>
+                <p><i class="fas fa-clock"></i> Пн-Пт: 9:00-18:00, Сб-Вс: 9:00-16:00</p>
+            </div>
         </div>
         
         <div class="copyright">
             © 2025 KAYO & ATAKI. Все права защищены.<br>
         </div>
     </footer>
-    
-    <!-- Мобильный футер -->
-    <div class="footer-mobile">
-        <p>© 2025 KAYO & ATAKI. Все права защищены.</p>
-        <p>Официальный дилер мототехники в России</p>
-    </div>
 
     <script>
         // Инициализация корзины
@@ -1617,15 +1878,222 @@
                     "https://globaldrive.ru/upload/iblock/088/xe6uevaxb0lz2uijejq04r7xhxswul2f.jpg",
                     "https://globaldrive.ru/upload/iblock/c87/fmqivewnshmdew63g3i3xtema3p4fpow.jpg"
                 ],
-                description: "Мотоцикл KAYO BASIC K125EM - идеальный выбор для начинающих райдеров.",
+                description: "Мотоцикл KAYO BASIC K125EM - идеальный выбор для начинающих райдеров. Удобная посадка, легкое управление и надежный 4-тактный двигатель объемом 125 см³. Отлично подходит для городских поездок и легкого бездорожья.",
                 specs: {
                     "Тип двигателя": "4-тактный",
                     "Объем": "125 см³",
                     "Мощность": "9 л.с.",
-                    "КПП": "4-ступенчатая"
+                    "КПП": "4-ступенчатая",
+                    "Тип рамы": "Стальная",
+                    "Подвеска передняя": "Телескопическая вилка",
+                    "Подвеска задняя": "Моноамортизатор",
+                    "Тормоза передние": "Дисковые",
+                    "Тормоза задние": "Барабанные",
+                    "Вес": "110 кг",
+                    "Макс. скорость": "90 км/ч",
+                    "Расход топлива": "3.5 л/100км"
                 }
             },
-            // Остальные товары...
+            {
+                id: 2,
+                name: "KAYO BASIC K125EA 17/14 KRZ (2024)",
+                price: 104990,
+                images: [
+                    "https://globaldrive.ru/upload/iblock/088/xe6uevaxb0lz2uijejq04r7xhxswul2f.jpg",
+                    "https://static.insales-cdn.com/images/products/1/4418/985862466/07.png",
+                    "https://globaldrive.ru/upload/iblock/c87/fmqivewnshmdew63g3i3xtema3p4fpow.jpg"
+                ],
+                description: "KAYO BASIC K125EA - экономичный и надежный мотоцикл для ежедневного использования. Прочная конструкция, качественные компоненты и стильный дизайн делают его отличным выбором для городских условий.",
+                specs: {
+                    "Тип двигателя": "4-тактный",
+                    "Объем": "125 см³",
+                    "Мощность": "9 л.с.",
+                    "КПП": "4-ступенчатая",
+                    "Тип рамы": "Стальная",
+                    "Подвеска передняя": "Телескопическая вилка",
+                    "Подвеска задняя": "Моноамортизатор",
+                    "Тормоза передние": "Дисковые",
+                    "Тормоза задние": "Барабанные",
+                    "Вес": "112 кг",
+                    "Макс. скорость": "85 км/ч",
+                    "Расход топлива": "3.3 л/100км"
+                }
+            },
+            {
+                id: 3,
+                name: "KAYO BASIC TT140 17/14 KRZ",
+                price: 104990,
+                images: [
+                    "https://globaldrive.ru/upload/iblock/c87/fmqivewnshmdew63g3i3xtema3p4fpow.jpg",
+                    "https://static.insales-cdn.com/images/products/1/4418/985862466/07.png",
+                    "https://globaldrive.ru/upload/iblock/088/xe6uevaxb0lz2uijejq04r7xhxswul2f.jpg"
+                ],
+                description: "Мотоцикл KAYO BASIC TT140 с увеличенным объемом двигателя для большей мощности и крутящего момента. Идеально подходит для тех, кому требуется больше динамики и проходимости.",
+                specs: {
+                    "Тип двигателя": "4-тактный",
+                    "Объем": "140 см³",
+                    "Мощность": "13 л.с.",
+                    "КПП": "4-ступенчатая",
+                    "Тип рамы": "Стальная",
+                    "Подвеска передняя": "Телескопическая вилка",
+                    "Подвеска задняя": "Моноамортизатор",
+                    "Тормоза передние": "Дисковые",
+                    "Тормоза задние": "Барабанные",
+                    "Вес": "115 кг",
+                    "Макс. скорость": "95 км/ч",
+                    "Расход топлива": "3.8 л/100км"
+                }
+            },
+            {
+                id: 4,
+                name: "KAYO MINI TD125 14/12",
+                price: 104990,
+                images: [
+                    "https://globaldrive.ru/upload/iblock/69a/uo2j6l9tdap6r6qfapa2fb3it25vhh3l.jpg",
+                    "https://static.insales-cdn.com/images/products/1/6498/985872738/01.png",
+                    "https://www.rollingmoto.ru/upload/iblock/e84/llc0xx6wgzh1tfk6jnp5ewjfqu36uh3p.jpg"
+                ],
+                description: "Компактный мотоцикл KAYO MINI TD125 для подростков и невысоких райдеров. Низкая посадка, легкий вес и простота управления делают его отличным выбором для обучения и развлечений.",
+                specs: {
+                    "Тип двигателя": "4-тактный",
+                    "Объем": "125 см³",
+                    "Мощность": "9 л.с.",
+                    "КПП": "4-ступенчатая",
+                    "Тип рамы": "Стальная",
+                    "Подвеска передняя": "Телескопическая вилка",
+                    "Подвеска задняя": "Моноамортизатор",
+                    "Тормоза передние": "Дисковые",
+                    "Тормоза задние": "Барабанные",
+                    "Вес": "85 кг",
+                    "Макс. скорость": "75 км/ч",
+                    "Расход топлива": "3.0 л/100км"
+                }
+            },
+            {
+                id: 5,
+                name: "Питбайк детский KAYO DBR SX50-A",
+                price: 29990,
+                images: [
+                    "https://static.insales-cdn.com/images/products/1/6498/985872738/01.png",
+                    "https://globaldrive.ru/upload/iblock/69a/uo2j6l9tdap6r6qfapa2fb3it25vhh3l.jpg",
+                    "https://www.rollingmoto.ru/upload/iblock/e84/llc0xx6wgzh1tfk6jnp5ewjfqu36uh3p.jpg"
+                ],
+                description: "Детский питбайк KAYO DBR SX50-A - отличный подарок для юных гонщиков. Безопасная конструкция, автоматическая коробка передач и качественные компоненты обеспечат безопасность и удовольствие от катания.",
+                specs: {
+                    "Тип двигателя": "2-тактный",
+                    "Объем": "50 см³",
+                    "Мощность": "2.1 л.с.",
+                    "КПП": "Автомат",
+                    "Тип рамы": "Стальная",
+                    "Подвеска передняя": "Телескопическая вилка",
+                    "Подвеска задняя": "Моноамортизатор",
+                    "Тормоза передние": "Барабанные",
+                    "Тормоза задние": "Барабанные",
+                    "Вес": "40 кг",
+                    "Макс. скорость": "45 км/ч",
+                    "Возраст": "6-12 лет"
+                }
+            },
+            {
+                id: 6,
+                name: "KAYO K1-L 150 MX 19/16",
+                price: 129990,
+                images: [
+                    "https://www.rollingmoto.ru/upload/iblock/e84/llc0xx6wgzh1tfk6jnp5ewjfqu36uh3p.jpg",
+                    "https://63moto.ru/upload/iblock/9a0/ny4mvfmw0g0i7gax47wcj3mp4fo8h0no.jpg",
+                    "https://www.rollingmoto.ru/upload/iblock/94f/6mdg6qg4kk99fgo7v7m1t39imzk134y2.jpg"
+                ],
+                description: "KAYO K1-L 150 MX - спортивный мотоцикл для мотокросса. Легкая алюминиевая рама, мощный двигатель 150 см³ и профессиональная подвеска делают его идеальным выбором для гонок по бездорожью.",
+                specs: {
+                    "Тип двигателя": "4-тактный",
+                    "Объем": "150 см³",
+                    "Мощность": "12 л.с.",
+                    "КПП": "5-ступенчатая",
+                    "Тип рамы": "Алюминиевая",
+                    "Подвеска передняя": "Перевернутая вилка",
+                    "Подвеска задняя": "Моноамортизатор",
+                    "Тормоза передние": "Дисковые",
+                    "Тормоза задние": "Дисковые",
+                    "Вес": "95 кг",
+                    "Макс. скорость": "100 км/ч",
+                    "Расход топлива": "4.2 л/100км"
+                }
+            },
+            {
+                id: 7,
+                name: "ATAKI BATLLO (4T PR300) ПТС 17/17",
+                price: 200000,
+                images: [
+                    "https://63moto.ru/upload/iblock/9a0/ny4mvfmw0g0i7gax47wcj3mp4fo8h0no.jpg",
+                    "https://www.rollingmoto.ru/upload/iblock/94f/6mdg6qg4kk99fgo7v7m1t39imzk134y2.jpg",
+                    "https://63moto.ru/upload/iblock/dc0/83dz0tpfevhth4zhxdl9pwlrerrhc19u.jpg"
+                ],
+                description: "ATAKI BATLLO - мощный эндуро мотоцикл с объемом двигателя 300 см³. Идеально подходит для длительных поездок по бездорожью и эксплуатации в сложных условиях. Имеет ПТС для постановки на учет.",
+                specs: {
+                    "Тип двигателя": "4-тактный",
+                    "Объем": "300 см³",
+                    "Мощность": "24 л.с.",
+                    "КПП": "6-ступенчатая",
+                    "Тип рамы": "Хромомолибденовая",
+                    "Подвеска передняя": "Перевернутая вилка",
+                    "Подвеска задняя": "Моноамортизатор",
+                    "Тормоза передние": "Дисковые, 2 поршня",
+                    "Тормоза задние": "Дисковые",
+                    "Вес": "135 кг",
+                    "Макс. скорость": "120 км/ч",
+                    "Расход топлива": "5.5 л/100км"
+                }
+            },
+            {
+                id: 8,
+                name: "ATAKI CARRERA 300 (4T PR300) ПТС 19/17",
+                price: 175000,
+                images: [
+                    "https://www.rollingmoto.ru/upload/iblock/94f/6mdg6qg4kk99fgo7v7m1t39imzk134y2.jpg",
+                    "https://63moto.ru/upload/iblock/dc0/83dz0tpfevhth4zhxdl9pwlrerrhc19u.jpg",
+                    "https://63moto.ru/upload/iblock/9a0/ny4mvfmw0g0i7gax47wcj3mp4fo8h0no.jpg"
+                ],
+                description: "ATAKI CARRERA 300 - спортивно-туристический мотоцикл с мощным двигателем 300 см³. Удобная посадка, качественная подвеска и большая топливная емкость делают его отличным выбором для дальних поездок.",
+                specs: {
+                    "Тип двигателя": "4-тактный",
+                    "Объем": "300 см³",
+                    "Мощность": "24 л.с.",
+                    "КПП": "6-ступенчатая",
+                    "Тип рамы": "Стальная",
+                    "Подвеска передняя": "Перевернутая вилка",
+                    "Подвеска задняя": "Моноамортизатор",
+                    "Тормоза передние": "Дисковые",
+                    "Тормоза задние": "Дисковые",
+                    "Вес": "140 кг",
+                    "Макс. скорость": "115 км/ч",
+                    "Расход топлива": "5.2 л/100км"
+                }
+            },
+            {
+                id: 9,
+                name: "ATAKI CROSSER 300 (4T PR300) ПТС 21/18",
+                price: 170000,
+                images: [
+                    "https://63moto.ru/upload/iblock/dc0/83dz0tpfevhth4zhxdl9pwlrerrhc19u.jpg",
+                    "https://www.rollingmoto.ru/upload/iblock/94f/6mdg6qg4kk99fgo7v7m1t39imzk134y2.jpg",
+                    "https://63moto.ru/upload/iblock/9a0/ny4mvfmw0g0i7gax47wcj3mp4fo8h0no.jpg"
+                ],
+                description: "ATAKI CROSSER 300 - кроссовый мотоцикл для профессионального использования. Легкая конструкция, мощный двигатель и профессиональная подвеска позволяют преодолевать самые сложные трассы.",
+                specs: {
+                    "Тип двигателя": "4-тактный",
+                    "Объем": "300 см³",
+                    "Мощность": "24 л.с.",
+                    "КПП": "6-ступенчатая",
+                    "Тип рамы": "Хромомолибденовая",
+                    "Подвеска передняя": "Перевернутая вилка",
+                    "Подвеска задняя": "Моноамортизатор",
+                    "Тормоза передние": "Дисковые, 2 поршня",
+                    "Тормоза задние": "Дисковые",
+                    "Вес": "125 кг",
+                    "Макс. скорость": "110 км/ч",
+                    "Расход топлива": "5.0 л/100км"
+                }
+            }
         ];
         
         // Обновление счетчика корзины
@@ -1692,6 +2160,7 @@
         
         // Добавление товара в корзину
         function addToCart(name, price) {
+            // Проверяем, есть ли товар уже в корзине
             const existingItem = cart.find(item => item.name === name);
             
             if (existingItem) {
@@ -1704,8 +2173,13 @@
                 });
             }
             
+            // Сохраняем в localStorage
             localStorage.setItem('cart', JSON.stringify(cart));
+            
+            // Обновляем счетчик
             updateCartCounter();
+            
+            // Показываем уведомление
             showNotification(`Товар "${name}" добавлен в корзину!`);
         }
         
@@ -1761,7 +2235,89 @@
         
         // Отправка заказа
         function submitOrder() {
-            // Валидация и отправка заказа
+            const name = document.getElementById('name').value;
+            const phone = document.getElementById('phone').value;
+            const email = document.getElementById('email').value;
+            const address = document.getElementById('address').value;
+            const comment = document.getElementById('comment').value;
+            
+            // Сбрасываем ошибки
+            document.querySelectorAll('.form-group input').forEach(i => i.classList.remove('error'));
+            
+            let isValid = true;
+            const requiredFields = ['name', 'phone', 'email', 'address'];
+            
+            requiredFields.forEach(fieldId => {
+                const field = document.getElementById(fieldId);
+                if (!field.value.trim()) {
+                    field.classList.add('error');
+                    isValid = false;
+                }
+            });
+            
+            if (!isValid) {
+                showNotification('Пожалуйста, заполните все обязательные поля!');
+                return;
+            }
+            
+            // Формируем текст заказа
+            let orderText = `Новый заказ!\n\nКлиент: ${name}\nТелефон: ${phone}\nEmail: ${email}\nАдрес: ${address}\n\nТовары:\n`;
+            
+            let total = 0;
+            cart.forEach(item => {
+                const itemTotal = item.price * item.quantity;
+                orderText += `- ${item.name} (${item.quantity} шт.) - ${itemTotal.toLocaleString()} ₽\n`;
+                total += itemTotal;
+            });
+            
+            orderText += `\nИтого: ${total.toLocaleString()} ₽`;
+            
+            if (comment) {
+                orderText += `\n\nКомментарий: ${comment}`;
+            }
+            
+            // Отправка на почту
+            sendEmail(orderText);
+            
+            // Очистка корзины
+            cart = [];
+            localStorage.setItem('cart', JSON.stringify(cart));
+            updateCartCounter();
+            
+            // Скрываем корзину
+            closeCart();
+            
+            // Сбрасываем форму
+            document.getElementById('name').value = '';
+            document.getElementById('phone').value = '';
+            document.getElementById('email').value = '';
+            document.getElementById('address').value = '';
+            document.getElementById('comment').value = '';
+            
+            showNotification('Заказ успешно отправлен! Мы свяжемся с вами в ближайшее время.');
+        }
+        
+        // Отправка email
+        function sendEmail(orderText) {
+            // В реальном проекте здесь будет код отправки через EmailJS или другой сервис
+            // Для демонстрации просто выводим в консоль
+            console.log("Заказ отправлен на email: moto.pro1@yandex.ru");
+            console.log(orderText);
+            
+            // Отправка в Telegram
+            sendTelegram(orderText);
+        }
+        
+        // Отправка в Telegram
+        function sendTelegram(orderText) {
+            const botToken = 'YOUR_BOT_TOKEN'; // Замените на реальный токен бота
+            const chatId = '@Elemcheg'; // Ваш Telegram ID или имя канала
+            
+            // В реальном проекте:
+            // fetch(`https://api.telegram.org/bot${botToken}/sendMessage?chat_id=${chatId}&text=${encodeURIComponent(orderText)}`)
+            
+            console.log("Заказ отправлен в Telegram: @Elemcheg");
+            console.log(orderText);
         }
         
         // Показать уведомление
@@ -1777,14 +2333,18 @@
         
         // Переключение страниц
         function showPage(pageId) {
+            // Сохраняем текущую страницу
             localStorage.setItem('lastPage', pageId);
             
+            // Скрыть все страницы
             document.querySelectorAll('.page-section').forEach(page => {
                 page.classList.remove('active-page');
             });
             
+            // Показать выбранную страницу
             document.getElementById(`${pageId}-page`).classList.add('active-page');
             
+            // Обновляем активные ссылки
             document.querySelectorAll('.nav-link').forEach(link => {
                 link.classList.remove('active');
             });
@@ -1792,9 +2352,10 @@
             const activeLinks = document.querySelectorAll(`.nav-link[onclick*="${pageId}"]`);
             activeLinks.forEach(link => link.classList.add('active'));
             
+            // Закрываем мобильное меню
             document.querySelector('.nav-section').classList.remove('active');
-            document.getElementById('mobile-nav').classList.remove('active');
             
+            // Если открываем каталог - прокрутить в начало
             if (pageId === 'catalog') {
                 window.scrollTo(0, 0);
             }
@@ -1802,20 +2363,25 @@
         
         // Показать детальную страницу товара
         function showProductDetail(productId) {
+            // Сохраняем информацию о просматриваемом товаре
             localStorage.setItem('lastPage', 'product-detail');
             localStorage.setItem('lastProductId', productId);
             
+            // Найти товар по ID
             const product = products.find(p => p.id === productId);
             if (!product) return;
             
+            // Заполнить информацию о товаре
             document.getElementById('detail-name').textContent = product.name;
             document.getElementById('detail-price').textContent = `${product.price.toLocaleString()} ₽`;
             
+            // Описание
             document.getElementById('detail-description').innerHTML = `
                 <h3>Описание</h3>
                 <p>${product.description}</p>
             `;
             
+            // Характеристики
             const specsContainer = document.getElementById('detail-specs');
             specsContainer.innerHTML = '<h3>Технические характеристики</h3>';
             
@@ -1829,6 +2395,7 @@
                 specsContainer.appendChild(specElement);
             }
             
+            // Галерея изображений
             const mainImage = document.getElementById('main-image');
             mainImage.src = product.images[0];
             mainImage.alt = product.name;
@@ -1853,24 +2420,28 @@
                 thumbnailsContainer.appendChild(thumbnail);
             });
             
+            // Кнопка добавления в корзину
             const addButton = document.getElementById('detail-add-to-cart');
             addButton.onclick = () => addToCart(product.name, product.price);
             
+            // Показать страницу с деталями
             showPage('product-detail');
         }
         
         // Переключение мобильного меню
         function toggleMobileMenu() {
-            document.getElementById('mobile-nav').classList.toggle('active');
+            document.querySelector('.nav-section').classList.toggle('active');
         }
         
         // Инициализация при загрузке
         document.addEventListener('DOMContentLoaded', () => {
             updateCartCounter();
             
+            // Обработчики для кнопок очистки корзины
             document.getElementById('clear-cart-btn').addEventListener('click', clearCart);
             document.getElementById('clear-cart-popup').addEventListener('click', clearCart);
             
+            // Добавляем обработчики для полей формы
             ['name', 'phone', 'email', 'address'].forEach(field => {
                 document.getElementById(field).addEventListener('input', function() {
                     if (this.value.trim()) {
@@ -1879,6 +2450,7 @@
                 });
             });
             
+            // Восстановление последней открытой страницы
             const lastPage = localStorage.getItem('lastPage') || 'home';
             if (lastPage === 'product-detail') {
                 const productId = localStorage.getItem('lastProductId');
