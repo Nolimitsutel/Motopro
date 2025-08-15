@@ -328,13 +328,14 @@
             color: #333;
         }
         
-        .add-to-cart-container {
-            margin-top: auto;
-            padding-top: 15px;
+        .product-actions {
+            display: flex;
+            gap: 10px;
+            margin-top: 15px;
         }
         
         .add-to-cart {
-            width: 100%;
+            flex-grow: 1;
             background: #1a3a6c;
             color: white;
             border: none;
@@ -350,6 +351,152 @@
         }
         
         .add-to-cart:hover {
+            background: #2a5298;
+        }
+        
+        .details-btn {
+            background: #ffcc00;
+            color: #333;
+            border: none;
+            padding: 0 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .details-btn:hover {
+            background: #ffdd55;
+        }
+        
+        /* Детальная страница товара */
+        .product-detail {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 25px rgba(0,0,0,0.1);
+            margin: 30px 0;
+        }
+        
+        .product-gallery {
+            display: flex;
+            flex-direction: column;
+            padding: 20px;
+        }
+        
+        .main-image-container {
+            height: 400px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: #f8f9fa;
+            border-radius: 10px;
+            margin-bottom: 15px;
+            overflow: hidden;
+        }
+        
+        .main-image {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
+        }
+        
+        .thumbnails {
+            display: flex;
+            gap: 10px;
+            overflow-x: auto;
+            padding: 10px 0;
+        }
+        
+        .thumbnail {
+            width: 80px;
+            height: 60px;
+            object-fit: cover;
+            border-radius: 5px;
+            cursor: pointer;
+            border: 2px solid transparent;
+            transition: all 0.3s;
+        }
+        
+        .thumbnail:hover, .thumbnail.active {
+            border-color: #1a3a6c;
+            transform: scale(1.05);
+        }
+        
+        .product-detail-info {
+            padding: 30px;
+        }
+        
+        .product-detail-name {
+            font-size: 2rem;
+            color: #1a3a6c;
+            margin-bottom: 10px;
+        }
+        
+        .product-detail-price {
+            font-size: 2rem;
+            color: #d10000;
+            font-weight: bold;
+            margin: 20px 0;
+        }
+        
+        .product-description {
+            line-height: 1.8;
+            margin: 20px 0;
+            padding: 20px;
+            background: #f9f9f9;
+            border-radius: 10px;
+            border-left: 3px solid #ffcc00;
+        }
+        
+        .detail-specs {
+            margin: 20px 0;
+        }
+        
+        .detail-specs h3 {
+            font-size: 1.4rem;
+            margin-bottom: 15px;
+            color: #1a3a6c;
+            border-bottom: 2px solid #ffcc00;
+            padding-bottom: 5px;
+        }
+        
+        .detail-spec-item {
+            display: flex;
+            padding: 10px;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .detail-spec-name {
+            flex: 0 0 40%;
+            font-weight: 500;
+            color: #555;
+        }
+        
+        .detail-spec-value {
+            flex: 0 0 60%;
+            font-weight: bold;
+            color: #333;
+        }
+        
+        .back-to-catalog {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 20px;
+            background: #1a3a6c;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: background 0.3s;
+        }
+        
+        .back-to-catalog:hover {
             background: #2a5298;
         }
         
@@ -765,6 +912,39 @@
             .product-price {
                 font-size: 1.4rem;
             }
+            
+            /* Детальная страница на мобильных */
+            .product-detail {
+                margin: 15px 0;
+            }
+            
+            .product-gallery {
+                padding: 10px;
+            }
+            
+            .main-image-container {
+                height: 250px;
+            }
+            
+            .product-detail-info {
+                padding: 20px;
+            }
+            
+            .product-detail-name {
+                font-size: 1.6rem;
+            }
+            
+            .product-detail-price {
+                font-size: 1.8rem;
+            }
+            
+            .detail-specs h3 {
+                font-size: 1.2rem;
+            }
+            
+            .product-actions {
+                flex-direction: column;
+            }
         }
         
         /* Мобильное меню */
@@ -944,14 +1124,13 @@
                                 <span class="spec-name">Мощность:</span>
                                 <span class="spec-value">9 л.с.</span>
                             </div>
-                            <div class="spec-item">
-                                <span class="spec-name">КПП:</span>
-                                <span class="spec-value">4-ступенчатая</span>
-                            </div>
                         </div>
-                        <div class="add-to-cart-container">
+                        <div class="product-actions">
                             <button class="add-to-cart" onclick="addToCart('KAYO BASIC K125EM 17/14 KRZ', 104990)">
                                 <i class="fas fa-cart-plus"></i> В корзину
+                            </button>
+                            <button class="details-btn" onclick="showProductDetail(1)">
+                                <i class="fas fa-eye"></i>
                             </button>
                         </div>
                     </div>
@@ -978,14 +1157,13 @@
                                 <span class="spec-name">Мощность:</span>
                                 <span class="spec-value">9 л.с.</span>
                             </div>
-                            <div class="spec-item">
-                                <span class="spec-name">КПП:</span>
-                                <span class="spec-value">4-ступенчатая</span>
-                            </div>
                         </div>
-                        <div class="add-to-cart-container">
+                        <div class="product-actions">
                             <button class="add-to-cart" onclick="addToCart('KAYO BASIC K125EA 17/14 KRZ', 104990)">
                                 <i class="fas fa-cart-plus"></i> В корзину
+                            </button>
+                            <button class="details-btn" onclick="showProductDetail(2)">
+                                <i class="fas fa-eye"></i>
                             </button>
                         </div>
                     </div>
@@ -1012,14 +1190,13 @@
                                 <span class="spec-name">Мощность:</span>
                                 <span class="spec-value">13 л.с.</span>
                             </div>
-                            <div class="spec-item">
-                                <span class="spec-name">КПП:</span>
-                                <span class="spec-value">4-ступенчатая</span>
-                            </div>
                         </div>
-                        <div class="add-to-cart-container">
+                        <div class="product-actions">
                             <button class="add-to-cart" onclick="addToCart('KAYO BASIC TT140 17/14 KRZ', 104990)">
                                 <i class="fas fa-cart-plus"></i> В корзину
+                            </button>
+                            <button class="details-btn" onclick="showProductDetail(3)">
+                                <i class="fas fa-eye"></i>
                             </button>
                         </div>
                     </div>
@@ -1046,14 +1223,13 @@
                                 <span class="spec-name">Мощность:</span>
                                 <span class="spec-value">9 л.с.</span>
                             </div>
-                            <div class="spec-item">
-                                <span class="spec-name">КПП:</span>
-                                <span class="spec-value">4-ступенчатая</span>
-                            </div>
                         </div>
-                        <div class="add-to-cart-container">
+                        <div class="product-actions">
                             <button class="add-to-cart" onclick="addToCart('KAYO MINI TD125 14/12', 104990)">
                                 <i class="fas fa-cart-plus"></i> В корзину
+                            </button>
+                            <button class="details-btn" onclick="showProductDetail(4)">
+                                <i class="fas fa-eye"></i>
                             </button>
                         </div>
                     </div>
@@ -1080,14 +1256,13 @@
                                 <span class="spec-name">Мощность:</span>
                                 <span class="spec-value">2.1 л.с.</span>
                             </div>
-                            <div class="spec-item">
-                                <span class="spec-name">КПП:</span>
-                                <span class="spec-value">Автомат</span>
-                            </div>
                         </div>
-                        <div class="add-to-cart-container">
+                        <div class="product-actions">
                             <button class="add-to-cart" onclick="addToCart('Питбайк детский KAYO DBR SX50-A', 29990)">
                                 <i class="fas fa-cart-plus"></i> В корзину
+                            </button>
+                            <button class="details-btn" onclick="showProductDetail(5)">
+                                <i class="fas fa-eye"></i>
                             </button>
                         </div>
                     </div>
@@ -1114,14 +1289,13 @@
                                 <span class="spec-name">Мощность:</span>
                                 <span class="spec-value">12 л.с.</span>
                             </div>
-                            <div class="spec-item">
-                                <span class="spec-name">КПП:</span>
-                                <span class="spec-value">5-ступенчатая</span>
-                            </div>
                         </div>
-                        <div class="add-to-cart-container">
+                        <div class="product-actions">
                             <button class="add-to-cart" onclick="addToCart('KAYO K1-L 150 MX 19/16', 129990)">
                                 <i class="fas fa-cart-plus"></i> В корзину
+                            </button>
+                            <button class="details-btn" onclick="showProductDetail(6)">
+                                <i class="fas fa-eye"></i>
                             </button>
                         </div>
                     </div>
@@ -1148,14 +1322,13 @@
                                 <span class="spec-name">Мощность:</span>
                                 <span class="spec-value">24 л.с.</span>
                             </div>
-                            <div class="spec-item">
-                                <span class="spec-name">КПП:</span>
-                                <span class="spec-value">6-ступенчатая</span>
-                            </div>
                         </div>
-                        <div class="add-to-cart-container">
+                        <div class="product-actions">
                             <button class="add-to-cart" onclick="addToCart('ATAKI BATLLO (4T PR300) ПТС 17/17', 200000)">
                                 <i class="fas fa-cart-plus"></i> В корзину
+                            </button>
+                            <button class="details-btn" onclick="showProductDetail(7)">
+                                <i class="fas fa-eye"></i>
                             </button>
                         </div>
                     </div>
@@ -1182,14 +1355,13 @@
                                 <span class="spec-name">Мощность:</span>
                                 <span class="spec-value">24 л.с.</span>
                             </div>
-                            <div class="spec-item">
-                                <span class="spec-name">КПП:</span>
-                                <span class="spec-value">6-ступенчатая</span>
-                            </div>
                         </div>
-                        <div class="add-to-cart-container">
+                        <div class="product-actions">
                             <button class="add-to-cart" onclick="addToCart('ATAKI CARRERA 300 (4T PR300) ПТС 19/17', 175000)">
                                 <i class="fas fa-cart-plus"></i> В корзину
+                            </button>
+                            <button class="details-btn" onclick="showProductDetail(8)">
+                                <i class="fas fa-eye"></i>
                             </button>
                         </div>
                     </div>
@@ -1216,17 +1388,51 @@
                                 <span class="spec-name">Мощность:</span>
                                 <span class="spec-value">24 л.с.</span>
                             </div>
-                            <div class="spec-item">
-                                <span class="spec-name">КПП:</span>
-                                <span class="spec-value">6-ступенчатая</span>
-                            </div>
                         </div>
-                        <div class="add-to-cart-container">
+                        <div class="product-actions">
                             <button class="add-to-cart" onclick="addToCart('ATAKI CROSSER 300 (4T PR300) ПТС 21/18', 170000)">
                                 <i class="fas fa-cart-plus"></i> В корзину
                             </button>
+                            <button class="details-btn" onclick="showProductDetail(9)">
+                                <i class="fas fa-eye"></i>
+                            </button>
                         </div>
                     </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Детальная страница товара -->
+        <section id="product-detail-page" class="page-section">
+            <a href="#" class="back-to-catalog" onclick="showPage('catalog')">
+                <i class="fas fa-arrow-left"></i> Назад в каталог
+            </a>
+            
+            <div class="product-detail">
+                <div class="product-gallery">
+                    <div class="main-image-container">
+                        <img id="main-image" src="" alt="Основное изображение" class="main-image">
+                    </div>
+                    <div class="thumbnails" id="thumbnails-container">
+                        <!-- Миниатюры будут добавлены через JS -->
+                    </div>
+                </div>
+                
+                <div class="product-detail-info">
+                    <h1 class="product-detail-name" id="detail-name"></h1>
+                    <div class="product-detail-price" id="detail-price"></div>
+                    
+                    <div class="product-description" id="detail-description">
+                        <!-- Описание будет добавлено через JS -->
+                    </div>
+                    
+                    <div class="detail-specs" id="detail-specs">
+                        <!-- Характеристики будут добавлены через JS -->
+                    </div>
+                    
+                    <button class="add-to-cart" id="detail-add-to-cart" style="padding: 15px; font-size: 1.2rem;">
+                        <i class="fas fa-cart-plus"></i> Добавить в корзину
+                    </button>
                 </div>
             </div>
         </section>
@@ -1493,6 +1699,235 @@
         const cartItemsContainer = document.getElementById('cart-items');
         const cartTotalPrice = document.getElementById('cart-total-price');
         
+        // Массив товаров с детальной информацией
+        const products = [
+            {
+                id: 1,
+                name: "KAYO BASIC K125EM 17/14 KRZ (2024)",
+                price: 104990,
+                images: [
+                    "https://static.insales-cdn.com/images/products/1/4418/985862466/07.png",
+                    "https://globaldrive.ru/upload/iblock/088/xe6uevaxb0lz2uijejq04r7xhxswul2f.jpg",
+                    "https://globaldrive.ru/upload/iblock/c87/fmqivewnshmdew63g3i3xtema3p4fpow.jpg"
+                ],
+                description: "Мотоцикл KAYO BASIC K125EM - идеальный выбор для начинающих райдеров. Удобная посадка, легкое управление и надежный 4-тактный двигатель объемом 125 см³. Отлично подходит для городских поездок и легкого бездорожья.",
+                specs: {
+                    "Тип двигателя": "4-тактный",
+                    "Объем": "125 см³",
+                    "Мощность": "9 л.с.",
+                    "КПП": "4-ступенчатая",
+                    "Тип рамы": "Стальная",
+                    "Подвеска передняя": "Телескопическая вилка",
+                    "Подвеска задняя": "Моноамортизатор",
+                    "Тормоза передние": "Дисковые",
+                    "Тормоза задние": "Барабанные",
+                    "Вес": "110 кг",
+                    "Макс. скорость": "90 км/ч",
+                    "Расход топлива": "3.5 л/100км"
+                }
+            },
+            {
+                id: 2,
+                name: "KAYO BASIC K125EA 17/14 KRZ (2024)",
+                price: 104990,
+                images: [
+                    "https://globaldrive.ru/upload/iblock/088/xe6uevaxb0lz2uijejq04r7xhxswul2f.jpg",
+                    "https://static.insales-cdn.com/images/products/1/4418/985862466/07.png",
+                    "https://globaldrive.ru/upload/iblock/c87/fmqivewnshmdew63g3i3xtema3p4fpow.jpg"
+                ],
+                description: "KAYO BASIC K125EA - экономичный и надежный мотоцикл для ежедневного использования. Прочная конструкция, качественные компоненты и стильный дизайн делают его отличным выбором для городских условий.",
+                specs: {
+                    "Тип двигателя": "4-тактный",
+                    "Объем": "125 см³",
+                    "Мощность": "9 л.с.",
+                    "КПП": "4-ступенчатая",
+                    "Тип рамы": "Стальная",
+                    "Подвеска передняя": "Телескопическая вилка",
+                    "Подвеска задняя": "Моноамортизатор",
+                    "Тормоза передние": "Дисковые",
+                    "Тормоза задние": "Барабанные",
+                    "Вес": "112 кг",
+                    "Макс. скорость": "85 км/ч",
+                    "Расход топлива": "3.3 л/100км"
+                }
+            },
+            {
+                id: 3,
+                name: "KAYO BASIC TT140 17/14 KRZ",
+                price: 104990,
+                images: [
+                    "https://globaldrive.ru/upload/iblock/c87/fmqivewnshmdew63g3i3xtema3p4fpow.jpg",
+                    "https://static.insales-cdn.com/images/products/1/4418/985862466/07.png",
+                    "https://globaldrive.ru/upload/iblock/088/xe6uevaxb0lz2uijejq04r7xhxswul2f.jpg"
+                ],
+                description: "Мотоцикл KAYO BASIC TT140 с увеличенным объемом двигателя для большей мощности и крутящего момента. Идеально подходит для тех, кому требуется больше динамики и проходимости.",
+                specs: {
+                    "Тип двигателя": "4-тактный",
+                    "Объем": "140 см³",
+                    "Мощность": "13 л.с.",
+                    "КПП": "4-ступенчатая",
+                    "Тип рамы": "Стальная",
+                    "Подвеска передняя": "Телескопическая вилка",
+                    "Подвеска задняя": "Моноамортизатор",
+                    "Тормоза передние": "Дисковые",
+                    "Тормоза задние": "Барабанные",
+                    "Вес": "115 кг",
+                    "Макс. скорость": "95 км/ч",
+                    "Расход топлива": "3.8 л/100км"
+                }
+            },
+            {
+                id: 4,
+                name: "KAYO MINI TD125 14/12",
+                price: 104990,
+                images: [
+                    "https://globaldrive.ru/upload/iblock/69a/uo2j6l9tdap6r6qfapa2fb3it25vhh3l.jpg",
+                    "https://static.insales-cdn.com/images/products/1/6498/985872738/01.png",
+                    "https://www.rollingmoto.ru/upload/iblock/e84/llc0xx6wgzh1tfk6jnp5ewjfqu36uh3p.jpg"
+                ],
+                description: "Компактный мотоцикл KAYO MINI TD125 для подростков и невысоких райдеров. Низкая посадка, легкий вес и простота управления делают его отличным выбором для обучения и развлечений.",
+                specs: {
+                    "Тип двигателя": "4-тактный",
+                    "Объем": "125 см³",
+                    "Мощность": "9 л.с.",
+                    "КПП": "4-ступенчатая",
+                    "Тип рамы": "Стальная",
+                    "Подвеска передняя": "Телескопическая вилка",
+                    "Подвеска задняя": "Моноамортизатор",
+                    "Тормоза передние": "Дисковые",
+                    "Тормоза задние": "Барабанные",
+                    "Вес": "85 кг",
+                    "Макс. скорость": "75 км/ч",
+                    "Расход топлива": "3.0 л/100км"
+                }
+            },
+            {
+                id: 5,
+                name: "Питбайк детский KAYO DBR SX50-A",
+                price: 29990,
+                images: [
+                    "https://static.insales-cdn.com/images/products/1/6498/985872738/01.png",
+                    "https://globaldrive.ru/upload/iblock/69a/uo2j6l9tdap6r6qfapa2fb3it25vhh3l.jpg",
+                    "https://www.rollingmoto.ru/upload/iblock/e84/llc0xx6wgzh1tfk6jnp5ewjfqu36uh3p.jpg"
+                ],
+                description: "Детский питбайк KAYO DBR SX50-A - отличный подарок для юных гонщиков. Безопасная конструкция, автоматическая коробка передач и качественные компоненты обеспечат безопасность и удовольствие от катания.",
+                specs: {
+                    "Тип двигателя": "2-тактный",
+                    "Объем": "50 см³",
+                    "Мощность": "2.1 л.с.",
+                    "КПП": "Автомат",
+                    "Тип рамы": "Стальная",
+                    "Подвеска передняя": "Телескопическая вилка",
+                    "Подвеска задняя": "Моноамортизатор",
+                    "Тормоза передние": "Барабанные",
+                    "Тормоза задние": "Барабанные",
+                    "Вес": "40 кг",
+                    "Макс. скорость": "45 км/ч",
+                    "Возраст": "6-12 лет"
+                }
+            },
+            {
+                id: 6,
+                name: "KAYO K1-L 150 MX 19/16",
+                price: 129990,
+                images: [
+                    "https://www.rollingmoto.ru/upload/iblock/e84/llc0xx6wgzh1tfk6jnp5ewjfqu36uh3p.jpg",
+                    "https://63moto.ru/upload/iblock/9a0/ny4mvfmw0g0i7gax47wcj3mp4fo8h0no.jpg",
+                    "https://www.rollingmoto.ru/upload/iblock/94f/6mdg6qg4kk99fgo7v7m1t39imzk134y2.jpg"
+                ],
+                description: "KAYO K1-L 150 MX - спортивный мотоцикл для мотокросса. Легкая алюминиевая рама, мощный двигатель 150 см³ и профессиональная подвеска делают его идеальным выбором для гонок по бездорожью.",
+                specs: {
+                    "Тип двигателя": "4-тактный",
+                    "Объем": "150 см³",
+                    "Мощность": "12 л.с.",
+                    "КПП": "5-ступенчатая",
+                    "Тип рамы": "Алюминиевая",
+                    "Подвеска передняя": "Перевернутая вилка",
+                    "Подвеска задняя": "Моноамортизатор",
+                    "Тормоза передние": "Дисковые",
+                    "Тормоза задние": "Дисковые",
+                    "Вес": "95 кг",
+                    "Макс. скорость": "100 км/ч",
+                    "Расход топлива": "4.2 л/100км"
+                }
+            },
+            {
+                id: 7,
+                name: "ATAKI BATLLO (4T PR300) ПТС 17/17",
+                price: 200000,
+                images: [
+                    "https://63moto.ru/upload/iblock/9a0/ny4mvfmw0g0i7gax47wcj3mp4fo8h0no.jpg",
+                    "https://www.rollingmoto.ru/upload/iblock/94f/6mdg6qg4kk99fgo7v7m1t39imzk134y2.jpg",
+                    "https://63moto.ru/upload/iblock/dc0/83dz0tpfevhth4zhxdl9pwlrerrhc19u.jpg"
+                ],
+                description: "ATAKI BATLLO - мощный эндуро мотоцикл с объемом двигателя 300 см³. Идеально подходит для длительных поездок по бездорожью и эксплуатации в сложных условиях. Имеет ПТС для постановки на учет.",
+                specs: {
+                    "Тип двигателя": "4-тактный",
+                    "Объем": "300 см³",
+                    "Мощность": "24 л.с.",
+                    "КПП": "6-ступенчатая",
+                    "Тип рамы": "Хромомолибденовая",
+                    "Подвеска передняя": "Перевернутая вилка",
+                    "Подвеска задняя": "Моноамортизатор",
+                    "Тормоза передние": "Дисковые, 2 поршня",
+                    "Тормоза задние": "Дисковые",
+                    "Вес": "135 кг",
+                    "Макс. скорость": "120 км/ч",
+                    "Расход топлива": "5.5 л/100км"
+                }
+            },
+            {
+                id: 8,
+                name: "ATAKI CARRERA 300 (4T PR300) ПТС 19/17",
+                price: 175000,
+                images: [
+                    "https://www.rollingmoto.ru/upload/iblock/94f/6mdg6qg4kk99fgo7v7m1t39imzk134y2.jpg",
+                    "https://63moto.ru/upload/iblock/dc0/83dz0tpfevhth4zhxdl9pwlrerrhc19u.jpg",
+                    "https://63moto.ru/upload/iblock/9a0/ny4mvfmw0g0i7gax47wcj3mp4fo8h0no.jpg"
+                ],
+                description: "ATAKI CARRERA 300 - спортивно-туристический мотоцикл с мощным двигателем 300 см³. Удобная посадка, качественная подвеска и большая топливная емкость делают его отличным выбором для дальних поездок.",
+                specs: {
+                    "Тип двигателя": "4-тактный",
+                    "Объем": "300 см³",
+                    "Мощность": "24 л.с.",
+                    "КПП": "6-ступенчатая",
+                    "Тип рамы": "Стальная",
+                    "Подвеска передняя": "Перевернутая вилка",
+                    "Подвеска задняя": "Моноамортизатор",
+                    "Тормоза передние": "Дисковые",
+                    "Тормоза задние": "Дисковые",
+                    "Вес": "140 кг",
+                    "Макс. скорость": "115 км/ч",
+                    "Расход топлива": "5.2 л/100км"
+                }
+            },
+            {
+                id: 9,
+                name: "ATAKI CROSSER 300 (4T PR300) ПТС 21/18",
+                price: 170000,
+                images: [
+                    "https://63moto.ru/upload/iblock/dc0/83dz0tpfevhth4zhxdl9pwlrerrhc19u.jpg",
+                    "https://www.rollingmoto.ru/upload/iblock/94f/6mdg6qg4kk99fgo7v7m1t39imzk134y2.jpg",
+                    "https://63moto.ru/upload/iblock/9a0/ny4mvfmw0g0i7gax47wcj3mp4fo8h0no.jpg"
+                ],
+                description: "ATAKI CROSSER 300 - кроссовый мотоцикл для профессионального использования. Легкая конструкция, мощный двигатель и профессиональная подвеска позволяют преодолевать самые сложные трассы.",
+                specs: {
+                    "Тип двигателя": "4-тактный",
+                    "Объем": "300 см³",
+                    "Мощность": "24 л.с.",
+                    "КПП": "6-ступенчатая",
+                    "Тип рамы": "Хромомолибденовая",
+                    "Подвеска передняя": "Перевернутая вилка",
+                    "Подвеска задняя": "Моноамортизатор",
+                    "Тормоза передние": "Дисковые, 2 поршня",
+                    "Тормоза задние": "Дисковые",
+                    "Вес": "125 кг",
+                    "Макс. скорость": "110 км/ч",
+                    "Расход топлива": "5.0 л/100км"
+                }
+            }
+        ];
+        
         // Обновление счетчика корзины
         function updateCartCounter() {
             const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
@@ -1753,6 +2188,68 @@
             if (pageId === 'catalog') {
                 window.scrollTo(0, 0);
             }
+        }
+        
+        // Показать детальную страницу товара
+        function showProductDetail(productId) {
+            // Найти товар по ID
+            const product = products.find(p => p.id === productId);
+            if (!product) return;
+            
+            // Заполнить информацию о товаре
+            document.getElementById('detail-name').textContent = product.name;
+            document.getElementById('detail-price').textContent = `${product.price.toLocaleString()} ₽`;
+            
+            // Описание
+            document.getElementById('detail-description').innerHTML = `
+                <h3>Описание</h3>
+                <p>${product.description}</p>
+            `;
+            
+            // Характеристики
+            const specsContainer = document.getElementById('detail-specs');
+            specsContainer.innerHTML = '<h3>Технические характеристики</h3>';
+            
+            for (const [key, value] of Object.entries(product.specs)) {
+                const specElement = document.createElement('div');
+                specElement.className = 'detail-spec-item';
+                specElement.innerHTML = `
+                    <div class="detail-spec-name">${key}</div>
+                    <div class="detail-spec-value">${value}</div>
+                `;
+                specsContainer.appendChild(specElement);
+            }
+            
+            // Галерея изображений
+            const mainImage = document.getElementById('main-image');
+            mainImage.src = product.images[0];
+            mainImage.alt = product.name;
+            
+            const thumbnailsContainer = document.getElementById('thumbnails-container');
+            thumbnailsContainer.innerHTML = '';
+            
+            product.images.forEach((img, index) => {
+                const thumbnail = document.createElement('img');
+                thumbnail.src = img;
+                thumbnail.alt = `Изображение ${index + 1} ${product.name}`;
+                thumbnail.className = 'thumbnail';
+                if (index === 0) thumbnail.classList.add('active');
+                
+                thumbnail.addEventListener('click', () => {
+                    mainImage.src = img;
+                    document.querySelectorAll('.thumbnail').forEach(t => t.classList.remove('active'));
+                    thumbnail.classList.add('active');
+                });
+                
+                thumbnailsContainer.appendChild(thumbnail);
+            });
+            
+            // Кнопка добавления в корзину
+            const addButton = document.getElementById('detail-add-to-cart');
+            addButton.onclick = () => addToCart(product.name, product.price);
+            
+            // Показать страницу с деталями
+            showPage('product-detail');
         }
         
         // Переключение мобильного меню
