@@ -49,7 +49,7 @@
         }
         
         .logo {
-            font-size: 2rem;
+            font-size: 1.8rem;
             font-weight: bold;
             margin-bottom: 10px;
             text-transform: uppercase;
@@ -59,7 +59,7 @@
         }
         
         .slogan {
-            font-size: 1.1rem;
+            font-size: 1rem;
             margin-bottom: 15px;
             font-weight: 500;
             text-shadow: 0 1px 2px rgba(0,0,0,0.5);
@@ -212,13 +212,13 @@
         }
         
         .hero h1 {
-            font-size: 1.8rem;
+            font-size: 1.6rem;
             margin-bottom: 15px;
             line-height: 1.3;
         }
         
         .hero p {
-            font-size: 1.1rem;
+            font-size: 1rem;
             max-width: 100%;
             margin: 0 auto 20px;
             opacity: 0.9;
@@ -269,8 +269,7 @@
         
         .product-image-container {
             position: relative;
-            height: auto;
-            min-height: 180px;
+            height: 200px;
             overflow: hidden;
             background: #f8f9fa;
             display: flex;
@@ -282,7 +281,7 @@
             width: 100%;
             max-width: 100%;
             height: auto;
-            max-height: 180px;
+            max-height: 200px;
             object-fit: contain;
             padding: 10px;
             transition: transform 0.5s;
@@ -408,8 +407,7 @@
         }
         
         .main-image-container {
-            height: auto;
-            max-height: 300px;
+            height: 300px;
             display: flex;
             justify-content: center;
             align-items: center;
@@ -884,11 +882,11 @@
         /* Адаптивность */
         @media (max-width: 768px) {
             .logo {
-                font-size: 1.8rem;
+                font-size: 1.6rem;
             }
             
             .slogan {
-                font-size: 1rem;
+                font-size: 0.9rem;
             }
             
             .nav-section {
@@ -917,11 +915,11 @@
             }
             
             .hero h1 {
-                font-size: 1.5rem;
+                font-size: 1.4rem;
             }
             
             .hero p {
-                font-size: 1rem;
+                font-size: 0.95rem;
             }
             
             .section-title {
@@ -969,8 +967,7 @@
             }
             
             .main-image-container {
-                height: auto;
-                max-height: 250px;
+                height: 250px;
             }
             
             .main-image {
@@ -1013,6 +1010,10 @@
         }
         
         @media (max-width: 480px) {
+            .container {
+                padding-top: 70px; /* Добавлено для предотвращения перекрытия контента */
+            }
+            
             .mobile-menu-btn {
                 display: block;
             }
@@ -1068,12 +1069,16 @@
                 padding: 30px 10px;
             }
             
+            .product-image-container {
+                height: 180px; /* Оптимальная высота для мобильных */
+            }
+            
             .product-image {
-                max-height: 160px;
+                max-height: 180px;
             }
             
             .main-image-container {
-                max-height: 220px;
+                height: 220px;
             }
             
             .main-image {
@@ -1104,6 +1109,11 @@
             
             .category-card {
                 max-width: 100%;
+            }
+            
+            /* Исправление для заголовка страницы */
+            .info-title {
+                margin-top: 10px;
             }
         }
         
