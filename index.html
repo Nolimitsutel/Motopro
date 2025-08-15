@@ -522,19 +522,26 @@
             background: #2a5298;
         }
         
-        /* Корзина */
+        /* Корзина - ИЗМЕНЕНО: боковая панель */
         .cart-popup {
             display: none;
             position: fixed;
             top: 0;
             right: 0;
             width: 100%;
-            max-width: 100%;
+            max-width: 400px;
             height: 100%;
             background: white;
             z-index: 1000;
             flex-direction: column;
             overflow-y: auto;
+            box-shadow: -5px 0 15px rgba(0,0,0,0.2);
+            transform: translateX(100%);
+            transition: transform 0.3s ease;
+        }
+        
+        .cart-popup.active {
+            transform: translateX(0);
         }
         
         .cart-header {
@@ -944,6 +951,7 @@
             
             .cart-popup {
                 max-width: 100%;
+                max-width: 320px;
             }
             
             .product-name {
@@ -1000,7 +1008,7 @@
             }
         }
         
-        /* Мобильное меню */
+        /* Мобильное меню - ИЗМЕНЕНО: положение и стили */
         .mobile-menu-btn {
             display: none;
             background: none;
@@ -1021,13 +1029,13 @@
             
             .nav-section {
                 position: fixed;
-                top: 60px;
+                top: 70px; /* Смещено ниже шапки */
                 left: 0;
                 width: 100%;
                 background: #333;
                 flex-direction: column;
-                padding: 20px;
-                gap: 15px;
+                padding: 15px;
+                gap: 10px;
                 transform: translateY(-100%);
                 transition: transform 0.3s ease;
                 z-index: 99;
@@ -1071,6 +1079,7 @@
             
             .hero {
                 padding: 40px 15px;
+                margin-top: 10px; /* Отступ сверху для мобильной версии */
             }
             
             .product-image-container {
@@ -1145,6 +1154,13 @@
             .info-content p {
                 font-size: 1.05rem;
                 margin-bottom: 15px;
+            }
+            
+            /* Корзина для мобильных */
+            .cart-popup {
+                max-width: 100%;
+                width: 100%;
+                max-width: none;
             }
         }
         
@@ -1225,7 +1241,7 @@
     <!-- Основной контент -->
     <div class="container">
         <!-- Главная страница -->
-        <section id="home-page" class="page-section">
+        <section id="home-page" class="page-section active-page">
             <div class="hero">
                 <h1>Официальный дилер мототехники KAYO и ATAKI в России</h1>
                 <p>Продажа, сервис, запчасти с гарантией качества. Лучшие цены на рынке!</p>
@@ -1768,7 +1784,7 @@
             </div>
             <div class="form-group">
                 <label for="email">Email</label>
-                <input type="email" id="email" required>
+                    <input type="email" id="email" required>
             </div>
             <div class="form-group">
                 <label for="address">Адрес доставки</label>
@@ -2184,20 +2200,20 @@
             const cartPopup = document.getElementById('cart-popup');
             const overlay = document.getElementById('cart-overlay');
             
-            if (cartPopup.style.display === 'flex') {
-                cartPopup.style.display = 'none';
+            if (cartPopup.classList.contains('active')) {
+                cartPopup.classList.remove('active');
                 overlay.style.display = 'none';
                 document.getElementById('order-form').style.display = 'none';
                 document.getElementById('cart-actions').style.display = 'flex';
             } else {
                 updateCartPopup();
-                cartPopup.style.display = 'flex';
+                cartPopup.classList.add('active');
                 overlay.style.display = 'block';
             }
         }
         
         function closeCart() {
-            document.getElementById('cart-popup').style.display = 'none';
+            document.getElementById('cart-popup').classList.remove('active');
             document.getElementById('cart-overlay').style.display = 'none';
             document.getElementById('order-form').style.display = 'none';
             document.getElementById('cart-actions').style.display = 'flex';
