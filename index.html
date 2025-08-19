@@ -275,6 +275,7 @@
             display: flex;
             align-items: center;
             justify-content: center;
+            cursor: pointer;
         }
         
         .product-image {
@@ -415,6 +416,7 @@
             border-radius: 8px;
             margin-bottom: 15px;
             overflow: hidden;
+            cursor: pointer;
         }
         
         .main-image {
@@ -1296,6 +1298,114 @@
             font-style: italic;
             padding: 20px;
         }
+        
+        /* Галерея изображений в полноэкранном режиме */
+        .image-gallery-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.9);
+            z-index: 10000;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .image-gallery-modal.active {
+            display: flex;
+        }
+        
+        .gallery-content {
+            position: relative;
+            max-width: 90%;
+            max-height: 90%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .gallery-image {
+            max-width: 100%;
+            max-height: 90vh;
+            object-fit: contain;
+        }
+        
+        .gallery-close {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            color: white;
+            font-size: 30px;
+            cursor: pointer;
+            background: rgba(0, 0, 0, 0.5);
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 10001;
+        }
+        
+        .gallery-nav {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            color: white;
+            font-size: 30px;
+            cursor: pointer;
+            background: rgba(0, 0, 0, 0.5);
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 10001;
+        }
+        
+        .gallery-prev {
+            left: 20px;
+        }
+        
+        .gallery-next {
+            right: 20px;
+        }
+        
+        .gallery-counter {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            color: white;
+            font-size: 18px;
+            background: rgba(0, 0, 0, 0.5);
+            padding: 5px 15px;
+            border-radius: 20px;
+        }
+        
+        @media (max-width: 768px) {
+            .gallery-nav {
+                width: 40px;
+                height: 40px;
+                font-size: 24px;
+            }
+            
+            .gallery-close {
+                width: 35px;
+                height: 35px;
+                font-size: 24px;
+                top: 10px;
+                right: 10px;
+            }
+            
+            .gallery-counter {
+                font-size: 16px;
+                bottom: 10px;
+            }
+        }
     </style>
 </head>
 <body>
@@ -1383,7 +1493,7 @@
             <div class="catalog-grid">
                 <!-- Товар 1 -->
                 <div class="product-card">
-                    <div class="product-image-container">
+                    <div class="product-image-container" onclick="openImageGallery(1, 0)">
                         <img src="https://msk.kurazhsport.ru/upload/iblock/fdc/44kl35g49f55oqnzyt64pewr85p2xfq6.jpg" alt="KAYO BASIC K125EM 17/14 KRZ (2024)" class="product-image">
                     </div>
                     <div class="product-info">
@@ -1416,7 +1526,7 @@
                 
                 <!-- Товар 2 -->
                 <div class="product-card">
-                    <div class="product-image-container">
+                    <div class="product-image-container" onclick="openImageGallery(2, 0)">
                         <img src="https://msk.kurazhsport.ru/upload/iblock/11f/p5ebbgejthr1n2v6nrrg81o2vx4pcg3t.jpg" alt="KAYO BASIC K125EA 17/14 KRZ (2024)" class="product-image">
                     </div>
                     <div class="product-info">
@@ -1449,7 +1559,7 @@
                 
                 <!-- Товар 3 -->
                 <div class="product-card">
-                    <div class="product-image-container">
+                    <div class="product-image-container" onclick="openImageGallery(3, 0)">
                         <img src="https://msk.kurazhsport.ru/upload/iblock/b85/6qmmzrexcve0lr1ro3s715khc11ugr75.jpg" alt="KAYO BASIC TT140 17/14 KRZ" class="product-image">
                     </div>
                     <div class="product-info">
@@ -1482,7 +1592,7 @@
                 
                 <!-- Товар 4 -->
                 <div class="product-card">
-                    <div class="product-image-container">
+                    <div class="product-image-container" onclick="openImageGallery(4, 0)">
                         <img src="https://msk.kurazhsport.ru/upload/iblock/bef/gtybjm2qen07ltf7xahfkrjuba7emaj3.jpg" alt="KAYO MINI TD125 14/12" class="product-image">
                     </div>
                     <div class="product-info">
@@ -1515,7 +1625,7 @@
                 
                 <!-- Товар 5 -->
                 <div class="product-card">
-                    <div class="product-image-container">
+                    <div class="product-image-container" onclick="openImageGallery(5, 0)">
                         <img src="https://msk.kurazhsport.ru/upload/iblock/0c5/jniza1l1sb42ifrc6wy52xw2u17dl1qh.jpg" alt="Питбайк детский KAYO DBR SX50-A" class="product-image">
                     </div>
                     <div class="product-info">
@@ -1548,7 +1658,7 @@
                 
                 <!-- Товар 6 -->
                 <div class="product-card">
-                    <div class="product-image-container">
+                    <div class="product-image-container" onclick="openImageGallery(6, 0)">
                         <img src="https://msk.kurazhsport.ru/upload/iblock/c9f/dhex4t1ufkegryna8wa0yfyev642szvj.jpg" alt="KAYO K1-L 150 MX 19/16" class="product-image">
                     </div>
                     <div class="product-info">
@@ -1564,7 +1674,7 @@
                                 <span class="spec-value">150 см³</span>
                             </div>
                             <div class="spec-item">
-                                <span class="spec-name">Мощность:</span>
+                                <span class="spec-name">Мoщность:</span>
                                 <span class="spec-value">12 л.с.</span>
                             </div>
                         </div>
@@ -1581,7 +1691,7 @@
                 
                 <!-- Товар 7 -->
                 <div class="product-card">
-                    <div class="product-image-container">
+                    <div class="product-image-container" onclick="openImageGallery(7, 0)">
                         <img src="https://msk.kurazhsport.ru/upload/iblock/93b/7swiskubqemfzpor7xvhivyaf92262pv.jpg" alt="ATAKI BATLLO (4T PR300) ПТС 17/17" class="product-image">
                     </div>
                     <div class="product-info">
@@ -1614,7 +1724,7 @@
                 
                 <!-- Товар 8 -->
                 <div class="product-card">
-                    <div class="product-image-container">
+                    <div class="product-image-container" onclick="openImageGallery(8, 0)">
                         <img src="https://akulamotosalon.ru/wp-content/uploads/2025/04/6mdg6qg4kk99fgo7v7m1t39imzk134y2-768x576.jpg" alt="ATAKI CARRERA 300 (4T PR300) ПТС 19/17" class="product-image">
                     </div>
                     <div class="product-info">
@@ -1647,7 +1757,7 @@
                 
                 <!-- Товар 9 -->
                 <div class="product-card">
-                    <div class="product-image-container">
+                    <div class="product-image-container" onclick="openImageGallery(9, 0)">
                         <img src="https://msk.kurazhsport.ru/upload/iblock/e3d/8jzvyy3lgf7uer0blsyk2j6d0btfjkbt.jpg" alt="ATAKI CROSSER 300 (4T PR300) ПТС 21/18" class="product-image">
                     </div>
                     <div class="product-info">
@@ -1688,7 +1798,7 @@
             
             <div class="product-detail">
                 <div class="product-gallery">
-                    <div class="main-image-container">
+                    <div class="main-image-container" onclick="openImageGallery(currentProductId, 0)">
                         <div class="placeholder-text">Изображение будет добавлено через админ-панель</div>
                     </div>
                     <div class="thumbnails" id="thumbnails-container">
@@ -1776,7 +1886,7 @@
                     <p>Мы работаем официально и предоставляем полный комплект документов на технику:</p>
                     <ul class="info-list">
                         <li>Договор купли-продажи</li>
-                        <li>Паспорт транспортного средства (ПТС)</li>
+                        <li>Паспорт транспортного средства (ПТS)</li>
                         <li>Сертификат соответствия</li>
                         <li>Гарантийный талон</li>
                         <li>Товарная накладная</li>
@@ -1863,7 +1973,7 @@
                     </div>
                     
                     <h3>Как нас найти</h3>
-                    <p>На наш шоурум и сервисный центр расположены в бизнес-центре "Лобня" в 5 минутах ходьбы от станции метро "Лобня". Для клиентов на автомобилях предусмотрена бесплатная парковка.</p>
+                    <p>Наш шоурум и сервисный центр расположены в бизнес-центре "Лобня" в 5 минутах ходьбы от станции метро "Лобня". Для клиентов на автомобилях предусмотрена бесплатная парковка.</p>
                 </div>
             </div>
         </section>
@@ -1993,12 +2103,34 @@
         </div>
     </div>
 
+    <!-- Модальное окно для просмотра изображений -->
+    <div class="image-gallery-modal" id="image-gallery-modal">
+        <div class="gallery-close" onclick="closeImageGallery()">
+            <i class="fas fa-times"></i>
+        </div>
+        <div class="gallery-nav gallery-prev" onclick="changeImage(-1)">
+            <i class="fas fa-chevron-left"></i>
+        </div>
+        <div class="gallery-nav gallery-next" onclick="changeImage(1)">
+            <i class="fas fa-chevron-right"></i>
+        </div>
+        <div class="gallery-content">
+            <img src="" alt="" class="gallery-image" id="gallery-image">
+        </div>
+        <div class="gallery-counter" id="gallery-counter"></div>
+    </div>
+
     <script>
         // Инициализация корзины
         let cart = JSON.parse(localStorage.getItem('cart')) || [];
         const cartCounter = document.querySelector('.cart-count');
         const cartItemsContainer = document.getElementById('cart-items');
         const cartTotalPrice = document.getElementById('cart-total-price');
+        
+        // Переменные для галереи изображений
+        let currentProductId = 0;
+        let currentImageIndex = 0;
+        let currentImages = [];
         
         // Массив товаров с детальной информацией
         const products = [
@@ -2141,7 +2273,7 @@
                     "КПП": "6-ступенчатая",
                     "Тип рамы": "Хромомолибденовая",
                     "Подвеска передняя": "Перевернутая вилка",
-                    "Подвеска задняя": "Мoноамортизатор",
+                    "Подвеска задняя": "Моноамортизатор",
                     "Тормоза передние": "Дисковые, 2 поршня",
                     "Тормоза задние": "Дисковые",
                     "Вес": "135 кг",
@@ -2154,7 +2286,7 @@
                 name: "ATAKI CARRERA 300 (4T PR300) ПТС 19/17",
                 price: 175000,
                 images: ["https://akulamotosalon.ru/wp-content/uploads/2025/04/6mdg6qg4kk99fgo7v7m1t39imzk134y2-768x576.jpg"],
-                description: "ATAKI CARRERA 300 - спортивно-туристический мотоцикл с мощным двигателем 300 см³. Удобная посадка, качественная подвека и большая топливная емкость делают его отличным выбором для дальних поездок.",
+                description: "ATAKI CARRERA 300 - спортивно-туристический мотоцикл с мощным двигателем 300 см³. Удобная посадка, качественная подвеска и большая топливная емкость делают его отличным выбором для дальних поездок.",
                 specs: {
                     "Тип двигателя": "4-тактный",
                     "Объем": "300 см³",
@@ -2468,6 +2600,9 @@
             const product = products.find(p => p.id === productId);
             if (!product) return;
             
+            // Сохраняем ID текущего товара для галереи
+            currentProductId = productId;
+            
             // Заполнить информацию о товаре
             document.getElementById('detail-name').textContent = product.name;
             document.getElementById('detail-price').textContent = `${product.price.toLocaleString()} ₽`;
@@ -2606,7 +2741,7 @@
                 photoItem.innerHTML = `
                     <div style="display: flex; align-items: center;">
                         <img src="${photo}" alt="Фото ${index + 1}" style="width: 40px; height: 30px; object-fit: cover; margin-right: 10px;">
-                        <span style="font-size: 0.8rem;">Фото ${index + 1}</span>
+                        <span style="font-size: 0.8rem;">Фото ${index + 1</span>
                     </div>
                     <div class="delete-photo" onclick="deletePhoto('${modelName}', ${index})">
                         <i class="fas fa-trash"></i>
@@ -2657,6 +2792,76 @@
             const productPhotos = JSON.parse(localStorage.getItem('productPhotos')) || {};
             return productPhotos[modelName] || [];
         }
+        
+        // Функции для работы с галереей изображений
+        function openImageGallery(productId, imageIndex) {
+            const product = products.find(p => p.id === productId);
+            if (!product) return;
+            
+            // Получаем дополнительные фотографии из localStorage
+            const additionalPhotos = getProductPhotos(product.name);
+            const allPhotos = [...product.images, ...additionalPhotos];
+            
+            if (allPhotos.length === 0) return;
+            
+            currentProductId = productId;
+            currentImageIndex = imageIndex;
+            currentImages = allPhotos;
+            
+            // Показываем модальное окно
+            const modal = document.getElementById('image-gallery-modal');
+            modal.classList.add('active');
+            
+            // Обновляем изображение
+            updateGalleryImage();
+            
+            // Блокируем прокрутку страницы
+            document.body.style.overflow = 'hidden';
+        }
+        
+        function closeImageGallery() {
+            const modal = document.getElementById('image-gallery-modal');
+            modal.classList.remove('active');
+            
+            // Разблокируем прокрутку страницы
+            document.body.style.overflow = '';
+        }
+        
+        function changeImage(direction) {
+            currentImageIndex += direction;
+            
+            // Проверяем границы
+            if (currentImageIndex < 0) {
+                currentImageIndex = currentImages.length - 1;
+            } else if (currentImageIndex >= currentImages.length) {
+                currentImageIndex = 0;
+            }
+            
+            // Обновляем изображение
+            updateGalleryImage();
+        }
+        
+        function updateGalleryImage() {
+            const galleryImage = document.getElementById('gallery-image');
+            const galleryCounter = document.getElementById('gallery-counter');
+            
+            galleryImage.src = currentImages[currentImageIndex];
+            galleryCounter.textContent = `${currentImageIndex + 1} / ${currentImages.length}`;
+        }
+        
+        // Обработчики событий для клавиатуры
+        document.addEventListener('keydown', function(e) {
+            const modal = document.getElementById('image-gallery-modal');
+            if (modal.classList.contains('active')) {
+                if (e.key === 'Escape') {
+                    closeImageGallery();
+                } else if (e.key === 'ArrowLeft') {
+                    changeImage(-1);
+                } else if (e.key === 'ArrowRight') {
+                    changeImage(1);
+                }
+            }
+        });
         
         // Инициализация при загрузке
         document.addEventListener('DOMContentLoaded', () => {
