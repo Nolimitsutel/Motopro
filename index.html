@@ -857,6 +857,7 @@
             color: #ffcc00;
             margin-bottom: 20px;
             font-size: 1.3rem;
+            cursor: pointer;
         }
         
         .footer-links {
@@ -874,6 +875,7 @@
             display: block;
             padding: 5px 0;
             font-size: 1rem;
+            cursor: pointer;
         }
         
         .footer-links a:hover {
@@ -1037,20 +1039,19 @@
             .nav-section {
                 position: fixed;
                 top: 70px;
-                left: 0;
+                left: -100%;
                 width: 100%;
                 background: #333;
                 flex-direction: column;
                 padding: 15px;
                 gap: 10px;
-                transform: translateY(-100%);
-                transition: transform 0.3s ease;
+                transition: left 0.3s ease;
                 z-index: 1000;
                 box-shadow: 0 4px 10px rgba(0,0,0,0.2);
             }
             
             .nav-section.active {
-                transform: translateY(0);
+                left: 0;
             }
             
             .nav-link {
@@ -1417,7 +1418,7 @@
             <div class="slogan">Официальный дилер мототехники в России</div>
             
             <div class="cta-buttons">
-                <button class="btn" onclick="showPage('catalog')">
+                <button class="btn" onclick="showPage('catalog', event)">
                     <i class="fas fa-list"></i> Смотреть каталог
                 </button>
             </div>
@@ -1431,22 +1432,22 @@
         </button>
         
         <div class="nav-section">
-            <a href="#" class="nav-link" onclick="showPage('home')">
+            <a href="#" class="nav-link" onclick="showPage('home', event)">
                 <i class="fas fa-home"></i> <span>Главная</span>
             </a>
-            <a href="#" class="nav-link" onclick="showPage('catalog')">
+            <a href="#" class="nav-link" onclick="showPage('catalog', event)">
                 <i class="fas fa-motorcycle"></i> <span>Каталог</span>
             </a>
-            <a href="#" class="nav-link" onclick="showPage('delivery')">
+            <a href="#" class="nav-link" onclick="showPage('delivery', event)">
                 <i class="fas fa-truck"></i> <span>Доставка</span>
             </a>
-            <a href="#" class="nav-link" onclick="showPage('conditions')">
+            <a href="#" class="nav-link" onclick="showPage('conditions', event)">
                 <i class="fas fa-file-alt"></i> <span>Условия</span>
             </a>
-            <a href="#" class="nav-link" onclick="showPage('guarantee')">
+            <a href="#" class="nav-link" onclick="showPage('guarantee', event)">
                 <i class="fas fa-shield-alt"></i> <span>Гарантия</span>
             </a>
-            <a href="#" class="nav-link" onclick="showPage('contacts')">
+            <a href="#" class="nav-link" onclick="showPage('contacts', event)">
                 <i class="fas fa-phone"></i> <span>Контакты</span>
             </a>
         </div>
@@ -1469,7 +1470,7 @@
             <div class="hero">
                 <h1>Официальный дилер мототехника KAYO и ATAKI в России</h1>
                 <p>Продажа, сервис, запчасти с гарантией качества. Лучшие цены на рынке!</p>
-                <button class="btn" onclick="showPage('catalog')" style="background: #00cc66; padding: 15px 40px;">
+                <button class="btn" onclick="showPage('catalog', event)" style="background: #00cc66; padding: 15px 40px;">
                     <i class="fas fa-motorcycle"></i> Выбрать мотоцикл
                 </button>
             </div>
@@ -1477,7 +1478,7 @@
             <h2 class="section-title">Популярные категории</h2>
             
             <div class="categories">
-                <div class="category-card" onclick="showPage('catalog')">
+                <div class="category-card" onclick="showPage('catalog', event)">
                     <div class="product-info">
                         <div class="category-name">Мотоциклы</div>
                         <div class="product-description">Широкий выбор дорожных и спортивных мотоциклов</div>
@@ -1692,10 +1693,10 @@
                 <!-- Товар 7 -->
                 <div class="product-card">
                     <div class="product-image-container" onclick="openImageGallery(7, 0)">
-                        <img src="https://msk.kurazhsport.ru/upload/iblock/93b/7swiskubqemfzpor7xvhivyaf92262pv.jpg" alt="ATAKI BATLLO (4T PR300) ПТС 17/17" class="product-image">
+                        <img src="https://msk.kurazhsport.ru/upload/iblock/93b/7swiskubqemfzpor7xvhivyaf92262pv.jpg" alt="ATAKI BATLLO (4T PR300) ПТS 17/17" class="product-image">
                     </div>
                     <div class="product-info">
-                        <div class="product-name" onclick="showProductDetail(7)">ATAKI BATLLO (4T PR300) ПТС 17/17</div>
+                        <div class="product-name" onclick="showProductDetail(7)">ATAKI BATLLO (4T PR300) ПТS 17/17</div>
                         <div class="product-price">200 000 ₽</div>
                         <div class="product-specs">
                             <div class="spec-item">
@@ -1712,7 +1713,7 @@
                             </div>
                         </div>
                         <div class="product-actions">
-                            <button class="add-to-cart" onclick="addToCart('ATAKI BATLLO (4T PR300) ПТС 17/17', 200000)">
+                            <button class="add-to-cart" onclick="addToCart('ATAKI BATLLO (4T PR300) ПТS 17/17', 200000)">
                                 <i class="fas fa-cart-plus"></i> В корзину
                             </button>
                             <button class="details-btn" onclick="showProductDetail(7)">
@@ -1725,10 +1726,10 @@
                 <!-- Товар 8 -->
                 <div class="product-card">
                     <div class="product-image-container" onclick="openImageGallery(8, 0)">
-                        <img src="https://akulamotosalon.ru/wp-content/uploads/2025/04/6mdg6qg4kk99fgo7v7m1t39imzk134y2-768x576.jpg" alt="ATAKI CARRERA 300 (4T PR300) ПТС 19/17" class="product-image">
+                        <img src="https://akulamotosalon.ru/wp-content/uploads/2025/04/6mdg6qg4kk99fgo7v7m1t39imzk134y2-768x576.jpg" alt="ATAKI CARRERA 300 (4T PR300) ПТS 19/17" class="product-image">
                     </div>
                     <div class="product-info">
-                        <div class="product-name" onclick="showProductDetail(8)">ATAKI CARRERA 300 (4T PR300) ПТС 19/17</div>
+                        <div class="product-name" onclick="showProductDetail(8)">ATAKI CARRERA 300 (4T PR300) ПТS 19/17</div>
                         <div class="product-price">175 000 ₽</div>
                         <div class="product-specs">
                             <div class="spec-item">
@@ -1745,7 +1746,7 @@
                             </div>
                         </div>
                         <div class="product-actions">
-                            <button class="add-to-cart" onclick="addToCart('ATAKI CARRERA 300 (4T PR300) ПТС 19/17', 175000)">
+                            <button class="add-to-cart" onclick="addToCart('ATAKI CARRERA 300 (4T PR300) ПТS 19/17', 175000)">
                                 <i class="fas fa-cart-plus"></i> В корзину
                             </button>
                             <button class="details-btn" onclick="showProductDetail(8)">
@@ -1758,10 +1759,10 @@
                 <!-- Товар 9 -->
                 <div class="product-card">
                     <div class="product-image-container" onclick="openImageGallery(9, 0)">
-                        <img src="https://msk.kurazhsport.ru/upload/iblock/e3d/8jzvyy3lgf7uer0blsyk2j6d0btfjkbt.jpg" alt="ATAKI CROSSER 300 (4T PR300) ПТС 21/18" class="product-image">
+                        <img src="https://msk.kurazhsport.ru/upload/iblock/e3d/8jzvyy3lgf7uer0blsyk2j6d0btfjkbt.jpg" alt="ATAKI CROSSER 300 (4T PR300) ПТS 21/18" class="product-image">
                     </div>
                     <div class="product-info">
-                        <div class="product-name" onclick="showProductDetail(9)">ATAKI CROSSER 300 (4T PR300) ПТС 21/18</div>
+                        <div class="product-name" onclick="showProductDetail(9)">ATAKI CROSSER 300 (4T PR300) ПТS 21/18</div>
                         <div class="product-price">170 000 ₽</div>
                         <div class="product-specs">
                             <div class="spec-item">
@@ -1778,7 +1779,7 @@
                             </div>
                         </div>
                         <div class="product-actions">
-                            <button class="add-to-cart" onclick="addToCart('ATAKI CROSSER 300 (4T PR300) ПТС 21/18', 170000)">
+                            <button class="addToCart('ATAKI CROSSER 300 (4T PR300) ПТS 21/18', 170000)">
                                 <i class="fas fa-cart-plus"></i> В корзину
                             </button>
                             <button class="details-btn" onclick="showProductDetail(9)">
@@ -1792,7 +1793,7 @@
         
         <!-- Детальная страница товара -->
         <section id="product-detail-page" class="page-section">
-            <a href="#" class="back-to-catalog" onclick="showPage('catalog')">
+            <a href="#" class="back-to-catalog" onclick="showPage('catalog', event)">
                 <i class="fas fa-arrow-left"></i> Назад в каталог
             </a>
             
@@ -1832,7 +1833,7 @@
                 <div class="info-content">
                     <p>Мы осуществляем доставку мототехники по всей территории России. Наша логистическая служба работает с надежными транспортными компаниями, чтобы обеспечить своевременную и безопасную доставку вашего заказа.</p>
                     
-                    <h3>Сроки доставки</h3>
+                    <h3>Sроки доставки</h3>
                     <p>Стандартный срок доставки составляет <strong>от 15 до 17 дней</strong> с момента подтверждения заказа. В отдаленные регионы сроки могут быть увеличены на 3-5 дней.</p>
                     
                     <h3>Стоимость доставки</h3>
@@ -2046,23 +2047,23 @@
     <footer>
         <div class="footer-content">
             <div class="footer-section">
-                <h3>Навигация</h3>
+                <h3 onclick="showPage('home', event)">Навигация</h3>
                 <ul class="footer-links">
-                    <li><a href="#" onclick="showPage('home')"><i class="fas fa-home"></i> Главная</a></li>
-                    <li><a href="#" onclick="showPage('catalog')"><i class="fas fa-motorcycle"></i> Каталог</a></li>
-                    <li><a href="#" onclick="showPage('delivery')"><i class="fas fa-truck"></i> Доставка</a></li>
-                    <li><a href="#" onclick="showPage('conditions')"><i class="fas fa-file-alt"></i> Условия</a></li>
-                    <li><a href="#" onclick="showPage('guarantee')"><i class="fas fa-shield-alt"></i> Гарантия</a></li>
-                    <li><a href="#" onclick="showPage('contacts')"><i class="fas fa-phone"></i> Контакты</a></li>
+                    <li><a onclick="showPage('home', event)"><i class="fas fa-home"></i> Главная</a></li>
+                    <li><a onclick="showPage('catalog', event)"><i class="fas fa-motorcycle"></i> Каталог</a></li>
+                    <li><a onclick="showPage('delivery', event)"><i class="fas fa-truck"></i> Доставка</a></li>
+                    <li><a onclick="showPage('conditions', event)"><i class="fas fa-file-alt"></i> Условия</a></li>
+                    <li><a onclick="showPage('guarantee', event)"><i class="fas fa-shield-alt"></i> Гарантия</a></li>
+                    <li><a onclick="showPage('contacts', event)"><i class="fas fa-phone"></i> Контакты</a></li>
                 </ul>
             </div>
             
             <div class="footer-section">
                 <h3>Помощь</h3>
                 <ul class="footer-links">
-                    <li><a href="#" onclick="showPage('delivery')"><i class="fas fa-truck"></i> Доставка и оплата</a></li>
-                    <li><a href="#" onclick="showPage('guarantee')"><i class="fas fa-shield-alt"></i> Гарантия</a></li>
-                    <li><a href="#" onclick="showPage('contacts')"><i class="fas fa-phone"></i> Контакты</a></li>
+                    <li><a onclick="showPage('delivery', event)"><i class="fas fa-truck"></i> Доставка и оплата</a></li>
+                    <li><a onclick="showPage('guarantee', event)"><i class="fas fa-shield-alt"></i> Гарантия</a></li>
+                    <li><a onclick="showPage('contacts', event)"><i class="fas fa-phone"></i> Контакты</a></li>
                 </ul>
             </div>
             
@@ -2223,7 +2224,7 @@
                 name: "Питбайк детский KAYO DBR SX50-A",
                 price: 29990,
                 images: ["https://msk.kurazhsport.ru/upload/iblock/0c5/jniza1l1sb42ifrc6wy52xw2u17dl1qh.jpg"],
-                description: "Детский питбайк KAYO DBR SX50-A - отличный подарок для юных гонщиков. Безопасная конструкция, автоматическая коробка передач и качественные компоненты обеспечат безопасность и удовольствие от катания.",
+                description: "Детский питбайк KAYO DBR SX50-A - отличный подарк для юных гонщиков. Безопасная конструкция, автоматическая коробка передач и качественные компоненты обеспечат безопасность и удовольствие от катания.",
                 specs: {
                     "Тип двигателя": "2-тактный",
                     "Объем": "50 см³",
@@ -2262,10 +2263,10 @@
             },
             {
                 id: 7,
-                name: "ATAKI BATLLO (4T PR300) ПТС 17/17",
+                name: "ATAKI BATLLO (4T PR300) ПТS 17/17",
                 price: 200000,
                 images: ["https://msk.kurazhsport.ru/upload/iblock/93b/7swiskubqemfzpor7xvhivyaf92262pv.jpg"],
-                description: "ATAKI BATLLO - мощный эндуро мотоцикл с объемом двигателя 300 см³. Идеально подходит для длительных поездок по бездорожью и эксплуатации в сложных условиях. Имеет ПТС для постановки на учет.",
+                description: "ATAKI BATLLO - мощный эндуро мотоцикл с объемом двигателя 300 см³. Идеально подходит для длительных поездок по бездорожью и эксплуатации в сложных условиях. Имеет ПТS для постановки на учет.",
                 specs: {
                     "Тип двигателя": "4-тактный",
                     "Объем": "300 см³",
@@ -2283,7 +2284,7 @@
             },
             {
                 id: 8,
-                name: "ATAKI CARRERA 300 (4T PR300) ПТС 19/17",
+                name: "ATAKI CARRERA 300 (4T PR300) ПТS 19/17",
                 price: 175000,
                 images: ["https://akulamotosalon.ru/wp-content/uploads/2025/04/6mdg6qg4kk99fgo7v7m1t39imzk134y2-768x576.jpg"],
                 description: "ATAKI CARRERA 300 - спортивно-туристический мотоцикл с мощным двигателем 300 см³. Удобная посадка, качественная подвеска и большая топливная емкость делают его отличным выбором для дальних поездок.",
@@ -2304,7 +2305,7 @@
             },
             {
                 id: 9,
-                name: "ATAKI CROSSER 300 (4T PR300) ПТС 21/18",
+                name: "ATAKI CROSSER 300 (4T PR300) ПТS 21/18",
                 price: 170000,
                 images: ["https://msk.kurazhsport.ru/upload/iblock/e3d/8jzvyy3lgf7uer0blsyk2j6d0btfjkbt.jpg"],
                 description: "ATAKI CROSSER 300 - кроссовый мотоцикл для профессионального использования. Легкая конструкция, мощный двигатель и профессиональная подвеска позволяют преодолевать самые сложные трассы.",
@@ -2343,7 +2344,7 @@
             
             let totalPrice = 0;
             
-            cart.forEach((item, index) => {
+            cart.forEach((item, index) {
                 const itemElement = document.createElement('div');
                 itemElement.className = 'cart-item';
                 itemElement.innerHTML = `
@@ -2387,7 +2388,7 @@
             updateCartCounter();
         }
         
-        // Добавление товара в корзину
+        // Добавление товара в корзина
         function addToCart(name, price) {
             // Проверяем, есть ли товар уже в корзине
             const existingItem = cart.find(item => item.name === name);
@@ -2561,7 +2562,11 @@
         }
         
         // Переключение страниц
-        function showPage(pageId) {
+        function showPage(pageId, event) {
+            if (event) {
+                event.preventDefault();
+            }
+            
             // Сохраняем текущую страницу
             localStorage.setItem('lastPage', pageId);
             
@@ -2735,13 +2740,13 @@
             }
             
             // Добавляем каждую фотографию в список
-            productPhotos[modelName].forEach((photo, index) => {
+            productPhotos[modelName].forEach((photo, index) {
                 const photoItem = document.createElement('div');
                 photoItem.className = 'photo-item';
                 photoItem.innerHTML = `
                     <div style="display: flex; align-items: center;">
                         <img src="${photo}" alt="Фото ${index + 1}" style="width: 40px; height: 30px; object-fit: cover; margin-right: 10px;">
-                        <span style="font-size: 0.8rem;">Фото ${index + 1</span>
+                        <span style="font-size: 0.8rem;">Фото ${index + 1}</span>
                     </div>
                     <div class="delete-photo" onclick="deletePhoto('${modelName}', ${index})">
                         <i class="fas fa-trash"></i>
