@@ -275,7 +275,6 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            cursor: pointer;
         }
         
         .product-image {
@@ -416,7 +415,6 @@
             border-radius: 8px;
             margin-bottom: 15px;
             overflow: hidden;
-            cursor: pointer;
         }
         
         .main-image {
@@ -857,7 +855,6 @@
             color: #ffcc00;
             margin-bottom: 20px;
             font-size: 1.3rem;
-            cursor: pointer;
         }
         
         .footer-links {
@@ -875,7 +872,6 @@
             display: block;
             padding: 5px 0;
             font-size: 1rem;
-            cursor: pointer;
         }
         
         .footer-links a:hover {
@@ -1039,19 +1035,20 @@
             .nav-section {
                 position: fixed;
                 top: 70px;
-                left: -100%;
+                left: 0;
                 width: 100%;
                 background: #333;
                 flex-direction: column;
                 padding: 15px;
                 gap: 10px;
-                transition: left 0.3s ease;
+                transform: translateY(-100%);
+                transition: transform 0.3s ease;
                 z-index: 1000;
                 box-shadow: 0 4px 10px rgba(0,0,0,0.2);
             }
             
             .nav-section.active {
-                left: 0;
+                transform: translateY(0);
             }
             
             .nav-link {
@@ -1299,114 +1296,6 @@
             font-style: italic;
             padding: 20px;
         }
-        
-        /* Галерея изображений в полноэкранном режиме */
-        .image-gallery-modal {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.9);
-            z-index: 10000;
-            justify-content: center;
-            align-items: center;
-        }
-        
-        .image-gallery-modal.active {
-            display: flex;
-        }
-        
-        .gallery-content {
-            position: relative;
-            max-width: 90%;
-            max-height: 90%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-        
-        .gallery-image {
-            max-width: 100%;
-            max-height: 90vh;
-            object-fit: contain;
-        }
-        
-        .gallery-close {
-            position: absolute;
-            top: 20px;
-            right: 20px;
-            color: white;
-            font-size: 30px;
-            cursor: pointer;
-            background: rgba(0, 0, 0, 0.5);
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            z-index: 10001;
-        }
-        
-        .gallery-nav {
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-            color: white;
-            font-size: 30px;
-            cursor: pointer;
-            background: rgba(0, 0, 0, 0.5);
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            z-index: 10001;
-        }
-        
-        .gallery-prev {
-            left: 20px;
-        }
-        
-        .gallery-next {
-            right: 20px;
-        }
-        
-        .gallery-counter {
-            position: absolute;
-            bottom: 20px;
-            left: 50%;
-            transform: translateX(-50%);
-            color: white;
-            font-size: 18px;
-            background: rgba(0, 0, 0, 0.5);
-            padding: 5px 15px;
-            border-radius: 20px;
-        }
-        
-        @media (max-width: 768px) {
-            .gallery-nav {
-                width: 40px;
-                height: 40px;
-                font-size: 24px;
-            }
-            
-            .gallery-close {
-                width: 35px;
-                height: 35px;
-                font-size: 24px;
-                top: 10px;
-                right: 10px;
-            }
-            
-            .gallery-counter {
-                font-size: 16px;
-                bottom: 10px;
-            }
-        }
     </style>
 </head>
 <body>
@@ -1418,7 +1307,7 @@
             <div class="slogan">Официальный дилер мототехники в России</div>
             
             <div class="cta-buttons">
-                <button class="btn" onclick="showPage('catalog', event)">
+                <button class="btn" onclick="showPage('catalog')">
                     <i class="fas fa-list"></i> Смотреть каталог
                 </button>
             </div>
@@ -1432,22 +1321,22 @@
         </button>
         
         <div class="nav-section">
-            <a href="#" class="nav-link" onclick="showPage('home', event)">
+            <a href="#" class="nav-link" onclick="showPage('home')">
                 <i class="fas fa-home"></i> <span>Главная</span>
             </a>
-            <a href="#" class="nav-link" onclick="showPage('catalog', event)">
+            <a href="#" class="nav-link" onclick="showPage('catalog')">
                 <i class="fas fa-motorcycle"></i> <span>Каталог</span>
             </a>
-            <a href="#" class="nav-link" onclick="showPage('delivery', event)">
+            <a href="#" class="nav-link" onclick="showPage('delivery')">
                 <i class="fas fa-truck"></i> <span>Доставка</span>
             </a>
-            <a href="#" class="nav-link" onclick="showPage('conditions', event)">
+            <a href="#" class="nav-link" onclick="showPage('conditions')">
                 <i class="fas fa-file-alt"></i> <span>Условия</span>
             </a>
-            <a href="#" class="nav-link" onclick="showPage('guarantee', event)">
+            <a href="#" class="nav-link" onclick="showPage('guarantee')">
                 <i class="fas fa-shield-alt"></i> <span>Гарантия</span>
             </a>
-            <a href="#" class="nav-link" onclick="showPage('contacts', event)">
+            <a href="#" class="nav-link" onclick="showPage('contacts')">
                 <i class="fas fa-phone"></i> <span>Контакты</span>
             </a>
         </div>
@@ -1470,7 +1359,7 @@
             <div class="hero">
                 <h1>Официальный дилер мототехника KAYO и ATAKI в России</h1>
                 <p>Продажа, сервис, запчасти с гарантией качества. Лучшие цены на рынке!</p>
-                <button class="btn" onclick="showPage('catalog', event)" style="background: #00cc66; padding: 15px 40px;">
+                <button class="btn" onclick="showPage('catalog')" style="background: #00cc66; padding: 15px 40px;">
                     <i class="fas fa-motorcycle"></i> Выбрать мотоцикл
                 </button>
             </div>
@@ -1478,7 +1367,7 @@
             <h2 class="section-title">Популярные категории</h2>
             
             <div class="categories">
-                <div class="category-card" onclick="showPage('catalog', event)">
+                <div class="category-card" onclick="showPage('catalog')">
                     <div class="product-info">
                         <div class="category-name">Мотоциклы</div>
                         <div class="product-description">Широкий выбор дорожных и спортивных мотоциклов</div>
@@ -1494,7 +1383,7 @@
             <div class="catalog-grid">
                 <!-- Товар 1 -->
                 <div class="product-card">
-                    <div class="product-image-container" onclick="openImageGallery(1, 0)">
+                    <div class="product-image-container">
                         <img src="https://msk.kurazhsport.ru/upload/iblock/fdc/44kl35g49f55oqnzyt64pewr85p2xfq6.jpg" alt="KAYO BASIC K125EM 17/14 KRZ (2024)" class="product-image">
                     </div>
                     <div class="product-info">
@@ -1527,7 +1416,7 @@
                 
                 <!-- Товар 2 -->
                 <div class="product-card">
-                    <div class="product-image-container" onclick="openImageGallery(2, 0)">
+                    <div class="product-image-container">
                         <img src="https://msk.kurazhsport.ru/upload/iblock/11f/p5ebbgejthr1n2v6nrrg81o2vx4pcg3t.jpg" alt="KAYO BASIC K125EA 17/14 KRZ (2024)" class="product-image">
                     </div>
                     <div class="product-info">
@@ -1560,7 +1449,7 @@
                 
                 <!-- Товар 3 -->
                 <div class="product-card">
-                    <div class="product-image-container" onclick="openImageGallery(3, 0)">
+                    <div class="product-image-container">
                         <img src="https://msk.kurazhsport.ru/upload/iblock/b85/6qmmzrexcve0lr1ro3s715khc11ugr75.jpg" alt="KAYO BASIC TT140 17/14 KRZ" class="product-image">
                     </div>
                     <div class="product-info">
@@ -1593,7 +1482,7 @@
                 
                 <!-- Товар 4 -->
                 <div class="product-card">
-                    <div class="product-image-container" onclick="openImageGallery(4, 0)">
+                    <div class="product-image-container">
                         <img src="https://msk.kurazhsport.ru/upload/iblock/bef/gtybjm2qen07ltf7xahfkrjuba7emaj3.jpg" alt="KAYO MINI TD125 14/12" class="product-image">
                     </div>
                     <div class="product-info">
@@ -1626,7 +1515,7 @@
                 
                 <!-- Товар 5 -->
                 <div class="product-card">
-                    <div class="product-image-container" onclick="openImageGallery(5, 0)">
+                    <div class="product-image-container">
                         <img src="https://msk.kurazhsport.ru/upload/iblock/0c5/jniza1l1sb42ifrc6wy52xw2u17dl1qh.jpg" alt="Питбайк детский KAYO DBR SX50-A" class="product-image">
                     </div>
                     <div class="product-info">
@@ -1659,7 +1548,7 @@
                 
                 <!-- Товар 6 -->
                 <div class="product-card">
-                    <div class="product-image-container" onclick="openImageGallery(6, 0)">
+                    <div class="product-image-container">
                         <img src="https://msk.kurazhsport.ru/upload/iblock/c9f/dhex4t1ufkegryna8wa0yfyev642szvj.jpg" alt="KAYO K1-L 150 MX 19/16" class="product-image">
                     </div>
                     <div class="product-info">
@@ -1675,7 +1564,7 @@
                                 <span class="spec-value">150 см³</span>
                             </div>
                             <div class="spec-item">
-                                <span class="spec-name">Мoщность:</span>
+                                <span class="spec-name">Мощность:</span>
                                 <span class="spec-value">12 л.с.</span>
                             </div>
                         </div>
@@ -1692,11 +1581,11 @@
                 
                 <!-- Товар 7 -->
                 <div class="product-card">
-                    <div class="product-image-container" onclick="openImageGallery(7, 0)">
-                        <img src="https://msk.kurazhsport.ru/upload/iblock/93b/7swiskubqemfzpor7xvhivyaf92262pv.jpg" alt="ATAKI BATLLO (4T PR300) ПТS 17/17" class="product-image">
+                    <div class="product-image-container">
+                        <img src="https://msk.kurazhsport.ru/upload/iblock/93b/7swiskubqemfzpor7xvhivyaf92262pv.jpg" alt="ATAKI BATLLO (4T PR300) ПТС 17/17" class="product-image">
                     </div>
                     <div class="product-info">
-                        <div class="product-name" onclick="showProductDetail(7)">ATAKI BATLLO (4T PR300) ПТS 17/17</div>
+                        <div class="product-name" onclick="showProductDetail(7)">ATAKI BATLLO (4T PR300) ПТС 17/17</div>
                         <div class="product-price">200 000 ₽</div>
                         <div class="product-specs">
                             <div class="spec-item">
@@ -1713,7 +1602,7 @@
                             </div>
                         </div>
                         <div class="product-actions">
-                            <button class="add-to-cart" onclick="addToCart('ATAKI BATLLO (4T PR300) ПТS 17/17', 200000)">
+                            <button class="add-to-cart" onclick="addToCart('ATAKI BATLLO (4T PR300) ПТС 17/17', 200000)">
                                 <i class="fas fa-cart-plus"></i> В корзину
                             </button>
                             <button class="details-btn" onclick="showProductDetail(7)">
@@ -1725,11 +1614,11 @@
                 
                 <!-- Товар 8 -->
                 <div class="product-card">
-                    <div class="product-image-container" onclick="openImageGallery(8, 0)">
-                        <img src="https://akulamotosalon.ru/wp-content/uploads/2025/04/6mdg6qg4kk99fgo7v7m1t39imzk134y2-768x576.jpg" alt="ATAKI CARRERA 300 (4T PR300) ПТS 19/17" class="product-image">
+                    <div class="product-image-container">
+                        <img src="https://akulamotosalon.ru/wp-content/uploads/2025/04/6mdg6qg4kk99fgo7v7m1t39imzk134y2-768x576.jpg" alt="ATAKI CARRERA 300 (4T PR300) ПТС 19/17" class="product-image">
                     </div>
                     <div class="product-info">
-                        <div class="product-name" onclick="showProductDetail(8)">ATAKI CARRERA 300 (4T PR300) ПТS 19/17</div>
+                        <div class="product-name" onclick="showProductDetail(8)">ATAKI CARRERA 300 (4T PR300) ПТС 19/17</div>
                         <div class="product-price">175 000 ₽</div>
                         <div class="product-specs">
                             <div class="spec-item">
@@ -1746,7 +1635,7 @@
                             </div>
                         </div>
                         <div class="product-actions">
-                            <button class="add-to-cart" onclick="addToCart('ATAKI CARRERA 300 (4T PR300) ПТS 19/17', 175000)">
+                            <button class="add-to-cart" onclick="addToCart('ATAKI CARRERA 300 (4T PR300) ПТС 19/17', 175000)">
                                 <i class="fas fa-cart-plus"></i> В корзину
                             </button>
                             <button class="details-btn" onclick="showProductDetail(8)">
@@ -1758,11 +1647,11 @@
                 
                 <!-- Товар 9 -->
                 <div class="product-card">
-                    <div class="product-image-container" onclick="openImageGallery(9, 0)">
-                        <img src="https://msk.kurazhsport.ru/upload/iblock/e3d/8jzvyy3lgf7uer0blsyk2j6d0btfjkbt.jpg" alt="ATAKI CROSSER 300 (4T PR300) ПТS 21/18" class="product-image">
+                    <div class="product-image-container">
+                        <img src="https://msk.kurazhsport.ru/upload/iblock/e3d/8jzvyy3lgf7uer0blsyk2j6d0btfjkbt.jpg" alt="ATAKI CROSSER 300 (4T PR300) ПТС 21/18" class="product-image">
                     </div>
                     <div class="product-info">
-                        <div class="product-name" onclick="showProductDetail(9)">ATAKI CROSSER 300 (4T PR300) ПТS 21/18</div>
+                        <div class="product-name" onclick="showProductDetail(9)">ATAKI CROSSER 300 (4T PR300) ПТС 21/18</div>
                         <div class="product-price">170 000 ₽</div>
                         <div class="product-specs">
                             <div class="spec-item">
@@ -1779,7 +1668,7 @@
                             </div>
                         </div>
                         <div class="product-actions">
-                            <button class="addToCart('ATAKI CROSSER 300 (4T PR300) ПТS 21/18', 170000)">
+                            <button class="add-to-cart" onclick="addToCart('ATAKI CROSSER 300 (4T PR300) ПТС 21/18', 170000)">
                                 <i class="fas fa-cart-plus"></i> В корзину
                             </button>
                             <button class="details-btn" onclick="showProductDetail(9)">
@@ -1793,13 +1682,13 @@
         
         <!-- Детальная страница товара -->
         <section id="product-detail-page" class="page-section">
-            <a href="#" class="back-to-catalog" onclick="showPage('catalog', event)">
+            <a href="#" class="back-to-catalog" onclick="showPage('catalog')">
                 <i class="fas fa-arrow-left"></i> Назад в каталог
             </a>
             
             <div class="product-detail">
                 <div class="product-gallery">
-                    <div class="main-image-container" onclick="openImageGallery(currentProductId, 0)">
+                    <div class="main-image-container">
                         <div class="placeholder-text">Изображение будет добавлено через админ-панель</div>
                     </div>
                     <div class="thumbnails" id="thumbnails-container">
@@ -1833,7 +1722,7 @@
                 <div class="info-content">
                     <p>Мы осуществляем доставку мототехники по всей территории России. Наша логистическая служба работает с надежными транспортными компаниями, чтобы обеспечить своевременную и безопасную доставку вашего заказа.</p>
                     
-                    <h3>Sроки доставки</h3>
+                    <h3>Сроки доставки</h3>
                     <p>Стандартный срок доставки составляет <strong>от 15 до 17 дней</strong> с момента подтверждения заказа. В отдаленные регионы сроки могут быть увеличены на 3-5 дней.</p>
                     
                     <h3>Стоимость доставки</h3>
@@ -1887,7 +1776,7 @@
                     <p>Мы работаем официально и предоставляем полный комплект документов на технику:</p>
                     <ul class="info-list">
                         <li>Договор купли-продажи</li>
-                        <li>Паспорт транспортного средства (ПТS)</li>
+                        <li>Паспорт транспортного средства (ПТС)</li>
                         <li>Сертификат соответствия</li>
                         <li>Гарантийный талон</li>
                         <li>Товарная накладная</li>
@@ -1974,7 +1863,7 @@
                     </div>
                     
                     <h3>Как нас найти</h3>
-                    <p>Наш шоурум и сервисный центр расположены в бизнес-центре "Лобня" в 5 минутах ходьбы от станции метро "Лобня". Для клиентов на автомобилях предусмотрена бесплатная парковка.</p>
+                    <p>На наш шоурум и сервисный центр расположены в бизнес-центре "Лобня" в 5 минутах ходьбы от станции метро "Лобня". Для клиентов на автомобилях предусмотрена бесплатная парковка.</p>
                 </div>
             </div>
         </section>
@@ -2047,23 +1936,23 @@
     <footer>
         <div class="footer-content">
             <div class="footer-section">
-                <h3 onclick="showPage('home', event)">Навигация</h3>
+                <h3>Навигация</h3>
                 <ul class="footer-links">
-                    <li><a onclick="showPage('home', event)"><i class="fas fa-home"></i> Главная</a></li>
-                    <li><a onclick="showPage('catalog', event)"><i class="fas fa-motorcycle"></i> Каталог</a></li>
-                    <li><a onclick="showPage('delivery', event)"><i class="fas fa-truck"></i> Доставка</a></li>
-                    <li><a onclick="showPage('conditions', event)"><i class="fas fa-file-alt"></i> Условия</a></li>
-                    <li><a onclick="showPage('guarantee', event)"><i class="fas fa-shield-alt"></i> Гарантия</a></li>
-                    <li><a onclick="showPage('contacts', event)"><i class="fas fa-phone"></i> Контакты</a></li>
+                    <li><a href="#" onclick="showPage('home')"><i class="fas fa-home"></i> Главная</a></li>
+                    <li><a href="#" onclick="showPage('catalog')"><i class="fas fa-motorcycle"></i> Каталог</a></li>
+                    <li><a href="#" onclick="showPage('delivery')"><i class="fas fa-truck"></i> Доставка</a></li>
+                    <li><a href="#" onclick="showPage('conditions')"><i class="fas fa-file-alt"></i> Условия</a></li>
+                    <li><a href="#" onclick="showPage('guarantee')"><i class="fas fa-shield-alt"></i> Гарантия</a></li>
+                    <li><a href="#" onclick="showPage('contacts')"><i class="fas fa-phone"></i> Контакты</a></li>
                 </ul>
             </div>
             
             <div class="footer-section">
                 <h3>Помощь</h3>
                 <ul class="footer-links">
-                    <li><a onclick="showPage('delivery', event)"><i class="fas fa-truck"></i> Доставка и оплата</a></li>
-                    <li><a onclick="showPage('guarantee', event)"><i class="fas fa-shield-alt"></i> Гарантия</a></li>
-                    <li><a onclick="showPage('contacts', event)"><i class="fas fa-phone"></i> Контакты</a></li>
+                    <li><a href="#" onclick="showPage('delivery')"><i class="fas fa-truck"></i> Доставка и оплата</a></li>
+                    <li><a href="#" onclick="showPage('guarantee')"><i class="fas fa-shield-alt"></i> Гарантия</a></li>
+                    <li><a href="#" onclick="showPage('contacts')"><i class="fas fa-phone"></i> Контакты</a></li>
                 </ul>
             </div>
             
@@ -2104,34 +1993,12 @@
         </div>
     </div>
 
-    <!-- Модальное окно для просмотра изображений -->
-    <div class="image-gallery-modal" id="image-gallery-modal">
-        <div class="gallery-close" onclick="closeImageGallery()">
-            <i class="fas fa-times"></i>
-        </div>
-        <div class="gallery-nav gallery-prev" onclick="changeImage(-1)">
-            <i class="fas fa-chevron-left"></i>
-        </div>
-        <div class="gallery-nav gallery-next" onclick="changeImage(1)">
-            <i class="fas fa-chevron-right"></i>
-        </div>
-        <div class="gallery-content">
-            <img src="" alt="" class="gallery-image" id="gallery-image">
-        </div>
-        <div class="gallery-counter" id="gallery-counter"></div>
-    </div>
-
     <script>
         // Инициализация корзины
         let cart = JSON.parse(localStorage.getItem('cart')) || [];
         const cartCounter = document.querySelector('.cart-count');
         const cartItemsContainer = document.getElementById('cart-items');
         const cartTotalPrice = document.getElementById('cart-total-price');
-        
-        // Переменные для галереи изображений
-        let currentProductId = 0;
-        let currentImageIndex = 0;
-        let currentImages = [];
         
         // Массив товаров с детальной информацией
         const products = [
@@ -2224,7 +2091,7 @@
                 name: "Питбайк детский KAYO DBR SX50-A",
                 price: 29990,
                 images: ["https://msk.kurazhsport.ru/upload/iblock/0c5/jniza1l1sb42ifrc6wy52xw2u17dl1qh.jpg"],
-                description: "Детский питбайк KAYO DBR SX50-A - отличный подарк для юных гонщиков. Безопасная конструкция, автоматическая коробка передач и качественные компоненты обеспечат безопасность и удовольствие от катания.",
+                description: "Детский питбайк KAYO DBR SX50-A - отличный подарок для юных гонщиков. Безопасная конструкция, автоматическая коробка передач и качественные компоненты обеспечат безопасность и удовольствие от катания.",
                 specs: {
                     "Тип двигателя": "2-тактный",
                     "Объем": "50 см³",
@@ -2263,10 +2130,10 @@
             },
             {
                 id: 7,
-                name: "ATAKI BATLLO (4T PR300) ПТS 17/17",
+                name: "ATAKI BATLLO (4T PR300) ПТС 17/17",
                 price: 200000,
                 images: ["https://msk.kurazhsport.ru/upload/iblock/93b/7swiskubqemfzpor7xvhivyaf92262pv.jpg"],
-                description: "ATAKI BATLLO - мощный эндуро мотоцикл с объемом двигателя 300 см³. Идеально подходит для длительных поездок по бездорожью и эксплуатации в сложных условиях. Имеет ПТS для постановки на учет.",
+                description: "ATAKI BATLLO - мощный эндуро мотоцикл с объемом двигателя 300 см³. Идеально подходит для длительных поездок по бездорожью и эксплуатации в сложных условиях. Имеет ПТС для постановки на учет.",
                 specs: {
                     "Тип двигателя": "4-тактный",
                     "Объем": "300 см³",
@@ -2274,7 +2141,7 @@
                     "КПП": "6-ступенчатая",
                     "Тип рамы": "Хромомолибденовая",
                     "Подвеска передняя": "Перевернутая вилка",
-                    "Подвеска задняя": "Моноамортизатор",
+                    "Подвеска задняя": "Мoноамортизатор",
                     "Тормоза передние": "Дисковые, 2 поршня",
                     "Тормоза задние": "Дисковые",
                     "Вес": "135 кг",
@@ -2284,10 +2151,10 @@
             },
             {
                 id: 8,
-                name: "ATAKI CARRERA 300 (4T PR300) ПТS 19/17",
+                name: "ATAKI CARRERA 300 (4T PR300) ПТС 19/17",
                 price: 175000,
                 images: ["https://akulamotosalon.ru/wp-content/uploads/2025/04/6mdg6qg4kk99fgo7v7m1t39imzk134y2-768x576.jpg"],
-                description: "ATAKI CARRERA 300 - спортивно-туристический мотоцикл с мощным двигателем 300 см³. Удобная посадка, качественная подвеска и большая топливная емкость делают его отличным выбором для дальних поездок.",
+                description: "ATAKI CARRERA 300 - спортивно-туристический мотоцикл с мощным двигателем 300 см³. Удобная посадка, качественная подвека и большая топливная емкость делают его отличным выбором для дальних поездок.",
                 specs: {
                     "Тип двигателя": "4-тактный",
                     "Объем": "300 см³",
@@ -2305,7 +2172,7 @@
             },
             {
                 id: 9,
-                name: "ATAKI CROSSER 300 (4T PR300) ПТS 21/18",
+                name: "ATAKI CROSSER 300 (4T PR300) ПТС 21/18",
                 price: 170000,
                 images: ["https://msk.kurazhsport.ru/upload/iblock/e3d/8jzvyy3lgf7uer0blsyk2j6d0btfjkbt.jpg"],
                 description: "ATAKI CROSSER 300 - кроссовый мотоцикл для профессионального использования. Легкая конструкция, мощный двигатель и профессиональная подвеска позволяют преодолевать самые сложные трассы.",
@@ -2344,7 +2211,7 @@
             
             let totalPrice = 0;
             
-            cart.forEach((item, index) {
+            cart.forEach((item, index) => {
                 const itemElement = document.createElement('div');
                 itemElement.className = 'cart-item';
                 itemElement.innerHTML = `
@@ -2388,7 +2255,7 @@
             updateCartCounter();
         }
         
-        // Добавление товара в корзина
+        // Добавление товара в корзину
         function addToCart(name, price) {
             // Проверяем, есть ли товар уже в корзине
             const existingItem = cart.find(item => item.name === name);
@@ -2562,11 +2429,7 @@
         }
         
         // Переключение страниц
-        function showPage(pageId, event) {
-            if (event) {
-                event.preventDefault();
-            }
-            
+        function showPage(pageId) {
             // Сохраняем текущую страницу
             localStorage.setItem('lastPage', pageId);
             
@@ -2604,9 +2467,6 @@
             // Найти товар по ID
             const product = products.find(p => p.id === productId);
             if (!product) return;
-            
-            // Сохраняем ID текущего товара для галереи
-            currentProductId = productId;
             
             // Заполнить информацию о товаре
             document.getElementById('detail-name').textContent = product.name;
@@ -2740,7 +2600,7 @@
             }
             
             // Добавляем каждую фотографию в список
-            productPhotos[modelName].forEach((photo, index) {
+            productPhotos[modelName].forEach((photo, index) => {
                 const photoItem = document.createElement('div');
                 photoItem.className = 'photo-item';
                 photoItem.innerHTML = `
@@ -2797,76 +2657,6 @@
             const productPhotos = JSON.parse(localStorage.getItem('productPhotos')) || {};
             return productPhotos[modelName] || [];
         }
-        
-        // Функции для работы с галереей изображений
-        function openImageGallery(productId, imageIndex) {
-            const product = products.find(p => p.id === productId);
-            if (!product) return;
-            
-            // Получаем дополнительные фотографии из localStorage
-            const additionalPhotos = getProductPhotos(product.name);
-            const allPhotos = [...product.images, ...additionalPhotos];
-            
-            if (allPhotos.length === 0) return;
-            
-            currentProductId = productId;
-            currentImageIndex = imageIndex;
-            currentImages = allPhotos;
-            
-            // Показываем модальное окно
-            const modal = document.getElementById('image-gallery-modal');
-            modal.classList.add('active');
-            
-            // Обновляем изображение
-            updateGalleryImage();
-            
-            // Блокируем прокрутку страницы
-            document.body.style.overflow = 'hidden';
-        }
-        
-        function closeImageGallery() {
-            const modal = document.getElementById('image-gallery-modal');
-            modal.classList.remove('active');
-            
-            // Разблокируем прокрутку страницы
-            document.body.style.overflow = '';
-        }
-        
-        function changeImage(direction) {
-            currentImageIndex += direction;
-            
-            // Проверяем границы
-            if (currentImageIndex < 0) {
-                currentImageIndex = currentImages.length - 1;
-            } else if (currentImageIndex >= currentImages.length) {
-                currentImageIndex = 0;
-            }
-            
-            // Обновляем изображение
-            updateGalleryImage();
-        }
-        
-        function updateGalleryImage() {
-            const galleryImage = document.getElementById('gallery-image');
-            const galleryCounter = document.getElementById('gallery-counter');
-            
-            galleryImage.src = currentImages[currentImageIndex];
-            galleryCounter.textContent = `${currentImageIndex + 1} / ${currentImages.length}`;
-        }
-        
-        // Обработчики событий для клавиатуры
-        document.addEventListener('keydown', function(e) {
-            const modal = document.getElementById('image-gallery-modal');
-            if (modal.classList.contains('active')) {
-                if (e.key === 'Escape') {
-                    closeImageGallery();
-                } else if (e.key === 'ArrowLeft') {
-                    changeImage(-1);
-                } else if (e.key === 'ArrowRight') {
-                    changeImage(1);
-                }
-            }
-        });
         
         // Инициализация при загрузке
         document.addEventListener('DOMContentLoaded', () => {
