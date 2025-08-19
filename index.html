@@ -1186,6 +1186,96 @@
         .error {
             border-color: #ff0000 !important;
         }
+        
+        /* Стили для админ-панели */
+        .admin-panel {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 10000;
+        }
+        
+        .admin-toggle {
+            width: 60px;
+            height: 60px;
+            background: #1a3a6c;
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+            font-size: 1.5rem;
+        }
+        
+        .admin-form {
+            display: none;
+            position: absolute;
+            bottom: 70px;
+            right: 0;
+            width: 350px;
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+        
+        .admin-form.active {
+            display: block;
+        }
+        
+        .admin-title {
+            font-size: 1.2rem;
+            margin-bottom: 15px;
+            color: #1a3a6c;
+            text-align: center;
+        }
+        
+        .admin-input {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+        
+        .admin-btn {
+            background: #1a3a6c;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 4px;
+            cursor: pointer;
+            width: 100%;
+        }
+        
+        .photo-list {
+            max-height: 200px;
+            overflow-y: auto;
+            margin: 10px 0;
+            border: 1px solid #eee;
+            padding: 10px;
+            border-radius: 4px;
+        }
+        
+        .photo-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 8px;
+            border-bottom: 1px solid #f0f0f0;
+        }
+        
+        .photo-item:last-child {
+            border-bottom: none;
+        }
+        
+        .delete-photo {
+            color: #ff0000;
+            cursor: pointer;
+            padding: 5px;
+        }
     </style>
 </head>
 <body>
@@ -1475,7 +1565,7 @@
                         <img src="https://63moto.ru/upload/iblock/9a0/ny4mvfmw0g0i7gax47wcj3mp4fo8h0no.jpg" alt="ATAKI BATLLO" class="product-image" loading="lazy">
                     </div>
                     <div class="product-info">
-                        <div class="product-name" onclick="showProductDetail(7)">ATAKI BATLLO (4T PR300) ПТС 17/17</div>
+                        <div class="product-name" onclick="showProductDetail(7)">ATAKI BATLLO (4T PR300) ПТS 17/17</div>
                         <div class="product-price">200 000 ₽</div>
                         <div class="product-specs">
                             <div class="spec-item">
@@ -1492,7 +1582,7 @@
                             </div>
                         </div>
                         <div class="product-actions">
-                            <button class="add-to-cart" onclick="addToCart('ATAKI BATLLO (4T PR300) ПТС 17/17', 200000)">
+                            <button class="add-to-cart" onclick="addToCart('ATAKI BATLLO (4T PR300) ПТS 17/17', 200000)">
                                 <i class="fas fa-cart-plus"></i> В корзину
                             </button>
                             <button class="details-btn" onclick="showProductDetail(7)">
@@ -1508,7 +1598,7 @@
                         <img src="https://www.rollingmoto.ru/upload/iblock/94f/6mdg6qg4kk99fgo7v7m1t39imzk134y2.jpg" alt="ATAKI CARRERA 300" class="product-image" loading="lazy">
                     </div>
                     <div class="product-info">
-                        <div class="product-name" onclick="showProductDetail(8)">ATAKI CARRERA 300 (4T PR300) ПТС 19/17</div>
+                        <div class="product-name" onclick="showProductDetail(8)">ATAKI CARRERA 300 (4T PR300) ПТS 19/17</div>
                         <div class="product-price">175 000 ₽</div>
                         <div class="product-specs">
                             <div class="spec-item">
@@ -1525,7 +1615,7 @@
                             </div>
                         </div>
                         <div class="product-actions">
-                            <button class="add-to-cart" onclick="addToCart('ATAKI CARRERA 300 (4T PR300) ПТС 19/17', 175000)">
+                            <button class="add-to-cart" onclick="addToCart('ATAKI CARRERA 300 (4T PR300) ПТS 19/17', 175000)">
                                 <i class="fas fa-cart-plus"></i> В корзину
                             </button>
                             <button class="details-btn" onclick="showProductDetail(8)">
@@ -1541,7 +1631,7 @@
                         <img src="https://63moto.ru/upload/iblock/dc0/83dz0tpfevhth4zhxdl9pwlrerrhc19u.jpg" alt="ATAKI CROSSER 300" class="product-image" loading="lazy">
                     </div>
                     <div class="product-info">
-                        <div class="product-name" onclick="showProductDetail(9)">ATAKI CROSSER 300 (4T PR300) ПТС 21/18</div>
+                        <div class="product-name" onclick="showProductDetail(9)">ATAKI CROSSER 300 (4T PR300) ПТS 21/18</div>
                         <div class="product-price">170 000 ₽</div>
                         <div class="product-specs">
                             <div class="spec-item">
@@ -1558,7 +1648,7 @@
                             </div>
                         </div>
                         <div class="product-actions">
-                            <button class="add-to-cart" onclick="addToCart('ATAKI CROSSER 300 (4T PR300) ПТС 21/18', 170000)">
+                            <button class="add-to-cart" onclick="addToCart('ATAKI CROSSER 300 (4T PR300) ПТS 21/18', 170000)">
                                 <i class="fas fa-cart-plus"></i> В корзину
                             </button>
                             <button class="details-btn" onclick="showProductDetail(9)">
@@ -1860,6 +1950,23 @@
         </div>
     </footer>
 
+    <!-- Админ-панель для управления фотографиями -->
+    <div class="admin-panel">
+        <div class="admin-toggle" onclick="toggleAdminForm()">
+            <i class="fas fa-camera"></i>
+        </div>
+        <div class="admin-form" id="admin-form">
+            <h3 class="admin-title">Добавить фотографии к товару</h3>
+            <input type="text" id="admin-model" class="admin-input" placeholder="Название модели">
+            <input type="text" id="admin-photo" class="admin-input" placeholder="Ссылка на фотографию">
+            <button class="admin-btn" onclick="addPhotoToProduct()">Добавить фото</button>
+            
+            <div class="photo-list" id="photo-list">
+                <!-- Список фотографий будет здесь -->
+            </div>
+        </div>
+    </div>
+
     <script>
         // Инициализация корзины
         let cart = JSON.parse(localStorage.getItem('cart')) || [];
@@ -1928,7 +2035,7 @@
                     "https://static.insales-cdn.com/images/products/1/4418/985862466/07.png",
                     "https://globaldrive.ru/upload/iblock/088/xe6uevaxb0lz2uijejq04r7xhxswul2f.jpg"
                 ],
-                description: "Мотоцикл KAYO BASIC TT140 с увеличенным объемом двигателя для большей мощности и крутящего момента. Идеально подходит для тех, кому требуется больше динамики и проходимости.",
+                description: "Мотоцикл KAYO BASIC TT140 с увеличеном объемом двигателя для большей мощности и крутящего момента. Идеально подходит для тех, кому требуется больше динамики и проходимости.",
                 specs: {
                     "Тип двигателя": "4-тактный",
                     "Объем": "140 см³",
@@ -2021,7 +2128,7 @@
             },
             {
                 id: 7,
-                name: "ATAKI BATLLO (4T PR300) ПТС 17/17",
+                name: "ATAKI BATLLO (4T PR300) ПТS 17/17",
                 price: 200000,
                 images: [
                     "https://63moto.ru/upload/iblock/9a0/ny4mvfmw0g0i7gax47wcj3mp4fo8h0no.jpg",
@@ -2046,14 +2153,14 @@
             },
             {
                 id: 8,
-                name: "ATAKI CARRERA 300 (4T PR300) ПТС 19/17",
+                name: "ATAKI CARRERA 300 (4T PR300) ПТS 19/17",
                 price: 175000,
                 images: [
                     "https://www.rollingmoto.ru/upload/iblock/94f/6mdg6qg4kk99fgo7v7m1t39imzk134y2.jpg",
                     "https://63moto.ru/upload/iblock/dc0/83dz0tpfevhth4zhxdl9pwlrerrhc19u.jpg",
                     "https://63moto.ru/upload/iblock/9a0/ny4mvfmw0g0i7gax47wcj3mp4fo8h0no.jpg"
                 ],
-                description: "ATAKI CARRERA 300 - спортивно-туристический мотоцикл с мощным двигателем 300 см³. Удобная посадка, качественная подвеска и большая топливная емкость делают его отличным выбором для дальних поездок.",
+                description: "ATAKI CARRERA 300 - спортивно-туристический мотоцикл с мощным двигателем 300 см³. Удобная посадка, качественная подвека и большая топливная емкость делают его отличным выбором для дальних поездок.",
                 specs: {
                     "Тип двигателя": "4-тактный",
                     "Объем": "300 см³",
@@ -2071,7 +2178,7 @@
             },
             {
                 id: 9,
-                name: "ATAKI CROSSER 300 (4T PR300) ПТС 21/18",
+                name: "ATAKI CROSSER 300 (4T PR300) ПТS 21/18",
                 price: 170000,
                 images: [
                     "https://63moto.ru/upload/iblock/dc0/83dz0tpfevhth4zhxdl9pwlrerrhc19u.jpg",
@@ -2395,15 +2502,19 @@
                 specsContainer.appendChild(specElement);
             }
             
+            // Получаем дополнительные фотографии из localStorage
+            const additionalPhotos = getProductPhotos(product.name);
+            const allPhotos = [...product.images, ...additionalPhotos];
+            
             // Галерея изображений
             const mainImage = document.getElementById('main-image');
-            mainImage.src = product.images[0];
+            mainImage.src = allPhotos[0];
             mainImage.alt = product.name;
             
             const thumbnailsContainer = document.getElementById('thumbnails-container');
             thumbnailsContainer.innerHTML = '';
             
-            product.images.forEach((img, index) => {
+            allPhotos.forEach((img, index) => {
                 const thumbnail = document.createElement('img');
                 thumbnail.src = img;
                 thumbnail.alt = `Изображение ${index + 1} ${product.name}`;
@@ -2433,6 +2544,96 @@
             document.querySelector('.nav-section').classList.toggle('active');
         }
         
+        // Функции для работы с фотографиями
+        function toggleAdminForm() {
+            document.getElementById('admin-form').classList.toggle('active');
+        }
+        
+        // Функция для добавления фотографии к товару
+        function addPhotoToProduct() {
+            const modelName = document.getElementById('admin-model').value.trim();
+            const photoUrl = document.getElementById('admin-photo').value.trim();
+            
+            if (!modelName || !photoUrl) {
+                alert('Пожалуйста, заполните все поля');
+                return;
+            }
+            
+            // Получаем текущие данные из localStorage
+            let productPhotos = JSON.parse(localStorage.getItem('productPhotos')) || {};
+            
+            // Если для этой модели еще нет массива фотографий, создаем его
+            if (!productPhotos[modelName]) {
+                productPhotos[modelName] = [];
+            }
+            
+            // Добавляем новую фотографию
+            productPhotos[modelName].push(photoUrl);
+            
+            // Сохраняем обратно в localStorage
+            localStorage.setItem('productPhotos', JSON.stringify(productPhotos));
+            
+            // Обновляем список фотографий
+            updatePhotoList(modelName);
+            
+            // Очищаем поле ввода фотографии
+            document.getElementById('admin-photo').value = '';
+            
+            alert('Фотография добавлена для модели: ' + modelName);
+        }
+        
+        // Функция для обновления списка фотографий
+        function updatePhotoList(modelName) {
+            const photoList = document.getElementById('photo-list');
+            photoList.innerHTML = '';
+            
+            // Получаем данные из localStorage
+            const productPhotos = JSON.parse(localStorage.getItem('productPhotos')) || {};
+            
+            if (!productPhotos[modelName] || productPhotos[modelName].length === 0) {
+                photoList.innerHTML = '<p>Нет добавленных фотографий для этой модели</p>';
+                return;
+            }
+            
+            // Добавляем каждую фотографию в список
+            productPhotos[modelName].forEach((photo, index) => {
+                const photoItem = document.createElement('div');
+                photoItem.className = 'photo-item';
+                photoItem.innerHTML = `
+                    <div style="display: flex; align-items: center;">
+                        <img src="${photo}" alt="Фото ${index + 1}" style="width: 40px; height: 30px; object-fit: cover; margin-right: 10px;">
+                        <span style="font-size: 0.8rem;">Фото ${index + 1}</span>
+                    </div>
+                    <div class="delete-photo" onclick="deletePhoto('${modelName}', ${index})">
+                        <i class="fas fa-trash"></i>
+                    </div>
+                `;
+                photoList.appendChild(photoItem);
+            });
+        }
+        
+        // Функция для удаления фотографии
+        function deletePhoto(modelName, index) {
+            const productPhotos = JSON.parse(localStorage.getItem('productPhotos')) || {};
+            
+            if (productPhotos[modelName] && productPhotos[modelName][index]) {
+                // Удаляем фотографию из массива
+                productPhotos[modelName].splice(index, 1);
+                
+                // Сохраняем обратно в localStorage
+                localStorage.setItem('productPhotos', JSON.stringify(productPhotos));
+                
+                // Обновляем список фотографий
+                updatePhotoList(modelName);
+            }
+        }
+        
+        // Функция для получения фотографий товара по названию модели
+        function getProductPhotos(modelName) {
+            const productPhotos = JSON.parse(localStorage.getItem('productPhotos')) || {};
+            return productPhotos[modelName] || [];
+        }
+        
         // Инициализация при загрузке
         document.addEventListener('DOMContentLoaded', () => {
             updateCartCounter();
@@ -2448,6 +2649,14 @@
                         this.classList.remove('error');
                     }
                 });
+            });
+            
+            // Добавляем обработчик для автоматической подгрузки фотографий при вводе названия модели
+            document.getElementById('admin-model').addEventListener('input', function() {
+                const modelName = this.value.trim();
+                if (modelName) {
+                    updatePhotoList(modelName);
+                }
             });
             
             // Восстановление последней открытой страницы
